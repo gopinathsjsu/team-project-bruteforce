@@ -4,6 +4,8 @@ const express = require('express');
 
 const app = express();
 
+const usersRouter = require("./src/api/v1/routers/users.router");
+
 /**
  * Middlewares
  */
@@ -22,6 +24,10 @@ app.get("/", (req, res) => {
     message: 'Server on',
   });
 });
+
+
+app.use('/api/v1/users', usersRouter);
+
 
 /**
  * App listen
