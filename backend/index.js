@@ -5,6 +5,7 @@ const express = require('express');
 const app = express();
 
 const usersRouter = require("./src/api/v1/routers/users.router");
+const authRouter = require("./src/api/v1/routers/auth.router");
 
 /**
  * Middlewares
@@ -25,6 +26,8 @@ app.get("/", (req, res) => {
   });
 });
 
+
+app.use('/api/v1/auth', authRouter);
 
 app.use('/api/v1/users', usersRouter);
 
