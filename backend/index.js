@@ -2,6 +2,8 @@ require('dotenv').config()
 const cors = require('cors');
 const express = require('express');
 
+const authMiddleware = require('./src/api/v1/middlewares/auth.middleware');
+
 const app = express();
 
 const usersRouter = require("./src/api/v1/routers/users.router");
@@ -28,6 +30,8 @@ app.get("/", (req, res) => {
 
 
 app.use('/api/v1/auth', authRouter);
+
+app.use(authMiddleware);
 
 app.use('/api/v1/users', usersRouter);
 
