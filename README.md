@@ -1,3 +1,3 @@
-# team-project-bruteforce
+# Team-project-bruteforce
 
-Hotel management App
+## Hotel management App
