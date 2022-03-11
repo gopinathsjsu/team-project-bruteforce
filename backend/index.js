@@ -8,6 +8,7 @@ const app = express();
 
 const usersRouter = require("./src/api/v1/routers/users.router");
 const authRouter = require("./src/api/v1/routers/auth.router");
+const hotelsRouter = require("./src/api/v1/routers/hotels.router");
 
 /**
  * Middlewares
@@ -32,6 +33,8 @@ app.get("/", (req, res) => {
 app.use('/api/v1/auth', authRouter);
 
 app.use(authMiddleware);
+
+app.use('/api/v1/hotels', hotelsRouter);
 
 app.use('/api/v1/users', usersRouter);
 
