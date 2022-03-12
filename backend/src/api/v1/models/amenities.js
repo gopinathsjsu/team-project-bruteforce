@@ -3,27 +3,25 @@ const {
     Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-    class Room extends Model {
+    class Amenities extends Model {
         static associate(models) {
-            Room.hasMany(models.Amenities, {
+            Amenities.belongsTo(models.Room, {
                 foreignKey: 'RoomId',
                 onDelete: 'CASCADE'
             })
         }
     }
-    Room.init({
+
+    Amenities.init({
         id: {
             type: DataTypes.UUID,
             primaryKey: true
         },
         name: DataTypes.STRING,
-        type: DataTypes.STRING,
-        pricePerDay: DataTypes.INTEGER,
-        guestPricePerDay: DataTypes.INTEGER,
-        freeGuestCount: DataTypes.INTEGER,
+        price: DataTypes.INTEGER,
     }, {
         sequelize,
-        modelName: 'Room',
+        modelName: 'Amenities',
     });
-    return Room;
+    return Amenities;
 };
