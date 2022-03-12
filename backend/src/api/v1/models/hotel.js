@@ -5,6 +5,10 @@ const {
 module.exports = (sequelize, DataTypes) => {
     class Hotel extends Model {
         static associate(models) {
+            Hotel.hasMany(models.Room, {
+                foreignKey: 'HotelId',
+                onDelete: 'CASCADE'
+            })
         }
     }
     Hotel.init({

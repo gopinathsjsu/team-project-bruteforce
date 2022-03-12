@@ -8,7 +8,11 @@ module.exports = (sequelize, DataTypes) => {
             Room.hasMany(models.Amenities, {
                 foreignKey: 'RoomId',
                 onDelete: 'CASCADE'
-            })
+            });
+            Room.belongsTo(models.Hotel, {
+                foreignKey: 'HotelId',
+                onDelete: 'CASCADE'
+            });
         }
     }
     Room.init({
