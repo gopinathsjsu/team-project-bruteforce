@@ -20,6 +20,13 @@ module.exports = {
           key: 'id'
         }
       },
+      UserId: {
+        type: Sequelize.UUID,
+        references: {
+          model: 'Users',
+          key: 'id'
+        }
+      },
       PeakPrice: {
         type: Sequelize.UUID,
         references: {
