@@ -1,6 +1,8 @@
 const { Hotel} = require("../models");
 const { v4: uuidv4 } = require('uuid');
 const bcrypt = require("bcryptjs");
+const { Op } = require("sequelize");
+
 
 class HotelsService {
     static async getHotelByEmail(email) {
@@ -38,6 +40,17 @@ class HotelsService {
             where: {
                 id,
             },
+        });
+    }
+
+    static async searchHotels({term}) {
+        return await Hotel.findAll({
+            where: {
+                [Op.or]: [
+                    {name: {[Op.iLike]: `%${term}%`}},
+                    {email: {[Op.iLike]: `%${term}%`}},
+                ]
+            }
         });
     }
 }
