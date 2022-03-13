@@ -5,12 +5,13 @@ class RoomsController {
     static async addRoom(req, res) {
         try {
             const schema = Joi.object({
-                name: Joi.string().required(),
                 hotelId: Joi.string().required(),
+                userId: Joi.string().required(),
+                startDate: Joi.string().required(),
+                endDate: Joi.string().required(),
                 type: Joi.string().allow('SINGLE_ROOM', 'DOUBLE_ROOM', 'SUITE'),
-                pricePerDay: Joi.number(),
                 guestPricePerDay: Joi.number(),
-                freeGuestCount: Joi.number(),
+                peakPriceId: Joi.string().required(),
             });
             await schema.validateAsync(req.body);
             const room = await RoomsService.createRoom(req.body)
