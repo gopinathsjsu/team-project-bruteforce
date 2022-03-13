@@ -41,6 +41,10 @@ module.exports = {
       totalPrice: {
         type: Sequelize.INTEGER
       },
+      roomsData: {
+        type: Sequelize.JSONB,
+        allowNull: false,
+      },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE

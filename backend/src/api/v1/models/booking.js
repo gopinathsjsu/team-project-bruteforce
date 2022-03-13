@@ -8,15 +8,15 @@ module.exports = (sequelize, DataTypes) => {
             Booking.belongsTo(models.Hotel,{
                 foreignKey: 'HotelId',
                 onDelete: 'CASCADE'
-            })
+            });
             Booking.belongsTo(models.User,{
                 foreignKey: 'UserId',
                 onDelete: 'CASCADE'
-            })
+            });
             Booking.belongsTo(models.PeakPrice,{
                 foreignKey: 'PeakPriceId',
                 onDelete: 'CASCADE'
-            })
+            });
         }
     }
     Booking.init({
@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         startDate: DataTypes.DATE,
         endDate: DataTypes.DATE,
         totalPrice: DataTypes.INTEGER,
+        roomsData: DataTypes.JSONB,
     }, {
         sequelize,
         modelName: 'Booking',

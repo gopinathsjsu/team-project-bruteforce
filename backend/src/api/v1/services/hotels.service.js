@@ -101,7 +101,7 @@ class HotelsService {
         return Booking.create({
             HotelId: hotelId,
             UserId: userId,
-            // TODO create model for booked rooms - num of guest, amenities selected,
+            roomsData: rooms,
             totalPrice,
             PeakPriceId: peakPriceId,
             startDate,
