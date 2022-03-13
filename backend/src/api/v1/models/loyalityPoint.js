@@ -3,27 +3,27 @@ const {
     Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-    class PeakPrices extends Model {
+    class LoyaltyPoint extends Model {
         static associate(models) {
-            PeakPrices.belongsTo(models.Hotel, {
+            LoyaltyPoint.belongsTo(models.Hotel, {
                 foreignKey: 'HotelId',
+                onDelete: 'CASCADE'
+            });
+            LoyaltyPoint.belongsTo(models.User, {
+                foreignKey: 'UserId',
                 onDelete: 'CASCADE'
             });
         }
     }
-
-    PeakPrices.init({
+    LoyaltyPoint.init({
         id: {
             type: DataTypes.UUID,
             primaryKey: true
         },
-        name: DataTypes.STRING,
-        hikePercent: DataTypes.INTEGER,
-        date: DataTypes.DATE,
-        dayPattern: DataTypes.STRING,
+        value: DataTypes.STRING,
     }, {
         sequelize,
-        modelName: 'PeakPrices',
+        modelName: 'LoyaltyPoint',
     });
-    return PeakPrices;
+    return LoyaltyPoint;
 };
