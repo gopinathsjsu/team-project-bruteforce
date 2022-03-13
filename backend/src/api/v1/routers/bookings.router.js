@@ -5,4 +5,8 @@ const bookingsRouter = express.Router();
 
 bookingsRouter.post('/', BookingsController.createBooking);
 
+// TODO add updation
+
+// TODO add cancellation
+
 module.exports = bookingsRouter;

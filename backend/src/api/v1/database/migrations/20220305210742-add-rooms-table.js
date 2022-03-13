@@ -22,6 +22,12 @@ module.exports = {
       freeGuestCount: {
         type: Sequelize.INTEGER
       },
+      roomsCount: {
+        type: Sequelize.INTEGER
+      },
+      activeCount: {
+        type: Sequelize.INTEGER,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

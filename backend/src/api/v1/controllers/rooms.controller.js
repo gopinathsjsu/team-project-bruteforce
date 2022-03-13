@@ -11,9 +11,10 @@ class RoomsController {
                 pricePerDay: Joi.number(),
                 guestPricePerDay: Joi.number(),
                 freeGuestCount: Joi.number(),
+                roomsCount: Joi.number(),
             });
             await schema.validateAsync(req.body);
-            const room = await RoomsService.createRoom(req.body)
+            const room = await RoomsService.addRooms(req.body)
             res.status(200).send({
                 success: true,
                 data: {
