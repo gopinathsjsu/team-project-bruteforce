@@ -1,7 +1,19 @@
-const { Room} = require("../models");
+const { Room, Hotel, Amenities} = require("../models");
 const { v4: uuidv4 } = require('uuid');
 
 class RoomsService {
+    static async getRoomById(id) {
+        if (!id) {
+            throw Error('No id specified');
+        } else {
+            return Room.findOne({
+                where: {
+                    id,
+                },
+                include: [Amenities]
+            });
+        }
+    }
     static async addRooms(roomParams) {
         let { name, type, pricePerDay, guestPricePerDay, freeGuestCount, roomsCount, HotelId } = roomParams;
         const id =  uuidv4();

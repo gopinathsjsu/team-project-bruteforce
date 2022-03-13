@@ -36,6 +36,29 @@ class HotelsController {
             res.status(400).send({message})
         }
     }
+    static async addBooking(req, res) {
+        try {
+            const schema = Joi.object({
+                hotelId: Joi.string().required(),
+                userId: Joi.string().required(),
+                startDate: Joi.string().required(),
+                endDate: Joi.string().required(),
+                rooms: Joi.object().required(), // roomId, amenityIds, guestCount
+                peakPriceId: Joi.string().required(),
+            });
+            await schema.validateAsync(req.body);
+            const room = await HotelsService.addBooking(req.body)
+            res.status(200).send({
+                success: true,
+                data: {
+                    room,
+                }
+            });
+        } catch (e) {
+            const message = e.message || 'Error occurred while creating the booking.'
+            res.status(400).send({success:false, message})
+        }
+    }
 }
 
 module.exports = HotelsController;

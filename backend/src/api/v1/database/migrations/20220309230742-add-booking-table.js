@@ -27,10 +27,10 @@ module.exports = {
           key: 'id'
         }
       },
-      PeakPrice: {
+      PeakPriceId: {
         type: Sequelize.UUID,
         references: {
-          model: 'Users',
+          model: 'PeakPrices',
           key: 'id'
         }
       },
@@ -39,9 +39,6 @@ module.exports = {
         type: Sequelize.DATE
       },
       totalPrice: {
-        type: Sequelize.INTEGER
-      },
-      totalGuests: {
         type: Sequelize.INTEGER
       },
       updatedAt: {
