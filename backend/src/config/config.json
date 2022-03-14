@@ -1,12 +1,18 @@
 {
   "development": {
-    "use_env_variable": "DATABASE_URL",
-    "dialect": "postgres",
+    "username": "bruteforce",
+    "password": "bruteforce",
+    "database": "bruteforce",
+    "host": "bruteforce.cmsmu5km6vlg.us-east-2.rds.amazonaws.com",
+    "dialect": "bruteforce",
     "logging": false
   },
   "production": {
-    "use_env_variable": "DATABASE_URL",
-    "dialect": "postgres",
+    "username": "bruteforce",
+    "password": "bruteforce",
+    "database": "bruteforce",
+    "host": "bruteforce.cmsmu5km6vlg.us-east-2.rds.amazonaws.com",
+    "dialect": "bruteforce",
     "logging": false
   }
 }
