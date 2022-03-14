@@ -108,6 +108,48 @@ class HotelsService {
             endDate,
         });
     }
+    static async updateBooking(bookingParams) {
+        let { bookingId, rooms, startDate, endDate, userId, peakPriceId } = bookingParams;
+        const booking = await Booking.findOne({
+            where: {
+                id
+            },
+            include: []
+        })
+        // Check the email is not in use already
+        // calculate the pricing for the rooms and extra guest in each room for the total days
+        // TODO Find if the startDate of the booking is under peakPrice
+        let totalPrice = 0;
+        let days = 1;
+        if (endDate !== startDate) {
+            days = 1 + moment(endDate, 'MM-DD-YYYY').diff(moment(startDate, 'MM-DD-YYYY'), 'days');
+        }
+
+        for (const roomIdx in rooms) {
+            const room = await RoomsService.getRoomById(rooms[roomIdx].roomId);
+            if (!room) {
+                throw Error('Booking error, Rooms not found.');
+            } else {
+                const extraGuest = rooms[roomIdx].guestCount > room.freeGuestCount ? rooms[roomIdx].guestCount - room.freeGuestCount : 0
+                // find out the amenities booked and their prices
+                let amenPrice = 0;
+                room.Amenities.map(a => {
+                    if (rooms[roomIdx].amenityIds.includes(a.id)) {
+                        amenPrice += a.price;
+                    }
+                });
+                totalPrice += (room.pricePerDay +  (room.guestPricePerDay * extraGuest) +  amenPrice);
+            }
+        }
+        // update the price with by multiplying the days
+        totalPrice *= days;
+        booking.totalPrice = totalPrice;
+        booking.roomsData = rooms;
+        booking.startDate = startDate;
+        booking.endDate = endDate;
+        await booking.save();
+        return booking;
+    }
 }
 
 module.exports = HotelsService;
