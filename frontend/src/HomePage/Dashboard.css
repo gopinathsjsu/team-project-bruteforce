@@ -5,10 +5,10 @@
 }
 
 .title_logo {
-  width: 33%;
+  width: 35%;
   height: 75px;
   /* background-color: green; */
-  margin-left: 10%;
+  margin-left: 8%;
   line-height: 150px;
   font-size: 20px;
 }
@@ -20,5 +20,5 @@
 
 .logo_des {
   width: 100%;
-  margin-left: 41%;
+  margin-left: 39%;
 }
