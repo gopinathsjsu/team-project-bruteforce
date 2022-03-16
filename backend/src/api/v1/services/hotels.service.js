@@ -68,12 +68,26 @@ class HotelsService {
     }
 
     static async addBooking(bookingParams) {
-        let { hotelId, rooms, startDate, endDate, userId, peakPriceId } = bookingParams;
+        let { hotelId, rooms, startDate, endDate, userId } = bookingParams;
         // Check the email is not in use already
         const id =  uuidv4();
         const hotel = await this.getHotelById(hotelId);
-        // calculate the pricing for the rooms and extra guest in each room for the total days
-        // TODO Find if the startDate of the booking is under peakPrice
+        let peakPrice;
+        peakPrice = await PeakPrices.findOne({
+            where: {
+                date: moment(startDate, 'MM-DD-YYYY').getDate(),
+            }
+        });
+        if (!peakPrice) {
+            const day = moment(startDate, 'MM-DD-YYYY').getDay();
+            // Look for it in peakPrice table
+            peakPrice = await PeakPrices.findOne({
+                where: {
+                    dayPattern: day,
+                }
+            });
+        }
+
         let totalPrice = 0;
         let days = 1;
         if (endDate !== startDate) {
@@ -102,23 +116,39 @@ class HotelsService {
             HotelId: hotelId,
             UserId: userId,
             roomsData: rooms,
-            totalPrice,
-            PeakPriceId: peakPriceId,
+            totalPrice: peakPrice ? totalPrice + ((totalPrice*peakPrice.hikePercent) /100) : totalPrice,
+            PeakPriceId: peakPrice ? peakPrice.id : null,
             startDate,
             endDate,
         });
     }
     static async updateBooking(bookingParams) {
-        let { bookingId, rooms, startDate, endDate, userId, peakPriceId } = bookingParams;
+        let { bookingId, rooms, startDate, endDate, } = bookingParams;
         const booking = await Booking.findOne({
             where: {
-                id
+                id: bookingId
             },
             include: []
-        })
-        // Check the email is not in use already
-        // calculate the pricing for the rooms and extra guest in each room for the total days
-        // TODO Find if the startDate of the booking is under peakPrice
+        });
+        if (!booking) {
+            throw Error('Invalid booking id passed!');
+        }
+        let peakPrice;
+        peakPrice = await PeakPrices.findOne({
+            where: {
+                date: moment(startDate, 'MM-DD-YYYY').getDate(),
+            }
+        });
+        if (!peakPrice) {
+            const day = moment(startDate, 'MM-DD-YYYY').getDay();
+            // Look for it in peakPrice table
+            peakPrice = await PeakPrices.findOne({
+                where: {
+                    dayPattern: day,
+                }
+            });
+        }
+
         let totalPrice = 0;
         let days = 1;
         if (endDate !== startDate) {
@@ -147,8 +177,30 @@ class HotelsService {
         booking.roomsData = rooms;
         booking.startDate = startDate;
         booking.endDate = endDate;
+        if (peakPrice) {
+            booking.totalPrice = totalPrice + ((totalPrice*peakPrice.hikePercent) /100)
+            booking.PeakPriceId = peakPrice.id;
+        }
         await booking.save();
         return booking;
+    }
+
+    static async cancelBooking(bookingParams) {
+        let { bookingId } = bookingParams;
+        const booking = await Booking.findOne({
+            where: {
+                id: bookingId
+            },
+            include: []
+        });
+        if (!booking) {
+            throw Error('Invalid booking id passed!');
+        }
+        booking.cancelled = true;
+        return {
+            message: 'Booking cancelled successfully',
+        }
+
     }
 }
 

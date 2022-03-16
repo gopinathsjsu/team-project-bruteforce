@@ -26,6 +26,10 @@ module.exports = {
           key: 'id'
         }
       },
+      cancelled: {
+        default: false,
+        type: Sequelize.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
