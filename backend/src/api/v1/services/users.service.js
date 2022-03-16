@@ -14,6 +14,17 @@ class UsersService {
             });
         }
     }
+    static async getUserById(id) {
+        if (!id) {
+            throw Error('No id specified');
+        } else {
+            return User.findOne({
+                where: {
+                    id,
+                }
+            });
+        }
+    }
     static async createUser(userParams) {
         let { email, firstName, lastName, password } = userParams;
         // Check the email is not in use already

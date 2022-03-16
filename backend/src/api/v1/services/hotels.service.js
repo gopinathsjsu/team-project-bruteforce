@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const { Op } = require("sequelize");
 const moment = require('moment');
 const RoomsService = require("./rooms.service");
+const UsersService = require("./users.service");
 
 
 class HotelsService {
@@ -72,6 +73,7 @@ class HotelsService {
         // Check the email is not in use already
         const id =  uuidv4();
         const hotel = await this.getHotelById(hotelId);
+        const user = await UsersService.getUserById(userId);
         let peakPrice;
         peakPrice = await PeakPrices.findOne({
             where: {
@@ -112,15 +114,37 @@ class HotelsService {
         }
         // update the price with by multiplying the days
         totalPrice *= days;
-        return Booking.create({
-            HotelId: hotelId,
-            UserId: userId,
+        // Find out loyalty points
+        let loyaltyPoints = 0;
+        const prevBooking = await Booking.findAll({
+            where: {
+                HotelId: hotelId,
+                UserId: userId,
+                cancelled: false,
+            }
+        })
+        console.log({prevBooking});
+        for (let i in prevBooking) {
+            loyaltyPoints += prevBooking[1].totalPrice;
+        }
+
+        if (peakPrice) {
+            totalPrice = totalPrice + ((totalPrice*peakPrice.hikePercent) /100);
+        }
+        if (loyaltyPoints) {
+            totalPrice -= (loyaltyPoints / 100)
+        }
+        const booking = await Booking.create({
             roomsData: rooms,
-            totalPrice: peakPrice ? totalPrice + ((totalPrice*peakPrice.hikePercent) /100) : totalPrice,
+            totalPrice,
             PeakPriceId: peakPrice ? peakPrice.id : null,
             startDate,
             endDate,
         });
+        await hotel.addBooking(booking);
+        await user.addBooking(booking);
+        await peakPrice.addBooking(booking);
+        return booking;
     }
     static async updateBooking(bookingParams) {
         let { bookingId, rooms, startDate, endDate, } = bookingParams;
