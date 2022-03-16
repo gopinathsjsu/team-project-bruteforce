@@ -59,6 +59,42 @@ class HotelsController {
             res.status(400).send({success:false, message})
         }
     }
+
+    static async updateBooking(req, res) {
+        try {
+            const schema = Joi.object({
+                bookingId: Joi.string().required(),
+                startDate: Joi.string().required(),
+                endDate: Joi.string().required(),
+                rooms: Joi.object().required(), // roomId, amenityIds, guestCount
+            });
+            await schema.validateAsync(req.body);
+            const response = await HotelsService.updateBooking(req.body)
+            res.status(200).send({
+                success: true,
+                data: response,
+            });
+        } catch (e) {
+            const message = e.message || 'Error occurred while updating the booking.'
+            res.status(400).send({success:false, message})
+        }
+    }
+    static async cancelBooking(req, res) {
+        try {
+            const schema = Joi.object({
+                bookingId: Joi.string().required(),
+            });
+            await schema.validateAsync(req.body);
+            const response = await HotelsService.cancelBooking(req.body)
+            res.status(200).send({
+                success: true,
+                data: response
+            });
+        } catch (e) {
+            const message = e.message || 'Error occurred while cancelling the booking.'
+            res.status(400).send({success:false, message})
+        }
+    }
 }
 
 module.exports = HotelsController;

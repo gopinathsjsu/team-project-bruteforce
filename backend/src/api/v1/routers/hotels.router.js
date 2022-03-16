@@ -8,5 +8,11 @@ hotelsRouter.post('/', HotelsController.createHotel);
 
 hotelsRouter.post('/search', HotelsController.searchHotels);
 
+hotelsRouter.post('/add-booking', HotelsController.addBooking);
+
+hotelsRouter.post('/update-booking', HotelsController.updateBooking);
+
+hotelsRouter.post('/cancel-booking', HotelsController.cancelBooking);
+
 
 module.exports = hotelsRouter;
