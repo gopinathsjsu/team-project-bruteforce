@@ -45,6 +45,10 @@ module.exports = {
         type: Sequelize.JSONB,
         allowNull: false,
       },
+      cancelled: {
+        default: false,
+        type: Sequelize.BOOLEAN
+      },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -22,6 +22,29 @@ class HotelsController {
             res.status(400).send({success:false, message})
         }
     }
+    static async addPeakPrice(req, res) {
+        try {
+            const schema = Joi.object({
+                name: Joi.string().required(),
+                percent: Joi.string().required(),
+                hotelId: Joi.string().required(),
+                userId: Joi.string().required(),
+                date: Joi.string().required(),
+                dayPattern: Joi.string().required(),
+            });
+            await schema.validateAsync(req.body);
+            const hotel = await HotelsService.addPeakPrice(req.body)
+            res.status(200).send({
+                success: true,
+                data: {
+                    hotel,
+                }
+            });
+        } catch (e) {
+            const message = e.message || 'Error occurred while adding peak price.'
+            res.status(400).send({success:false, message})
+        }
+    }
     static async searchHotels (req, res) {
         try {
             const body = req.body;

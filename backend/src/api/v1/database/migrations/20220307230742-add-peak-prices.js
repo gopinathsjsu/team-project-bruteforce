@@ -10,7 +10,7 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      hikePercent: {
+      percent: {
         type: Sequelize.INTEGER
       },
       date: {
@@ -25,10 +25,6 @@ module.exports = {
           model: 'Hotels',
           key: 'id'
         }
-      },
-      cancelled: {
-        default: false,
-        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

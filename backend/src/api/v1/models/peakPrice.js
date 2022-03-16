@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true
         },
         name: DataTypes.STRING,
-        hikePercent: DataTypes.INTEGER,
+        percent: DataTypes.INTEGER,
         date: DataTypes.DATE,
         dayPattern: DataTypes.STRING,
         cancelled: DataTypes.BOOLEAN,

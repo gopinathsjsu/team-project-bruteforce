@@ -14,5 +14,7 @@ hotelsRouter.post('/update-booking', HotelsController.updateBooking);
 
 hotelsRouter.post('/cancel-booking', HotelsController.cancelBooking);
 
+hotelsRouter.post('/add-peak-price', HotelsController.addPeakPrice);
+
 
 module.exports = hotelsRouter;

@@ -56,7 +56,25 @@ class HotelsService {
             },
         });
     }
+    static async addPeakPrice(hotelParams) {
+        let { name, percent, date, dayPattern, hotelId } = hotelParams;
+        const id =  uuidv4();
+        const hotel = await this.getHotelById(hotelId);
+        const peakPrice = await PeakPrices.create({
+            id,
+            name,
+            percent,
+            date,
+            dayPattern,
+        });
+        await hotel.addPeakPrice(peakPrice);
 
+        return PeakPrices.findOne({
+            where: {
+                id,
+            },
+        });
+    }
     static async searchHotels({term}) {
         return await Hotel.findAll({
             where: {
@@ -129,7 +147,7 @@ class HotelsService {
         }
 
         if (peakPrice) {
-            totalPrice = totalPrice + ((totalPrice*peakPrice.hikePercent) /100);
+            totalPrice = totalPrice + ((totalPrice*peakPrice.percent) /100);
         }
         if (loyaltyPoints) {
             totalPrice -= (loyaltyPoints / 100)
@@ -202,7 +220,7 @@ class HotelsService {
         booking.startDate = startDate;
         booking.endDate = endDate;
         if (peakPrice) {
-            booking.totalPrice = totalPrice + ((totalPrice*peakPrice.hikePercent) /100)
+            booking.totalPrice = totalPrice + ((totalPrice*peakPrice.percent) /100)
             booking.PeakPriceId = peakPrice.id;
         }
         await booking.save();
@@ -221,6 +239,7 @@ class HotelsService {
             throw Error('Invalid booking id passed!');
         }
         booking.cancelled = true;
+        await booking.save();
         return {
             message: 'Booking cancelled successfully',
         }

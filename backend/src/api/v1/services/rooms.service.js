@@ -1,4 +1,4 @@
-const { Room, Hotel, Amenities} = require("../models");
+const { Room, Amenities} = require("../models");
 const { v4: uuidv4 } = require('uuid');
 
 class RoomsService {
