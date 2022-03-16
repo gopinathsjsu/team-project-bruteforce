@@ -10,7 +10,6 @@ const usersRouter = require("./src/api/v1/routers/users.router");
 const authRouter = require("./src/api/v1/routers/auth.router");
 const hotelsRouter = require("./src/api/v1/routers/hotels.router");
 const roomsRouter = require("./src/api/v1/routers/rooms.router");
-const bookingsRouter = require("./src/api/v1/routers/bookings.router");
 
 /**
  * Middlewares
@@ -41,8 +40,6 @@ app.use('/api/v1/hotels', hotelsRouter);
 app.use('/api/v1/rooms', roomsRouter);
 
 app.use('/api/v1/users', usersRouter);
-
-app.use('/api/v1/bookings', bookingsRouter);
 
 
 /**
