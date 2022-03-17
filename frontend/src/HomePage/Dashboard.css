@@ -5,11 +5,12 @@
 }
 
 .title_logo {
+  margin-top: 3%;
   width: 35%;
   height: 75px;
-  /* background-color: green; */
-  margin-left: 8%;
-  line-height: 150px;
+  background-color: green;
+  margin-left: 10%;
+  /* line-height: 150px; */
   font-size: 20px;
 }
 .logo {
@@ -21,4 +22,12 @@
 .logo_des {
   width: 100%;
   margin-left: 39%;
+}
+
+.search_bar {
+  width: 80%;
+  margin-top: 3%;
+  margin-left: 10%;
+  height: 100px;
+  background-color: red;
 }
