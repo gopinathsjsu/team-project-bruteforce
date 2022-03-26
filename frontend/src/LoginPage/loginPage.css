@@ -69,3 +69,31 @@
   cursor: pointer;
   background-color: #005f81;
 }
+
+.register_body {
+  position: relative;
+  top: 0;
+  left: 27%;
+  top: 550px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #414141;
+}
+
+.register_btn {
+  margin-top: 1%;
+  width: 15%;
+  padding: 10px;
+  font-size: 18px;
+  background-color: white;
+  color: #575757;
+  border-radius: 2px;
+  border: 1px solid #575757;
+}
+
+.register_btn:hover {
+  cursor: pointer;
+  color: white;
+  border-radius: 2px;
+  background-color: #575757;
+}

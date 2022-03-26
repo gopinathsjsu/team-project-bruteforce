@@ -22,7 +22,6 @@ function loginPage() {
           </div>
           <div></div>
         </nav>
-
         <div className="login_body">
           <div className="login">
             <h2>Login or create account</h2>
@@ -71,6 +70,12 @@ function loginPage() {
             Terms of Use.
           </p>
         </div>
+      </div>
+      <div className="register_body">
+        <p>Don't have an account yet?</p>
+        <button className="register_btn" type="submit">
+          Create an account
+        </button>
       </div>
     </>
   );
