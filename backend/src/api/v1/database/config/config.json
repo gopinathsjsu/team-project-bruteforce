@@ -4,7 +4,7 @@
     "password": "bruteforce",
     "database": "bruteforce",
     "host": "bruteforce.cmsmu5km6vlg.us-east-2.rds.amazonaws.com",
-    "dialect": "bruteforce",
+    "dialect": "postgres",
     "logging": false
   },
   "production": {
@@ -12,7 +12,7 @@
     "password": "bruteforce",
     "database": "bruteforce",
     "host": "bruteforce.cmsmu5km6vlg.us-east-2.rds.amazonaws.com",
-    "dialect": "bruteforce",
+    "dialect": "postgres",
     "logging": false
   }
 }
