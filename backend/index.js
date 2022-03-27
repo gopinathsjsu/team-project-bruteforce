@@ -45,6 +45,6 @@ app.use('/api/v1/users', usersRouter);
 /**
  * App listen
  */
-app.listen(process.env.API_PORT, () => {
-  console.log(`App server now listening on port ${process.env.API_PORT}`);
+app.listen(process.env.API_PORT || 3333, () => {
+  console.log(`App server now listening on port ${process.env.API_PORT || 3333}`);
 });
