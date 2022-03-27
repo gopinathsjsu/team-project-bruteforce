@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
                 foreignKey: 'HotelId',
                 onDelete: 'CASCADE'
             })
-            Hotel.hasMany(models.PeakPrice, {
+            Hotel.hasMany(models.PeakPrices, {
                 foreignKey: 'HotelId',
                 onDelete: 'CASCADE'
             })
