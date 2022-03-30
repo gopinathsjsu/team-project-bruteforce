@@ -29,5 +29,54 @@
   margin-top: 3%;
   margin-left: 10%;
   height: 100px;
-  /* background-color: red; */
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+}
+
+.search_form > input {
+  padding: 15px;
+  height: 20px;
+  padding-left: 30px;
+  width: 25%;
+  border-radius: 5px;
+  border: 1px solid rgb(177, 177, 177);
+  font-size: 18px;
+}
+
+.search_form > .check_dates {
+  display: inline-block;
+  width: 15%;
+}
+
+.check_date {
+  position: absolute;
+  top: 225px;
+  margin-left: 2%;
+}
+
+.guest-room-count {
+  width: 15%;
+  /* background-color: green; */
+  display: flex;
+  position: absolute;
+  right: 21%;
+  top: 28.5%;
+}
+
+.select-guests-rooms {
+  width: 100%;
+  padding: 15px 25px;
+  display: inline;
+  /* background-color: yellow; */
+  border: none;
+}
+
+.searchBtn {
+  padding: 10px 50px;
+  position: absolute;
+  right: 11%;
+  background-color: rgb(88, 148, 217);
+  border: none;
+  border-radius: 4px;
 }

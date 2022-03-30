@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Dashboard.css";
 // import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import { AddLocation, AddLocationTwoTone } from "@material-ui/icons";
+import { SearchOutlined, People } from "@material-ui/icons";
+import RoomGuestCount from "./RoomGuestCount";
 
 function Dashboard() {
+  const [showCountList, setShowCountList] = useState(false);
+
+  const handleSelectRoomsGuests = () => {
+    setShowCountList(true);
+  };
+
   return (
     <>
       <div className="wrapper">
@@ -22,13 +29,44 @@ function Dashboard() {
         </div>
         <div className="search_bar">
           <form className="search_form">
-            <AddLocation />
+            <SearchOutlined
+              style={{
+                position: "absolute",
+                top: "30%",
+                left: "10%",
+                marginLeft: "7px",
+                transform: "scale(1.2)",
+              }}
+            />
             <input
+              className="location"
               type="text"
               placeholder="Enter a hotel name or destination "
             />
+
+            <label className="check_date" htmlFor="check_dates">
+              Check in
+            </label>
+            <input className="check_dates" type="date"></input>
+
+            <label className="check_date" htmlFor="check_dates">
+              Check out
+            </label>
+            <input className="check_dates" type="date"></input>
+            <div className="guest-room-count">
+              <People />
+              <button
+                className="select-guests-rooms"
+                onClick={handleSelectRoomsGuests}
+                type="button"
+              >
+                1 Room 2 Guests
+              </button>
+            </div>
+            <button className="searchBtn">Search</button>
           </form>
         </div>
+        {showCountList && <RoomGuestCount countList={setShowCountList} />}
       </div>
     </>
   );
