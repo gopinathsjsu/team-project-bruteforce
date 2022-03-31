@@ -6,7 +6,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import LoginPage from "./LoginPage/LoginPage";
+import LoginPage from "./LoginPage/loginPage";
 
 function App() {
   return (
