@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./RoomGuest.css";
 
-function RoomGuestCount({ countList }) {
-  const [guestCount, setGuestCount] = useState(2);
-  const [roomCount, setRoomCount] = useState(1);
-
+function RoomGuestCount({
+  setGuestCount,
+  setRoomCount,
+  guestCount,
+  roomCount,
+}) {
   const increaseCount = () => {
     if (guestCount < 12) {
       setGuestCount(Number(guestCount) + 1);
@@ -32,6 +34,10 @@ function RoomGuestCount({ countList }) {
   const resetValues = () => {
     setGuestCount(2);
     setRoomCount(1);
+  };
+
+  const submitCount = () => {
+    console.log(roomCount + " " + guestCount);
   };
 
   return (
@@ -86,7 +92,7 @@ function RoomGuestCount({ countList }) {
             <button className="reset" type="submit" onClick={resetValues}>
               Reset
             </button>
-            <button className="submitCount" type="submit">
+            <button className="submitCount" type="submit" onClick={submitCount}>
               Submit
             </button>
           </div>

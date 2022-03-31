@@ -1,14 +1,29 @@
 import React, { useState } from "react";
 import "./Dashboard.css";
-// import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import DateRangePicker from "react-bootstrap-daterangepicker";
 import { SearchOutlined, People } from "@material-ui/icons";
 import RoomGuestCount from "./RoomGuestCount";
+import AutoCompleteLoc from "./AutoCompleteLoc";
+import styles from "./Dashboard.css";
 
 function Dashboard() {
   const [showCountList, setShowCountList] = useState(false);
+  const [guestCount, setGuestCount] = useState(2);
+  const [roomCount, setRoomCount] = useState(1);
+  const [location, setLocation] = useState("");
+  const [checkinDate, setCheckinDate] = useState("");
+  const [checkoutDate, setCheckoutDate] = useState("");
 
   const handleSelectRoomsGuests = () => {
     setShowCountList(true);
+  };
+
+  const handleSearchData = (e) => {
+    e.preventDefault();
+    console.log("Handle search data");
+    console.log(
+      checkinDate + " - " + checkoutDate + " - " + roomCount + guestCount
+    );
   };
 
   return (
@@ -29,7 +44,7 @@ function Dashboard() {
         </div>
         <div className="search_bar">
           <form className="search_form">
-            <SearchOutlined
+            {/* <SearchOutlined
               style={{
                 position: "absolute",
                 top: "30%",
@@ -42,31 +57,57 @@ function Dashboard() {
               className="location"
               type="text"
               placeholder="Enter a hotel name or destination "
-            />
+            /> */}
 
-            <label className="check_date" htmlFor="check_dates">
-              Check in
-            </label>
-            <input className="check_dates" type="date"></input>
+            <div className="searchLocation">
+              <AutoCompleteLoc />
+            </div>
+            <div className="date_picker">
+              <label className="check_date" htmlFor="check_dates">
+                Check in
+              </label>
+              <input
+                onChange={(e) => setCheckinDate(e.target.value)}
+                className="check_dates"
+                type="date"
+              ></input>
+            </div>
 
-            <label className="check_date" htmlFor="check_dates">
-              Check out
-            </label>
-            <input className="check_dates" type="date"></input>
+            <div className="date_picker">
+              <label className="check_date" htmlFor="check_dates">
+                Check out
+              </label>
+              <input
+                onChange={(e) => setCheckoutDate(e.target.value)}
+                className="check_dates"
+                type="date"
+              ></input>
+            </div>
+
             <div className="guest-room-count">
-              <People />
               <button
                 className="select-guests-rooms"
                 onClick={handleSelectRoomsGuests}
                 type="button"
               >
-                1 Room 2 Guests
+                {roomCount} Room {guestCount} Guests
               </button>
             </div>
-            <button className="searchBtn">Search</button>
+            <div className="searchHotel">
+              <button className="searchBtn" onClick={handleSearchData}>
+                Search
+              </button>
+            </div>
           </form>
         </div>
-        {showCountList && <RoomGuestCount countList={setShowCountList} />}
+        {showCountList && (
+          <RoomGuestCount
+            setGuestCount={setGuestCount}
+            setRoomCount={setRoomCount}
+            roomCount={roomCount}
+            guestCount={guestCount}
+          />
+        )}
       </div>
     </>
   );
