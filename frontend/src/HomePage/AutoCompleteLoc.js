@@ -37,7 +37,12 @@ function AutoCompleteLoc() {
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div style={{ width: "285px" }}>
             <input
-              style={{ height: "70px", width: "300px" }}
+              style={{
+                height: "70px",
+                width: "300px",
+                fontSize: "16px",
+                paddingLeft: "10px",
+              }}
               // aria-expanded="false"
               id={styles.autoComplete}
               {...getInputProps({
