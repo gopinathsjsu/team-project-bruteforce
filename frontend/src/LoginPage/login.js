@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import "./loginPage.css";
+import Axios from "axios";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { Link } from "react-router-dom";
 
-function login() {
+function Login() {
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log("handle login");
+    Axios.post("http://localhost:3333/api/v1/auth/sign-in", {
+      email: email,
+      password: password,
+    }).then((response) => {
+      console.log(response);
+      if (response.data.success === true) {
+        console.log("Success========: " + response.data.success);
+        console.log("In frontend register");
+        window.location.pathname = "/";
+      }
+    });
   };
   return (
     <>
@@ -40,9 +55,9 @@ function login() {
                 className="email"
                 id="email"
                 placeholder="Email address"
-                // onChange={(event) => {
-                //   setEmail(event.target.value);
-                // }}
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                }}
                 required
               />
             </div>
@@ -54,9 +69,9 @@ function login() {
                 className="password"
                 id="password"
                 placeholder="Password"
-                // onChange={(event) => {
-                //   setEmail(event.target.value);
-                // }}
+                onChange={(event) => {
+                  setPassword(event.target.value);
+                }}
                 required
               />
             </div>
@@ -75,4 +90,4 @@ function login() {
   );
 }
 
-export default login;
+export default Login;
