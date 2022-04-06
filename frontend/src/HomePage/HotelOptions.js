@@ -1,14 +1,16 @@
-import { Offer1 } from "./offers/Offer1";
+// import { Offer1 } from "./offers/Offer1";
 import styled from "styled-components";
 import { Filters } from "./Filters/Filters";
 import { HotelInfo } from "./HotelInfo/HotelInfo";
 import { TopFilterBar } from "./Filters/TopFilterBar";
 import { FooterTwo } from "./FooterTwo";
 import { COVID } from "./COVID";
-import { Navbar2 } from "../Components/Navbar2/Navbar2";
-import { hotels } from "./db";
+// import { Navbar2 } from "../Components/Navbar2/Navbar2";
+// import { hotels } from "./db";
+import { hotels } from "../HomePage/HotelDetail/db";
 import { useState, useEffect } from "react";
-import NavbarSticky from "./Home/NavbarSticky";
+import { Search } from "./Search";
+// import NavbarSticky from "./Home/NavbarSticky";
 
 const MainDiv = styled.div`
   display: flex;
@@ -55,8 +57,19 @@ export const HotelOptions = () => {
           height: "70px",
         }}
       >
+        <div
+          style={{
+            height: "50px",
+            width: "100%",
+            marginTop: "-30px",
+            backgroundColor: "white",
+          }}
+        >
+          <Search />
+        </div>
+
         {/* <Navbar2 /> */}
-        <NavbarSticky />
+        {/* <NavbarSticky /> */}
       </Div>
       <div style={{ position: "absolute", marginTop: "75px" }}>
         <COVID />
@@ -66,13 +79,14 @@ export const HotelOptions = () => {
           </LeftDiv>
           <RightDiv>
             <TopFilterBar />
-            <Offer1 />
+            {/* <Offer1 /> */}
+            hello
             {cardData.map((e) => {
               return <HotelInfo key={e.id} data={e} />;
             })}
           </RightDiv>
         </MainDiv>
-        <FooterTwo />
+        {/* <FooterTwo /> */}
       </div>
     </div>
   );
