@@ -83,7 +83,7 @@ export const TopFilterBar = () => {
   return (
     <Div>
       <div className="searchCount">
-        <p>81 OYOs in Nagpur, Maharashtra, India</p>
+        <p>81 Hotels in San Jose, California, USA</p>
       </div>
       <div>
         <div>

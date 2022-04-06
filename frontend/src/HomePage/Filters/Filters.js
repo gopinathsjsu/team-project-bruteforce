@@ -35,7 +35,7 @@ export const Filters = () => {
     <div style={{ position: "sticky", top: "-700px", marginTop: "-10%" }}>
       <ComponentDiv>
         <P1>Filters</P1>
-        <P2>Popular locations in Nagpur, Maharashtra, India</P2>
+        <P2>Popular locations in San Jose, California, USA</P2>
         <Locations />
       </ComponentDiv>
 

@@ -76,7 +76,7 @@
   width: 20%;
   display: inline-block;
   vertical-align: top;
-  background-color: orange;
+  /* background-color: orange; */
 }
 
 .searchBtn {

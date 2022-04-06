@@ -8,20 +8,6 @@ import FormHelperText from "@mui/material/FormHelperText";
 import { useMemo } from "react";
 import Button from "@mui/material/Button";
 
-// function MyFormHelperText() {
-//   const { focused } = useFormControl() || {};
-
-//   const helperText = useMemo(() => {
-//     if (focused) {
-//       return "This field is being focused";
-//     }
-
-//     return "Helper text";
-//   }, [focused]);
-
-//   return <FormHelperText>{helperText}</FormHelperText>;
-// }
-
 const ButtonDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -53,7 +39,7 @@ export const Locations = () => {
             shadow: "none",
           }}
         >
-          Railway Station
+          San Francisco
         </Button>
         <Button
           variant="contained"
@@ -66,7 +52,7 @@ export const Locations = () => {
             shadow: "none",
           }}
         >
-          Gandhi Road
+          Twin Peaks
         </Button>
         <Button
           variant="contained"
@@ -79,7 +65,7 @@ export const Locations = () => {
             shadow: "none",
           }}
         >
-          University Road
+          Silicon Valley
         </Button>
 
         {/* <Button

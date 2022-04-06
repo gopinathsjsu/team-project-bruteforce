@@ -38,7 +38,7 @@ function AutoCompleteLoc() {
           <div style={{ width: "285px" }}>
             <input
               style={{
-                height: "70px",
+                height: "50px",
                 width: "300px",
                 fontSize: "16px",
                 paddingLeft: "10px",

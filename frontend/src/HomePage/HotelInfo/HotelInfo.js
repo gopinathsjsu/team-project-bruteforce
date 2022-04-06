@@ -2,7 +2,7 @@ import { ImageCarousel } from "./ImageCarousel";
 import styled from "styled-components";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Div = styled.div`
   display: flex;
@@ -191,14 +191,14 @@ const P1 = styled.p`
 `;
 
 export const HotelInfo = ({ key, data }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleViewDetails = () => {
-    history.push(`/hoteldetail/${data.id}`);
+    navigate(`/hoteldetail/${data.id}`);
   };
 
   const handleBookNow = () => {
-    history.push(`/payment/${data.id}`);
+    navigate(`/payment/${data.id}`);
   };
   return (
     <>
