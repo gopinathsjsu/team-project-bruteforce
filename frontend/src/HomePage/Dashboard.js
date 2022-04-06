@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Dashboard.css";
-import { Search } from "./Search";
+import { SearchHomePage } from "./SearchHomePage";
 
 function Dashboard() {
   return (
@@ -19,8 +19,7 @@ function Dashboard() {
             Try searching for a city, a specific hotel, or even a landmark!
           </p>
         </div>
-
-        <Search />
+        <SearchHomePage />
       </div>
     </>
   );

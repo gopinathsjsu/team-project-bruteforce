@@ -6,7 +6,7 @@ import AutoCompleteLoc from "./AutoCompleteLoc";
 import styles from "./Dashboard.css";
 import { useNavigate } from "react-router-dom";
 
-export const Search = () => {
+export const SearchHomePage = () => {
   const navigate = useNavigate();
   const [showCountList, setShowCountList] = useState(false);
   const [guestCount, setGuestCount] = useState(2);
@@ -51,7 +51,7 @@ export const Search = () => {
             <AutoCompleteLoc />
           </div>
           <div className="date_picker">
-            <label className="check_date" htmlFor="check_dates">
+            <label className="check_date1" htmlFor="check_dates">
               Check in
             </label>
             <input
@@ -63,7 +63,7 @@ export const Search = () => {
           </div>
 
           <div className="date_picker">
-            <label className="check_date" htmlFor="check_dates">
+            <label className="check_date1" htmlFor="check_dates">
               Check out
             </label>
             <input
