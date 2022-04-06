@@ -12,6 +12,7 @@ const useStyles = makeStyles({
   align: {
     alignItems: "center",
     justifyContent: "center",
+
   },
   logoWidth: {
     width: "30px",
@@ -52,6 +53,7 @@ const Footer = () => {
             </Grid>
           </Grid>
         </Grid>
+        <hr/>
         <Grid container className={classes.align}>
           <Grid item xs={12} md={9}>
             <span className={classes.whiteText}>
@@ -105,14 +107,15 @@ const Footer = () => {
               <p>Terms and Conditions</p>
               <p>Legal Information</p>
               <p>Privacy Notice</p>
-              <p>Site Map</p>
+              <p>Cyber Security</p>
+              <p>Coronavirus (Covid19) travel advice</p>
             </Bot1>
           </Grid>
         </Grid>
 
         <BotLogo>
           <h1>Radisson</h1>
-          <p>Copyright 2021 Radisson | All rights reserved.</p>
+          <p>Copyright 2022 Radisson | All rights reserved.</p>
         </BotLogo>
       </MainDiv>
     </Div>
@@ -166,7 +169,7 @@ const Bot1 = styled.div`
   color: white !important;
   * {
     padding: 5px;
-    font-size: 12px;
+    font-size: 14px;
     color: white !important;
   }
   *:hover {
