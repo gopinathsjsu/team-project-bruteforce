@@ -1,0 +1,120 @@
+.payMain {
+  position: absolute;
+  width: 100%;
+  box-sizing: border-box;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+
+}
+.heading{
+  padding: 1px 8px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 17px;
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+.paymentB1Side {
+  
+  width: 397px;
+  position: absolute;
+  left: 37%;
+  height: 300px;
+  padding: 48px 24px 0px 24px;
+  background: whitesmoke;
+  box-shadow: 0px 0px 40px 3px rgba(240, 240, 240, 0.8);
+  border-radius: 12px 12px 12px 12px;
+}
+
+.paymentB1Side > div {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.paySideImg {
+  width: 80px;
+  height: 69px;
+  border: 1px solid #858585;
+  border-radius: 4px;
+}
+
+.paymentSideHead {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  color: #424242;
+  margin-bottom: 10px;
+}
+
+.paymentSideNew {
+  background: #52b520;
+  border-radius: 2px;
+  padding: 1px 8px;
+  color: white;
+  width: fit-content;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  margin-bottom: 18px;
+}
+
+.paymentSideDays {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  margin-bottom: 40px;
+}
+
+.paySideIcon {
+  display: flex;
+  align-items: center;
+}
+.paySideIcon > img {
+  margin-right: 10px;
+}
+
+.paySideFont14 {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.paySideFont14SlightBold {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.margin30 {
+  margin-bottom: 30px;
+}
+
+.margin20 {
+  margin-bottom: 20px;
+}
+
+.paySideFinalAmt {
+  margin-top: 30px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.paySideFinalSideHead {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  color: #858585;
+}
+
+.payAmt {
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+}
