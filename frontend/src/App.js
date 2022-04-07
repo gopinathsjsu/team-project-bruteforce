@@ -5,6 +5,9 @@ import LoginPage from "./LoginPage/loginPage";
 import { HotelDetails } from "./HomePage/HotelDetail/HotelDetails";
 import { PaymentMain } from "./HomePage/BookingPayment/PaymentMain";
 import { HotelOptions } from "./HomePage/HotelOptions";
+import StayHistory from "./HomePage/StayHistory";
+import ProfileForm from "./UserDetails/profileForm";
+
 
 function App() {
   return (
@@ -16,10 +19,11 @@ function App() {
 
           <Route path="/login" element={<LoginPage />} />
           <Route path="/hotels" element={<HotelOptions />} />
-
+          
+          <Route path="/stayhistory" element={<StayHistory />} />
           <Route path="/hoteldetail/:id" element={<HotelDetails />} />
           <Route path="/payment/:id" element={<PaymentMain />} />
-          {/* <Route path="/profile" element={<ProfileForm />} /> */}
+          <Route path="/profile" element={<ProfileForm />} />
         </Routes>
       </Router>
     </>
