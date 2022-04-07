@@ -20,7 +20,7 @@
 }
 
 .logo_des {
-  width: 100%;
+  width: 120%;
   margin-left: 39%;
 }
 
@@ -57,8 +57,8 @@
 
 .check_date1 {
   position: absolute;
-  top: 225px;
-  margin-left: 2%;
+  top: 235px;
+  margin-left: 1%;
   font-weight: bold;
 }
 

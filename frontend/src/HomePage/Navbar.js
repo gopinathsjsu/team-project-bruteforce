@@ -22,7 +22,7 @@ function Navbar() {
             className="icon_down"
             style={{
               display: "inline-block",
-              marginTop: "6px",
+              // marginTop: "6px",
             }}
           >
             <KeyboardArrowDown />

@@ -3,16 +3,19 @@ import styled from "styled-components";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Select from "@material-ui/core/Select";
-import {IoLogoFacebook} from'react-icons/io';
-import{AiFillTwitterCircle,AiOutlineYoutube,AiOutlineInstagram} from 'react-icons/ai';
-import {TiSocialLinkedinCircular} from 'react-icons/ti';
-import MenuItem from "@material-ui/core/MenuItem"; 
+import { IoLogoFacebook } from "react-icons/io";
+import {
+  AiFillTwitterCircle,
+  AiOutlineYoutube,
+  AiOutlineInstagram,
+} from "react-icons/ai";
+import { TiSocialLinkedinCircular } from "react-icons/ti";
+import MenuItem from "@material-ui/core/MenuItem";
 
 const useStyles = makeStyles({
   align: {
     alignItems: "center",
     justifyContent: "center",
-
   },
   logoWidth: {
     width: "30px",
@@ -41,23 +44,28 @@ const Footer = () => {
         <Grid container className={classes.align}>
           <Grid item xs={12} md={6}>
             <span className={classes.whiteText}>
-              Want to receive exclusive hotel offers? Subscribe to our newsletter!
+              Want to receive exclusive hotel offers? Subscribe to our
+              newsletter!
             </span>
           </Grid>
           <Grid item container xs={12} md={6}>
             <Grid item xs={8} sm={10}>
-              <Search type="text" placeholder="Email adress" />
+              <Search
+                style={{ height: "47px" }}
+                type="text"
+                placeholder="Email adress"
+              />
             </Grid>
             <Grid item xs={4} sm={2}>
-              <Click>Subscribe</Click>
+              <Click style={{ marginLeft: "-122%" }}>Subscribe</Click>
             </Grid>
           </Grid>
         </Grid>
-        <hr/>
+        <hr />
         <Grid container className={classes.align}>
           <Grid item xs={12} md={9}>
             <span className={classes.whiteText}>
-            Radisson N.V., Kesselstraße 5 – 7, 40221 Düsseldorf, Germany
+              Radisson Enclave., San Jose, CA - 95112.
             </span>
           </Grid>
           <Grid item xs={12} md={3}>
@@ -67,23 +75,21 @@ const Footer = () => {
               value={"INDIA"}
               label="Country"
               className={classes.sel}
-              style={{ fontSize: "14px", backgroundColor: "white" }}
+              style={{ fontSize: "14px" }}
             >
-              <MenuItem value="INDIA">
-                <em>INDIA</em>
-              </MenuItem>
-              <MenuItem value={"USA"}>USA</MenuItem>
+              <MenuItem value="INDIA">USA</MenuItem>
+              <MenuItem value={"USA"}>INDIA</MenuItem>
               <MenuItem value={"GERMANY"}>GERMANY</MenuItem>
               <MenuItem value={"RUSSIA"}>RUSSIA</MenuItem>
             </Select>
           </Grid>
         </Grid>
         <Social>
-            <IoLogoFacebook/>
-            <AiFillTwitterCircle/>
-            <AiOutlineInstagram />
-            <AiOutlineYoutube/>
-            <TiSocialLinkedinCircular />
+          <IoLogoFacebook />
+          <AiFillTwitterCircle />
+          <AiOutlineInstagram />
+          <AiOutlineYoutube />
+          <TiSocialLinkedinCircular />
         </Social>
         <Grid container>
           <Grid item sm={12} md={4}>
@@ -126,7 +132,7 @@ export default Footer;
 
 const Div = styled.div`
   background-color: #0a1121;
-  font-family: Proxima Vara,Arial,Helvetica,Sans,Sans-Serif;
+  font-family: Proxima Vara, Arial, Helvetica, Sans, Sans-Serif;
 `;
 const Social = styled.div`
   display: flex;
@@ -182,4 +188,4 @@ const BotLogo = styled.div`
   p {
     padding: 10px 0 25px;
   }
-`; 
+`;
