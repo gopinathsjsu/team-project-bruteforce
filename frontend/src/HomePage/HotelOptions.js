@@ -80,7 +80,7 @@ export const HotelOptions = () => {
           <RightDiv>
             <TopFilterBar />
             {/* <Offer1 /> */}
-            hello
+            {/* hello */}
             {cardData.map((e) => {
               return <HotelInfo key={e.id} data={e} />;
             })}

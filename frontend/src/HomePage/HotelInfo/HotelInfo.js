@@ -213,7 +213,7 @@ export const HotelInfo = ({ key, data }) => {
                 <Head>{data.name}</Head>
                 <Location>{data.location}</Location>
               </div>
-              <Alert>Vaccinated staff. RT-PCR report required</Alert>
+              {/* <Alert>Vaccinated staff. RT-PCR report required</Alert> */}
             </ItemHead>
             <div>
               <Rating> {data.rating} ★</Rating> <span> </span>
@@ -236,8 +236,8 @@ export const HotelInfo = ({ key, data }) => {
 
             <BottomDiv>
               <div style={{ alignSelf: "flex-end" }}>
-                <Span1>₹{data.price}</Span1>
-                <Span2>₹{data.price * 3}</Span2>
+                <Span1>${data.price}</Span1>
+                <Span2>${data.price * 3}</Span2>
                 <Span3>66% off</Span3>
                 <P1>per room per night</P1>
               </div>

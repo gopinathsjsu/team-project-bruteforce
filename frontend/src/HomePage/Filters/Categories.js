@@ -24,8 +24,7 @@ export const Categories = () => {
         </div>
 
         <p>
-          OYO Rooms -{" "}
-          <span>Super affordable stays with essential amenities</span>
+          All -<span>Super affordable stays with essential amenities</span>
         </p>
       </Div>
       <Div>
@@ -33,10 +32,7 @@ export const Categories = () => {
           <Checkbox {...label} />
         </div>
         <p>
-          Townhouse -{" "}
-          <span>
-            Your friendly, premium neighbouhood hotel - Serviced by OYO
-          </span>
+          Hotel -<span>Your friendly, premium neighbouhood hotel</span>
         </p>
       </Div>
       <Div>
@@ -44,8 +40,7 @@ export const Categories = () => {
           <Checkbox {...label} />
         </div>
         <p>
-          Flagship -{" "}
-          <span>Affordable hotels at Premium locations - Serviced by OYO</span>
+          House/Apartment -<span>Affordable hotels at Premium locations </span>
         </p>
       </Div>
     </>
