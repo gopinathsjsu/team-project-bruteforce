@@ -20,7 +20,7 @@
 }
 
 .logo_des {
-  width: 100%;
+  width: 120%;
   margin-left: 39%;
 }
 
@@ -51,8 +51,15 @@
 
 .check_date {
   position: absolute;
-  top: 225px;
+  top: 12px;
   margin-left: 2%;
+}
+
+.check_date1 {
+  position: absolute;
+  top: 235px;
+  margin-left: 1%;
+  font-weight: bold;
 }
 
 .guest-room-count {
@@ -113,6 +120,6 @@
 }
 
 .date_picker > .check_date {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
 }

@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { hotels } from "./db";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import { Search } from "../Search";
 
 const Div = styled.div`
   & header > img {
@@ -34,8 +35,18 @@ export function HotelDetails() {
           width: "100%",
           height: "70px",
         }}
-      ></Div>
-
+      >
+        <div
+          style={{
+            height: "50px",
+            width: "100%",
+            marginTop: "-30px",
+            backgroundColor: "white",
+          }}
+        >
+          <Search />
+        </div>
+      </Div>
       <Slider arr={pageImg} />
       <>
         <div className="product-details-parent-div">
