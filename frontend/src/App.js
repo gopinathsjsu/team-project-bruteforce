@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./LoginPage/loginPage";
 import { HotelDetails } from "./HomePage/HotelDetail/HotelDetails";
 import { PaymentMain } from "./HomePage/BookingPayment/PaymentMain";
+import { HotelOptions } from "./HomePage/HotelOptions";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
 
           <Route path="/hoteldetail/:id" element={<HotelDetails />} />
           <Route path="/payment/:id" element={<PaymentMain />} />
-          <Route path="/profile" element={<ProfileForm />} />
+          {/* <Route path="/profile" element={<ProfileForm />} /> */}
         </Routes>
       </Router>
     </>

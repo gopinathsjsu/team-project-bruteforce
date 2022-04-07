@@ -42,14 +42,6 @@ export const Collections = () => {
           <span>Local IDs Accepted</span>
         </p>
       </Div>
-      <Div>
-        <div>
-          <Checkbox {...label} />
-        </div>
-        <p>
-          <span>OYO Welcomes Couples</span>
-        </p>
-      </Div>
     </>
   );
 };

@@ -30,7 +30,7 @@ export function PaymentMain() {
 
   const handleleave = () => {
     setConfirm(false);
-    navigate.push("/");
+    navigate("/");
   };
 
   const { id } = useParams();
@@ -40,7 +40,7 @@ export function PaymentMain() {
   const [user, setUser] = useState({});
 
   const handleGoBack = () => {
-    navigate.push("/hotels");
+    navigate("/hotels");
   };
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export function PaymentMain() {
         <div>
           <img
             onClick={() => {
-                navigate.push("/");
+              navigate.push("/");
             }}
             src="/Images/Payment/Union.svg"
             alt=""
@@ -82,7 +82,8 @@ export function PaymentMain() {
                   price={
                     payDataDetail.price -
                     Math.round(payDataDetail.price / 4) -
-                    Math.round(payDataDetail.price / 20) + 10
+                    Math.round(payDataDetail.price / 20) +
+                    10
                   }
                   setConfirm={setConfirm}
                 />

@@ -48,9 +48,9 @@ export const Filters = () => {
       <ComponentDiv>
         <Categories />
       </ComponentDiv>
-      <ComponentDiv>
+      {/* <ComponentDiv>
         <AccomodationType />
-      </ComponentDiv>
+      </ComponentDiv> */}
       <ComponentDiv>
         <HostelFacilities />
       </ComponentDiv>

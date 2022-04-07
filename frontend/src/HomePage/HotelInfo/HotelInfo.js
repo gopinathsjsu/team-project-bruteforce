@@ -213,7 +213,7 @@ export const HotelInfo = ({ key, data }) => {
                 <Head>{data.name}</Head>
                 <Location>{data.location}</Location>
               </div>
-              <Alert>Vaccinated staff. RT-PCR report required</Alert>
+              {/* <Alert>Vaccinated staff. RT-PCR report required</Alert> */}
             </ItemHead>
             <div>
               <Rating> {data.rating} ★</Rating> <span> </span>

@@ -17,7 +17,7 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 export const AccomodationType = () => {
   return (
     <>
-      <p>Accomodation Type</p>
+      {/* <p>Accomodation Type</p>
       <Div>
         <div>
           <Checkbox {...label} />
@@ -25,7 +25,7 @@ export const AccomodationType = () => {
         <p>
           <span>Hotel</span>
         </p>
-      </Div>
+      </Div> */}
     </>
   );
 };
