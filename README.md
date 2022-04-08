@@ -9,3 +9,21 @@
 ### Satyadivya Maddipudi
 ### Asha Yalla
 ### Sai Manasa Yadlapalli
+
+## Tools and Technologies
+### MERN Stack
+#### MySQL: Database
+#### ExpressJS and NodeJS: Backend
+#### ReactJS: Frontend
+
+## Scrum Meeting Days
+#### Every tuesday and friday
+
+
+## XP Values
+
+#### Communication
+#### Respect
+#### Simplicity
+#### Courage
+#### Feedback
