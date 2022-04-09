@@ -15,14 +15,14 @@ class RoomsService {
         }
     }
     static async addRooms(roomParams) {
-        let { name, type, pricePerDay, guestPricePerDay, freeGuestCount, roomsCount, HotelId } = roomParams;
+        let { name, type, pricePerDay, guestPricePerDay, freeGuestCount, roomsCount, hotelId } = roomParams;
         const id =  uuidv4();
         let activeCount = roomsCount;
         // find the room by the type specified
         const room = await Room.findOne({
             where: {
                 type,
-                HotelId
+                HotelId: hotelId
             }
         });
         if (room) {

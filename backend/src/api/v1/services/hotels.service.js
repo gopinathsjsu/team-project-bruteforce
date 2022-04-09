@@ -95,11 +95,11 @@ class HotelsService {
         let peakPrice;
         peakPrice = await PeakPrices.findOne({
             where: {
-                date: moment(startDate, 'MM-DD-YYYY').getDate(),
+                date: moment(startDate, 'MM-DD-YYYY').toDate(),
             }
         });
         if (!peakPrice) {
-            const day = moment(startDate, 'MM-DD-YYYY').getDay();
+            const day = moment(startDate, 'MM-DD-YYYY').format('dddd');
             // Look for it in peakPrice table
             peakPrice = await PeakPrices.findOne({
                 where: {
@@ -143,7 +143,7 @@ class HotelsService {
         })
         console.log({prevBooking});
         for (let i in prevBooking) {
-            loyaltyPoints += prevBooking[1].totalPrice;
+            loyaltyPoints += prevBooking[i].totalPrice;
         }
 
         if (peakPrice) {
@@ -153,6 +153,7 @@ class HotelsService {
             totalPrice -= (loyaltyPoints / 100)
         }
         const booking = await Booking.create({
+            id,
             roomsData: rooms,
             totalPrice,
             PeakPriceId: peakPrice ? peakPrice.id : null,
@@ -161,7 +162,9 @@ class HotelsService {
         });
         await hotel.addBooking(booking);
         await user.addBooking(booking);
-        await peakPrice.addBooking(booking);
+        if (peakPrice) {
+            await peakPrice.addBooking(booking);
+        }
         return booking;
     }
     static async updateBooking(bookingParams) {
@@ -178,11 +181,11 @@ class HotelsService {
         let peakPrice;
         peakPrice = await PeakPrices.findOne({
             where: {
-                date: moment(startDate, 'MM-DD-YYYY').getDate(),
+                date: moment(startDate, 'MM-DD-YYYY').toDate(),
             }
         });
         if (!peakPrice) {
-            const day = moment(startDate, 'MM-DD-YYYY').getDay();
+            const day = moment(startDate, 'MM-DD-YYYY').format('dddd');
             // Look for it in peakPrice table
             peakPrice = await PeakPrices.findOne({
                 where: {
