@@ -28,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         endDate: DataTypes.DATE,
         totalPrice: DataTypes.INTEGER,
         roomsData: DataTypes.JSONB,
+        cancelled: DataTypes.BOOLEAN,
     }, {
         sequelize,
         modelName: 'Booking',

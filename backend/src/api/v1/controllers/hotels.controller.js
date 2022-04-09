@@ -28,7 +28,6 @@ class HotelsController {
                 name: Joi.string().required(),
                 percent: Joi.string().required(),
                 hotelId: Joi.string().required(),
-                userId: Joi.string().required(),
                 date: Joi.string().required(),
                 dayPattern: Joi.string().required(),
             });
@@ -63,11 +62,9 @@ class HotelsController {
         try {
             const schema = Joi.object({
                 hotelId: Joi.string().required(),
-                userId: Joi.string().required(),
                 startDate: Joi.string().required(),
                 endDate: Joi.string().required(),
-                rooms: Joi.object().required(), // roomId, amenityIds, guestCount
-                peakPriceId: Joi.string().required(),
+                rooms: Joi.array().required(), // roomId, amenityIds, guestCount
             });
             await schema.validateAsync(req.body);
             const room = await HotelsService.addBooking(req.body)
@@ -89,7 +86,7 @@ class HotelsController {
                 bookingId: Joi.string().required(),
                 startDate: Joi.string().required(),
                 endDate: Joi.string().required(),
-                rooms: Joi.object().required(), // roomId, amenityIds, guestCount
+                rooms: Joi.array().required(), // roomId, amenityIds, guestCount
             });
             await schema.validateAsync(req.body);
             const response = await HotelsService.updateBooking(req.body)

@@ -25,7 +25,6 @@ module.exports = (sequelize, DataTypes) => {
         percent: DataTypes.INTEGER,
         date: DataTypes.DATE,
         dayPattern: DataTypes.STRING,
-        cancelled: DataTypes.BOOLEAN,
     }, {
         sequelize,
         modelName: 'PeakPrices',
