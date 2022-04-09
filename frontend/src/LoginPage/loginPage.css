@@ -3,7 +3,7 @@
   position: absolute;
   left: 25%;
   width: 50%;
-  height: 500px;
+  height: 760px;
   box-shadow: 1px 1px 10px 1px #888888;
 }
 
@@ -73,16 +73,17 @@
 .register_body {
   position: relative;
   top: 0;
-  left: 27%;
-  top: 550px;
+  left: 5%;
+  top: 10%;
   font-size: 20px;
   font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
   color: #414141;
 }
 
 .register_btn {
   margin-top: 1%;
-  width: 15%;
+  width: 25%;
   padding: 10px;
   font-size: 18px;
   background-color: white;
