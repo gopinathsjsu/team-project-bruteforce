@@ -6,6 +6,7 @@ import { hotels } from "./db";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Search } from "../Search";
+import  Amenities  from "./Amenities";
 
 const Div = styled.div`
   & header > img {
@@ -53,31 +54,13 @@ export function HotelDetails() {
           <div className="product-details-child-left-div">
             <h3>{pageData.name}</h3>
             <p>{pageData.location}</p>
-            <div className="spotAndWizard">
-              <img
-                src="/general-Icons/spoton.png"
-                className="spoton"
-                alt="no"
-              />
-              <img src="/general-Icons/wizard.png" alt="no" />
-            </div>
-
             <p className="located">Located in {pageData.city}</p>
             <h5>Description</h5>
             <p>{pageData.description}</p>
             <p className="redFont">Read more</p>
             <h5>Amenities</h5>
             <div>
-              <div className="amenities">
-                <img src="/general-Icons/ac.png" alt="no" />
-                <img src="/general-Icons/tv.png" alt="no" />
-                <img src="/general-Icons/wifi.png" alt="no" />
-              </div>
-              <div className="amenities">
-                <img src="/general-Icons/powerbackup.png" alt="no" />
-                <img src="/general-Icons/parking.png" alt="no" />
-                <img src="/general-Icons/cctv.png" alt="no" />
-              </div>
+               <Amenities/>
             </div>
             <p className="redFont">Show more</p>
             <h4>Choose your room</h4>
@@ -105,8 +88,7 @@ export function HotelDetails() {
                     $ {pageData.price + 20758}
                   </span>
                 </h4>
-                <img src="/general-Icons/selected.png" alt="no" />
-              </div>
+               </div>
               <hr />
             </div>
             <div>
@@ -140,25 +122,8 @@ export function HotelDetails() {
             </div>
             <div>
               <hr />
-              <h3>What's nearby</h3>
-              <div className="flex">
-                <img
-                  src="/general-Icons/redDot.png"
-                  className="redDot"
-                  alt="no"
-                />
-                <p>{pageData.name}</p>
-              </div>
-
-              {/* <img src="" alt="" /> */}
-              <div className="flex location">
-                <img
-                  src="/general-Icons/location.svg"
-                  className="redDot"
-                  alt="no"
-                />
-                <p>Find distance from a place</p>
-              </div>
+              <h3>What's nearby {pageData.name}</h3>
+                                         
               <div className="flex map-section">
                 <p className="redFont">Place to visit</p>
                 <p>Restaurant</p>
@@ -174,82 +139,19 @@ export function HotelDetails() {
                   <p>Airport</p>
                   <p>Pubs</p>
                 </div>
-                <div>
-                  <img
-                    src="/general-Icons/map.png"
-                    className="map-img"
-                    alt="no"
-                  />
-                </div>
               </div>
             </div>
-            <div>
-              <h2>Weather details</h2>
-              <div className="flex weather">
-                <div>
-                  <p>26 Sep</p>
-                  <img
-                    src="/general-Icons/cloud.png"
-                    className="cloud"
-                    alt=""
-                  />
-                  <p className="celcius">32 C</p>
-                  <p className="celcius">24 C</p>
-                </div>
-                {/* <hr /> */}
-                <div>
-                  <p>27 Sep</p>
-                  <img
-                    src="/general-Icons/cloud.png"
-                    className="cloud"
-                    alt=""
-                  />
-                  <p className="celcius">32 C</p>
-                  <p className="celcius">24 C</p>
-                </div>
-                <div>
-                  <p>28 Sep</p>
-                  <img
-                    src="/general-Icons/cloud.png"
-                    className="cloud"
-                    alt=""
-                  />
-                  <p className="celcius">32 C</p>
-                  <p className="celcius">24 C</p>
-                </div>
-                <div>
-                  <p>29 Sep</p>
-                  <img
-                    src="/general-Icons/cloud.png"
-                    className="cloud"
-                    alt=""
-                  />
-                  <p className="celcius">32 C</p>
-                  <p className="celcius">24 C</p>
-                </div>
-                <div>
-                  <p>30 Sep</p>
-                  <img
-                    src="/general-Icons/cloud.png"
-                    className="cloud"
-                    alt=""
-                  />
-                  <p className="celcius">32 C</p>
-                  <p className="celcius">24 C</p>
-                </div>
-              </div>
-            </div>
-          </div>
+           </div>
 
           <div className="product-details-child-right-div">
             <div className="detail-page-login flex">
               <img src="/general-Icons/details-login.png" alt="" />
-              <p>LOG IN TO GET EXCLUSIVE DEALS</p>
-              <button>LOGIN</button>
+              <p>GET EXCLUSIVE DEALS</p>
+              
             </div>
             <div className=" price ">
               <h4>
-                ₹ {pageData.price}{" "}
+                $ {pageData.price}{" "}
                 <span className="line-through">₹ {pageData.price + 20758}</span>
               </h4>
               <p>inclusive of all taxes</p>
@@ -279,11 +181,10 @@ export function HotelDetails() {
             <div className="more-offers">MORE OFFERS</div>
             <div className="flex">
               <div className="flex wizard-div">
-                <img className="w" src="/general-Icons/W.png" alt="" />
                 <p>Save 5% with Radision membership </p>
               </div>
               <div className="flex price-checkbox">
-                <p>₹30</p>
+                <p>$30</p>
                 <input type="checkbox" />
               </div>
             </div>

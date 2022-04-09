@@ -11,7 +11,7 @@ export const hotels = {
       ],
       name: "Hotel Fusion",
       location: "Bay area",
-      city: "san  Francisco",
+      city: "San Francisco",
       descripition:
         "Did you know that we’ve got 2 million bookings since March 2020? And this is all thanks to the sanitisation & safety measures followed at our properties, from disinfecting surfaces with high-quality cleaning products and maintaining social distance to using protective gear and more.",
       rating: 4.7,

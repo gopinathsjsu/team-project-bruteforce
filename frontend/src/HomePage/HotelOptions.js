@@ -4,7 +4,7 @@ import { Filters } from "./Filters/Filters";
 import { HotelInfo } from "./HotelInfo/HotelInfo";
 import { TopFilterBar } from "./Filters/TopFilterBar";
 import { FooterTwo } from "./FooterTwo";
-import { COVID } from "./COVID";
+import { COVID } from "./COVID.js";
 // import { Navbar2 } from "../Components/Navbar2/Navbar2";
 // import { hotels } from "./db";
 import { hotels } from "../HomePage/HotelDetail/db";
@@ -37,6 +37,18 @@ const Div = styled.div`
     padding: 20px;
   }
 `;
+const checkboxesList = [
+  'New Jersey',
+  'Maryland',
+  'Connecticut',
+  'Florida',
+  'Massachussets',
+];
+const getDefaultCheckboxes = () =>
+  checkboxesList.map(checkbox => ({
+    name: checkbox,
+    checked: false,
+  }));
 
 export const HotelOptions = () => {
   const [cardData, setCardData] = useState([]);
