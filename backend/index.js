@@ -1,8 +1,9 @@
-require('dotenv').config()
-const cors = require('cors');
-const express = require('express');
+require("dotenv").config();
+const cors = require("cors");
+const express = require("express");
+const models = require("./src/api/v1/models");
 
-const authMiddleware = require('./src/api/v1/middlewares/auth.middleware');
+const authMiddleware = require("./src/api/v1/middlewares/auth.middleware");
 
 const app = express();
 
@@ -25,22 +26,30 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
-    message: 'Server on',
+    message: "Server on",
   });
 });
 
-
-app.use('/api/v1/auth', authRouter);
+app.use("/api/v1/auth", authRouter);
 
 app.use(authMiddleware);
 
-app.use('/api/v1/hotels', hotelsRouter);
+app.use("/api/v1/hotels", hotelsRouter);
 
-app.use('/api/v1/rooms', roomsRouter);
+app.use("/api/v1/rooms", roomsRouter);
 
 /**
  * App listen
  */
+
+// const PORT = process.env.PORT || 3333;
+// models.sequelize.sync().then(() => {
+//   app.listen(PORT, () => {
+//     console.log("Serving running on port 3333");
+//   });
+// });
 app.listen(process.env.API_PORT || 3333, () => {
-  console.log(`App server now listening on port ${process.env.API_PORT || 3333}`);
+  console.log(
+    `App server now listening on port ${process.env.API_PORT || 3333}`
+  );
 });

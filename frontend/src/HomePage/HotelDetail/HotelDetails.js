@@ -6,7 +6,7 @@ import { hotels } from "./db";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Search } from "../Search";
-import  Amenities  from "./Amenities";
+import Amenities from "./Amenities";
 
 const Div = styled.div`
   & header > img {
@@ -57,14 +57,14 @@ export function HotelDetails() {
             <p className="located">Located in {pageData.city}</p>
             <h5>Description</h5>
             <p>{pageData.description}</p>
-            <p className="redFont">Read more</p>
+            {/* <p className="redFont">Read more</p> */}
             <h5>Amenities</h5>
             <div>
-               <Amenities/>
+              <Amenities />
             </div>
-            <p className="redFont">Show more</p>
-            <h4>Choose your room</h4>
-            <div>
+            {/* <p className="redFont">Show more</p>
+            <h4>Choose your room</h4> */}
+            {/* <div>
               <p className="selected-category">SELECTED CATEGORY</p>
               <div className="selected-room-div">
                 <div className="spotAndGreenTick">
@@ -83,14 +83,14 @@ export function HotelDetails() {
 
               <div className="selected-section">
                 <h4>
-                  $ {pageData.price}{" "}
+                  $ {pageData.price}
                   <span className="line-through">
                     $ {pageData.price + 20758}
                   </span>
                 </h4>
-               </div>
+              </div>
               <hr />
-            </div>
+            </div> */}
             <div>
               <h3>Hotel Policies</h3>
               <div className="flex">
@@ -123,7 +123,7 @@ export function HotelDetails() {
             <div>
               <hr />
               <h3>What's nearby {pageData.name}</h3>
-                                         
+
               <div className="flex map-section">
                 <p className="redFont">Place to visit</p>
                 <p>Restaurant</p>
@@ -141,17 +141,16 @@ export function HotelDetails() {
                 </div>
               </div>
             </div>
-           </div>
+          </div>
 
           <div className="product-details-child-right-div">
             <div className="detail-page-login flex">
               <img src="/general-Icons/details-login.png" alt="" />
               <p>GET EXCLUSIVE DEALS</p>
-              
             </div>
             <div className=" price ">
               <h4>
-                $ {pageData.price}{" "}
+                $ {pageData.price}
                 <span className="line-through">₹ {pageData.price + 20758}</span>
               </h4>
               <p>inclusive of all taxes</p>

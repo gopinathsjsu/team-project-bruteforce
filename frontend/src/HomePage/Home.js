@@ -10,7 +10,7 @@ function Home() {
       <Navbar />
       <hr />
       <Dashboard />
-      <HotelsByLocation />
+      {/* <HotelsByLocation /> */}
       <Footer />
     </>
   );

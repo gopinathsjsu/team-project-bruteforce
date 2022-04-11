@@ -1,11 +1,11 @@
 {
   "development": {
-    "username": "bruteforce",
-    "password": "bruteforce",
-    "database": "bruteforce",
-    "host": "bruteforce.cmsmu5km6vlg.us-east-2.rds.amazonaws.com",
-    "dialect": "postgres",
-    "logging": false
+    "username": "admin",
+    "password": "admin123",
+    "database": "hotel_schema",
+    "host": "ecommerce.cqlwgcfyu0tj.us-east-1.rds.amazonaws.com",
+    "port": 3306,
+    "dialect": "mysql"
   },
   "production": {
     "username": "bruteforce",

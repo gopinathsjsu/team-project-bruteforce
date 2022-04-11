@@ -5,6 +5,7 @@ import RoomGuestCount from "./RoomGuestCount";
 import AutoCompleteLoc from "./AutoCompleteLoc";
 import styles from "./Dashboard.css";
 import { useNavigate } from "react-router-dom";
+import Axios from "axios";
 
 export const SearchHomePage = () => {
   const navigate = useNavigate();
@@ -21,10 +22,12 @@ export const SearchHomePage = () => {
 
   const handleSearchData = (e) => {
     e.preventDefault();
-    console.log("Handle search data");
-    console.log(
-      checkinDate + " - " + checkoutDate + " - " + roomCount + guestCount
-    );
+    // Axios.post("http://localhost:3333/api/v1/auth/search", (req, res) => {
+    //   console.log("Handle search data");
+    //   console.log(
+    //     checkinDate + " - " + checkoutDate + " - " + roomCount + guestCount
+    //   );
+    // });
     navigate("/hotels");
   };
 
