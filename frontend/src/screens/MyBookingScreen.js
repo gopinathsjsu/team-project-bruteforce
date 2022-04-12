@@ -65,6 +65,7 @@ function MyBookingScreen() {
 
   async function editBooking(bookingid, roomid) {
     console.log("eDIT BOOKING Details");
+    window.location.pathname = `/editBookings/${bookingid}`;
   }
 
   return (
