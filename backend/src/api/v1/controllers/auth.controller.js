@@ -12,7 +12,10 @@ class AuthController {
       });
       await schema.validateAsync(req.body);
       const user = await AuthService.loginUser(req.body);
-      console.log("user logged");
+      // res.cookie("loggedIn", user.token, {
+      //   maxAge: 900000,
+      //   httpOnly: false,
+      // });
       res.status(200).send({
         success: true,
         message: "Logged in successfully!",

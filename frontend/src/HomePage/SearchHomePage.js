@@ -33,25 +33,20 @@ export const SearchHomePage = () => {
 
   return (
     <div>
-      <div className="search_bar">
+      <div style={{ backgroundColor: "red" }} className="search_bar">
         <form className="search_form">
-          {/* <SearchOutlined
-              style={{
-                position: "absolute",
-                top: "30%",
-                left: "10%",
-                marginLeft: "7px",
-                transform: "scale(1.2)",
-              }}
-            />
-            <input
-              className="location"
-              type="text"
-              placeholder="Enter a hotel name or destination "
-            /> */}
-
           <div className="searchLocation">
-            <AutoCompleteLoc />
+            <input
+              style={{
+                height: "50px",
+                width: "300px",
+                fontSize: "16px",
+
+                paddingLeft: "10px",
+              }}
+              type="text"
+              placeholder="Please enter city name..."
+            />
           </div>
           <div className="date_picker">
             <label className="check_date1" htmlFor="check_dates">
