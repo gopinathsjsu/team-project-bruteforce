@@ -3,6 +3,7 @@ const { v4: uuidv4 } = require("uuid");
 const bcrypt = require("bcryptjs");
 const JWTService = require("./jwt.service");
 const UserService = require("./users.service");
+const cookie = require("cookie");
 
 class AuthService {
   static async loginUser(userLoginParams) {
@@ -16,7 +17,9 @@ class AuthService {
     if (!passwordMatch) {
       throw Error("Invalid password");
     }
+
     const token = JWTService.generateJWT(user.id);
+
     return { user, token };
   }
 }

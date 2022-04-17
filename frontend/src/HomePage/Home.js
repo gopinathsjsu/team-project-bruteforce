@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import Dashboard from "./Dashboard";
 import Footer from "./Footer";
-import HotelsByLocation from "./HotelsByLocation";
+// import HotelsByLocation from "./HotelsByLocation";
 
 function Home() {
   return (
