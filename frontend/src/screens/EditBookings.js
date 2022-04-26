@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import Axios from "axios";
+import { format } from "date-fns";
 
 function EditBookings({ match }) {
   const bookingId = match.params.bookingId;
@@ -10,9 +11,7 @@ function EditBookings({ match }) {
   const [toDate, setToDate] = useState();
   const [totalAmount, setTotalAmount] = useState();
   const [totalDays, setTotalDays] = useState();
-
-  const fromdate = moment(match.params.fromdate, "DD-MM-YYYY");
-  const todate = moment(match.params.todate, "DD-MM-YYYY");
+  const [remainingAmount, setRemainingAmount] = useState();
 
   useEffect(() => {
     getBookingDetails();
@@ -22,24 +21,34 @@ function EditBookings({ match }) {
     Axios.get(
       "http://localhost:4000/api/bookings/getSpecificBooking/" + bookingId
     ).then((result) => {
-      console.log(result.data);
-      console.log(result.data.totaldays);
       setBookingDetails(result.data);
       setRoomId(result.data.roomid);
-      setFromDate(result.data.fromdate);
-      setToDate(result.data.todate);
+      setFromDate(result.data.fromdate.split("-").reverse().join("-"));
+      setToDate(result.data.todate.split("-").reverse().join("-"));
       setTotalAmount(result.data.totalamount);
       setTotalDays(result.data.totaldays);
     });
   };
 
-  const dateFunction = (specifiedDate) => {
-    if (specifiedDate === "null") {
-      //   return moment(match.params.fromdate, "DD-MM-YYYY");
-    } else {
-      //   return moment(match.params.fromdate, "DD-MM-YYYY");
-    }
+  const editBooking = (e) => {
+    e.preventDefault();
+
+    const fromDateNew = moment(fromDate, "DD-MM-YYYY");
+    const toDateNew = moment(toDate, "DD-MM-YYYY");
+    const totaldays = moment.duration(toDateNew.diff(fromDateNew)).asDays + 1;
+
+    setTotalDays(totaldays);
+    setRemainingAmount(Math.abs(totalDays - totaldays) * 100);
+
+    // Axios.put("http://localhost:4000/api/bookings/editBooking/" + bookingId, {
+    //   fromDate: fromDate,
+    //   toDate: toDate,
+    //   totalDays: totalDays,
+    //   remainingAmount: remainingAmount,
+    // }).then((result) => {
+    // });
   };
+
   return (
     <div>
       <form className="edit_form">
@@ -48,9 +57,10 @@ function EditBookings({ match }) {
         </h1>
 
         <div className="section">
-          <div className="label">From Date</div>
+          <div className="from_date">From Date</div>
+
           <input
-            defaultValue={dateFunction(fromDate)}
+            defaultValue={fromDate}
             type="date"
             onChange={(event) => {
               setFromDate(event.target.value);
@@ -58,12 +68,12 @@ function EditBookings({ match }) {
           />
         </div>
         <div className="section">
-          <div className="label">To Date</div>
+          <div className="to_date">To Date</div>
           <input
-            defaultValue={dateFunction(fromDate)}
             type="date"
+            defaultValue={toDate}
             onChange={(event) => {
-              setFromDate(event.target.value);
+              setToDate(event.target.value);
             }}
           />
         </div>
@@ -71,14 +81,15 @@ function EditBookings({ match }) {
           <div className="label">Total Amount</div>
           <input defaultValue={totalAmount} readOnly type="text" />
         </div>
+        <div className="section">
+          <p>(Note: Pay remaining amount during checkin)</p>
+        </div>
 
         <div className="section">
           <button
             style={{ marginLeft: "25%" }}
             className="btn btn-danger"
-            onClick={() => {
-              // cancelBooking(booking._id, booking.roomid);
-            }}
+            onClick={editBooking}
           >
             Confirm Edit
           </button>

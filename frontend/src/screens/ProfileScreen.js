@@ -29,13 +29,14 @@ function ProfileScreen() {
                 <p>Name : {user.name}</p>
                 <p>Email : {user.email}</p>
                 <p>
-                  IsAdmin :{" "}
+                  IsAdmin :
                   {user.isAdmin ? (
                     <Tag color="green">YES</Tag>
                   ) : (
                     <Tag color="red">NO</Tag>
                   )}
                 </p>
+                <p>Rewards: {user.rewards}</p>
               </div>
             </div>
           </div>

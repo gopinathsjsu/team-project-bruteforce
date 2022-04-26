@@ -120,18 +120,6 @@ function Homescreen() {
           <RangePicker format="DD-MM-YYYY" onChange={filterByDate} />
         </div>
 
-        <div className="col-md-5">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="search rooms"
-            value={searchKey}
-            onChange={(e) => {
-              setSearchKey(e.target.value);
-            }}
-            onKeyUp={filterBySearch}
-          />
-        </div>
         <div className="col-md-3">
           <select
             className="form-control"
@@ -144,6 +132,19 @@ function Homescreen() {
             <option value="delux">Delux</option>
             <option value="non-delux">Non-Delux</option>
           </select>
+        </div>
+
+        <div className="col-md-5">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="search rooms"
+            value={searchKey}
+            onChange={(e) => {
+              setSearchKey(e.target.value);
+            }}
+            onKeyUp={filterBySearch}
+          />
         </div>
       </div>
 
