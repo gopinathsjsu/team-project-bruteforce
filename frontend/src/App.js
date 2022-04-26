@@ -1,25 +1,40 @@
-import React from "react";
-import Home from "./HomePage/Home";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LoginPage from "./LoginPage/loginPage";
-import HotelsList from "./HotelsListPage/HotelsList";
-// import { HotelDetails } from "./HomePage/HotelDetail/HotelDetails";
-// import { PaymentMain } from "./HomePage/BookingPayment/PaymentMain";
-// import { HotelOptions } from "./HomePage/HotelOptions";
-// import StayHistory from "./HomePage/StayHistory";
-// import ProfileForm from "./UserDetails/profileForm";
+import { BrowserRouter, Route } from "react-router-dom";
+
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Homescreen from "./screens/Homescreen";
+import Bookingscreen from "./screens/Bookingscreen";
+import RegisterScreen from "./screens/RegisterScreen";
+import LoginScreen from "./screens/LoginScreen";
+import ProfileScreen from "./screens/ProfileScreen";
+import AdminScreen from "./screens/AdminScreen";
+import LandingScreen from "./screens/LandingScreen";
+import EditBookings from "./screens/EditBookings";
 
 function App() {
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<HotelsList />} />
-          <Route path="/login" element={<LoginPage />} />
-          {/* <Route path="/hotels" element={<LoginPage />} /> */}
-        </Routes>
-      </Router>
-    </>
+    <div className="App">
+      <Navbar />
+      <BrowserRouter>
+        <Route path="/" exact component={LandingScreen} />
+        <Route path="/home" exact component={Homescreen} />
+        <Route
+          path="/book/:roomid/:fromdate/:todate"
+          exact
+          component={Bookingscreen}
+        />
+        <Route path="/register" exact component={RegisterScreen} />
+        <Route path="/login" exact component={LoginScreen} />
+        <Route path="/profile" exact component={ProfileScreen} />
+        <Route path="/bookings" exact component={ProfileScreen} />
+        <Route path="/admin" exact component={AdminScreen} />
+        <Route
+          path="/editBookings/:bookingId/"
+          exact
+          component={EditBookings}
+        />
+      </BrowserRouter>
+    </div>
   );
 }
 
