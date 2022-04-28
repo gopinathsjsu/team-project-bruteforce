@@ -13,27 +13,27 @@ function LoginScreen() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-//   async function Login() {
-//     setLoading(true);
-//     const user = {
-//       email,
-//       password,
-//     };
-//     //console.log(user);
-//     try {
-//       const result = (
-//         await axios.post("http://localhost:4000/api/users/login", user)
-//       ).data;
-//       console.log("In post login");
-//       console.log(result);
-//       localStorage.setItem("currentUser", JSON.stringify(result));
-//       window.location.href = "/admin";
-//     } catch (error) {
-//       console.log(error);
-//       setError("Invalid Credentials");
-//     }
-//     setLoading(false);
-//   }
+  async function Login() {
+    setLoading(true);
+    const user = {
+      email,
+      password,
+    };
+    //console.log(user);
+    try {
+      const result = (
+        await axios.post("http://localhost:4000/api/users/login", user)
+      ).data;
+      console.log("In post login");
+      console.log(result);
+      localStorage.setItem("currentUser", JSON.stringify(result));
+      window.location.href = "/admin";
+    } catch (error) {
+      console.log(error);
+      setError("Invalid Credentials");
+    }
+    setLoading(false);
+  }
   return (
     <div>
       {loading && <Loader></Loader>}
