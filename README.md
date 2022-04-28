@@ -12,7 +12,7 @@
 
 ## Tools and Technologies
 ### MERN Stack
-#### MySQL: Database
+#### MongoDb: Database
 #### ExpressJS and NodeJS: Backend
 #### ReactJS: Frontend
 
