@@ -44,31 +44,31 @@ function Bookingscreen({ match }) {
   const fromdate = moment(match.params.fromdate, "DD-MM-YYYY");
   const todate = moment(match.params.todate, "DD-MM-YYYY");
 
-//   useEffect(() => {
-//     const user = JSON.parse(localStorage.getItem("currentUser"));
-//     if (!user) {
-//       window.location.href = "/login";
-//     }
-//     async function fetchMyAPI() {
-//       try {
-//         setError("");
-//         setLoading(true);
-//         const data = (
-//           await axios.post("http://localhost:4000/api/rooms/getroombyid", {
-//             roomid: match.params.roomid,
-//           })
-//         ).data;
-//         //console.log(data);
-//         setRoom(data);
-//       } catch (error) {
-//         console.log(error);
-//         setError(error);
-//       }
-//       setLoading(false);
-//     }
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+    if (!user) {
+      window.location.href = "/login";
+    }
+    async function fetchMyAPI() {
+      try {
+        setError("");
+        setLoading(true);
+        const data = (
+          await axios.post("http://localhost:4000/api/rooms/getroombyid", {
+            roomid: match.params.roomid,
+          })
+        ).data;
+        //console.log(data);
+        setRoom(data);
+      } catch (error) {
+        console.log(error);
+        setError(error);
+      }
+      setLoading(false);
+    }
 
-//     fetchMyAPI();
-//   }, []);
+    fetchMyAPI();
+  }, []);
 
   useEffect(() => {
     const totaldays = moment.duration(todate.diff(fromdate)).asDays() + 1;
