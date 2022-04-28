@@ -35,23 +35,23 @@ function AdminUserScreen() {
     },
   ];
 
-//   async function fetchMyData() {
-//     setError("");
-//     setLoading(true);
-//     try {
-//       const data = (
-//         await axios.post("http://localhost:4000/api/users/getallusers")
-//       ).data;
-//       setUsers(data);
-//     } catch (error) {
-//       console.log(error);
-//       setError(error);
-//     }
-//     setLoading(false);
-//   }
-//   useEffect(() => {
-//     fetchMyData();
-//   }, []);
+  async function fetchMyData() {
+    setError("");
+    setLoading(true);
+    try {
+      const data = (
+        await axios.post("http://localhost:4000/api/users/getallusers")
+      ).data;
+      setUsers(data);
+    } catch (error) {
+      console.log(error);
+      setError(error);
+    }
+    setLoading(false);
+  }
+  useEffect(() => {
+    fetchMyData();
+  }, []);
 
   return (
     <div className="row">
