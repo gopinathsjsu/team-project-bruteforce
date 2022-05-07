@@ -14,12 +14,17 @@ function Bookingscreen({ match }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [room, setRoom] = useState({});
+  const [amenitiesList, setAmenitiesList] = useState([]);
+  const [useRewards, setUseRewards] = useState(true);
+
   const [totalAmount, setTotalAmount] = useState(0);
   const [amenitiesAmount, setAmenitiesAmount] = useState(0);
   const [totalDays, setTotalDays] = useState(0);
   const [checkedState, setCheckedState] = useState(
     new Array(amenities.length).fill(false)
   );
+
+  const [rewards, setRewards] = useState(0);
 
   const handleOnChange = (position) => {
     const updatedCheckedState = checkedState.map((item, index) =>
@@ -44,6 +49,16 @@ function Bookingscreen({ match }) {
   const fromdate = moment(match.params.fromdate, "DD-MM-YYYY");
   const todate = moment(match.params.todate, "DD-MM-YYYY");
 
+  const handleCheck = (event) => {
+    var updatedList = [...amenitiesList];
+    if (event.target.checked) {
+      updatedList = [...amenitiesList, event.target.value];
+    } else {
+      updatedList.splice(amenitiesList.indexOf(event.target.value), 1);
+    }
+    setAmenitiesList(updatedList);
+  };
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
     if (!user) {
@@ -58,7 +73,7 @@ function Bookingscreen({ match }) {
             roomid: match.params.roomid,
           })
         ).data;
-        //console.log(data);
+        console.log(data);
         setRoom(data);
       } catch (error) {
         console.log(error);
@@ -77,6 +92,24 @@ function Bookingscreen({ match }) {
 
     setTotalAmount(roomrent);
   }, [room]);
+
+  const handleUseReedem = () => {
+    console.log(useRewards);
+
+    setUseRewards(!useRewards);
+    console.log(useRewards + "====================");
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+    console.log(user.rewards);
+    if (useRewards) {
+      setRewards(0);
+      console.log(rewards + "===========================");
+      setTotalAmount(totalAmount - user.rewards);
+      // JSON.parse(localStorage.getItem("currentUser"))._id;
+    } else {
+      setRewards(user.rewards);
+      setTotalAmount(totalAmount + user.rewards);
+    }
+  };
 
   const handleBooking = async () => {
     const bookingDetails = {
@@ -100,7 +133,29 @@ function Bookingscreen({ match }) {
         "Your Room Booked Successfully",
         "success"
       ).then((result) => {
-        window.location.href = "/home";
+        if (result.isConfirmed) {
+          console.log(result + "--------------------------");
+          // window.location.href = "/home";
+          // const user = JSON.parse(localStorage.getItem("currentUser"));
+
+          console.log(JSON.parse(localStorage.getItem("currentUser"))._id);
+          if (rewards === 0) {
+            const result = axios
+              .put(
+                "http://localhost:4000/api/users/updateUserRewards" +
+                  JSON.parse(localStorage.getItem("currentUser"))._id
+              )
+              .then((userRes) => {
+                console.log(userRes);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+            window.location.href = "/home";
+          } else {
+            window.location.href = "/home";
+          }
+        }
       });
     } catch (error) {
       setError(error);
@@ -198,6 +253,22 @@ function Bookingscreen({ match }) {
               <b>
                 <p>Total Days : {totalDays}</p>
                 <p>Rent per day : {room.rentperday}</p>
+                <p style={{ marginRight: "4%" }}>Use Rewards</p>
+
+                <div
+                  className="amenities-items"
+                  style={{
+                    width: "20px",
+                    marginLeft: "97%",
+                    marginTop: "-45px",
+                    // position: "relative",
+                  }}
+                >
+                  <div>
+                    <input type="checkbox" onChange={handleUseReedem} />
+                  </div>
+                </div>
+
                 <p>Total Amount : {Number(totalAmount + amenitiesAmount)}</p>
               </b>
             </div>
