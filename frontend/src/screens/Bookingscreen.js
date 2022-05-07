@@ -24,7 +24,7 @@ function Bookingscreen({ match }) {
     new Array(amenities.length).fill(false)
   );
 
-  const [rewards, setRewards] = useState(0);
+  const [rewards, setRewards] = useState();
 
   const handleOnChange = (position) => {
     const updatedCheckedState = checkedState.map((item, index) =>
@@ -61,6 +61,7 @@ function Bookingscreen({ match }) {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
+
     if (!user) {
       window.location.href = "/login";
     }
@@ -100,10 +101,13 @@ function Bookingscreen({ match }) {
     console.log(useRewards + "====================");
     const user = JSON.parse(localStorage.getItem("currentUser"));
     console.log(user.rewards);
+    console.log(rewards);
+
     if (useRewards) {
-      setRewards(0);
       console.log(rewards + "===========================");
       setTotalAmount(totalAmount - user.rewards);
+      setRewards(0);
+
       // JSON.parse(localStorage.getItem("currentUser"))._id;
     } else {
       setRewards(user.rewards);
@@ -138,15 +142,27 @@ function Bookingscreen({ match }) {
           // window.location.href = "/home";
           // const user = JSON.parse(localStorage.getItem("currentUser"));
 
-          console.log(JSON.parse(localStorage.getItem("currentUser"))._id);
+          console.log(
+            JSON.parse(localStorage.getItem("currentUser"))._id +
+              "=====================user id "
+          );
+          console.log(
+            JSON.parse(localStorage.getItem("currentUser")).rewards +
+              "=====================user id "
+          );
           if (rewards === 0) {
             const result = axios
               .put(
-                "http://localhost:4000/api/users/updateUserRewards" +
+                "http://localhost:4000/api/users/updateUserRewards/" +
                   JSON.parse(localStorage.getItem("currentUser"))._id
               )
               .then((userRes) => {
+                console.log("-----------------------------user res updated");
                 console.log(userRes);
+                const user = JSON.parse(localStorage.getItem("currentUser"));
+                user.rewards = 0;
+
+                localStorage.setItem("currentUser", JSON.stringify(user));
               })
               .catch((error) => {
                 console.log(error);
@@ -253,24 +269,46 @@ function Bookingscreen({ match }) {
               <b>
                 <p>Total Days : {totalDays}</p>
                 <p>Rent per day : {room.rentperday}</p>
-                <p style={{ marginRight: "4%" }}>Use Rewards</p>
 
-                <div
-                  className="amenities-items"
-                  style={{
-                    width: "20px",
-                    marginLeft: "97%",
-                    marginTop: "-45px",
-                    // position: "relative",
-                  }}
-                >
-                  <div>
-                    <input type="checkbox" onChange={handleUseReedem} />
-                  </div>
-                </div>
+                {JSON.parse(localStorage.getItem("currentUser")).rewards !==
+                0 ? (
+                  <>
+                    <p style={{ marginRight: "4%" }}>Use Rewards</p>
 
+                    <div
+                      className="amenities-items"
+                      style={{
+                        width: "20px",
+                        marginLeft: "97%",
+                        marginTop: "-45px",
+                        // position: "relative",
+                      }}
+                    >
+                      <div>
+                        <input type="checkbox" onChange={handleUseReedem} />
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div style={{ marginBottom: "10px", color: "red" }}>
+                      **You used all your rewards
+                    </div>
+                  </>
+                )}
                 <p>Total Amount : {Number(totalAmount + amenitiesAmount)}</p>
               </b>
+            </div>
+            <div
+              style={{
+                color: "red",
+                fontSize: "14px",
+                marginBottom: "10px",
+                marginLeft: "51%",
+                // backgroundColor: "yellow",
+              }}
+            >
+              **Once room booked you can't edit amenities
             </div>
 
             <div style={{ float: "right" }}>
@@ -280,6 +318,7 @@ function Bookingscreen({ match }) {
                 token={onToken}
                 stripeKey="YOUR PUBLIC STRIP API KEY"
               ></StripeCheckout> */}
+
               <button onClick={handleBooking} className="btn btn-primary">
                 Pay Now
               </button>
