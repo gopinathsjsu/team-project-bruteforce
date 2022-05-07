@@ -156,7 +156,7 @@ function Homescreen() {
         ) : (
           rooms.map((x) => {
             return (
-              <div className="col-md-9 mt-3" data-aos="flip-down">
+              <div className="col-md-9 mt-3">
                 <Room room={x} fromDate={fromDate} toDate={toDate} />
               </div>
             );

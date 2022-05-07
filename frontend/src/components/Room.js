@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 function Room({ room, fromDate, toDate }) {
   const [show, setShow] = useState(false);
 
+  console.log(room);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -14,8 +15,10 @@ function Room({ room, fromDate, toDate }) {
         <img src={room.imageurls[0]} className="smallimg" alt="" />
       </div>
       <div className="col-md-7">
-        <h1>{room.name}</h1>
-        <b>
+        <h1 style={{ color: "rgb(252, 158, 21)", fontWeight: "bold" }}>
+          {room.name}
+        </h1>
+        <b style={{ fontWeight: "bold" }}>
           <p>Location : {room.location}</p>
           <p>Max Count : {room.maxcount}</p>
           <p>Phone Number : {room.phonenumber}</p>
@@ -25,11 +28,20 @@ function Room({ room, fromDate, toDate }) {
         <div style={{ float: "right" }}>
           {fromDate && toDate && (
             <Link to={`/book/${room._id}/${fromDate}/${toDate}`}>
-              <button className="btn btn-primary m-2">Book Now</button>
+              <button
+                className="btn btn-primary m-2"
+                style={{ border: "none" }}
+              >
+                Book Now
+              </button>
             </Link>
           )}
 
-          <button className="btn btn-primary" onClick={handleShow}>
+          <button
+            className="btn btn-primary"
+            style={{ border: "none" }}
+            onClick={handleShow}
+          >
             View Detail
           </button>
         </div>
@@ -37,7 +49,11 @@ function Room({ room, fromDate, toDate }) {
 
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header>
-          <Modal.Title>{room.name}</Modal.Title>
+          <Modal.Title>
+            <h1 style={{ color: "rgb(252, 158, 21)", fontWeight: "bold" }}>
+              {room.name}
+            </h1>
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Carousel prevLabel="" nextLabel="">
@@ -53,7 +69,17 @@ function Room({ room, fromDate, toDate }) {
               );
             })}
           </Carousel>
-          <p>{room.description}</p>
+          <label style={{ fontWeight: "bold" }}>Description:&nbsp;</label>
+          <label> {room.description}</label>
+          <br></br>
+          <label style={{ fontWeight: "bold" }}>Rent:&nbsp;</label>
+          <label> {room.rentperday}$ per Day</label>
+          <br></br>
+          <label style={{ fontWeight: "bold" }}>Location:&nbsp;</label>
+          <label> {room.location}</label>
+          <br></br>
+          <label style={{ fontWeight: "bold" }}>Contact details:&nbsp;</label>
+          <label>{room.phonenumber}</label>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

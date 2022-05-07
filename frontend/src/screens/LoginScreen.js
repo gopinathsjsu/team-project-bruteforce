@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import Loader from "../Loader";
-import Error from "../Error";
-import Success from "../Success";
+import Loader from "../components/Loader";
+import Error from "../components/Error";
+import Success from "../components/Success";
 
 function LoginScreen() {
   const [email, setEmail] = useState("");

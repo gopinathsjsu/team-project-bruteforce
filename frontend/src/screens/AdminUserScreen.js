@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Table, Tag } from "antd";
+import { Table, Tag, Space } from "antd";
 
 import Loader from "../components/Loader";
 import Error from "../components/Error";

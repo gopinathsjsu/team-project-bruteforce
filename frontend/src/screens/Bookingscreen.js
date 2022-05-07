@@ -129,12 +129,16 @@ function Bookingscreen({ match }) {
       ) : (
         <div className="row justify-content-center mt-5 bs">
           <div className="col">
-            <h1>{room.name}</h1>
+            <h1 style={{ color: "rgb(144 92 15)", fontWeight: "bold" }}>
+              {room.name}
+            </h1>
             <img src={room.imageurls[0]} alt="" className="bigimg" />
           </div>
           <div className="col">
             <div style={{ textAlign: "right" }}>
-              <h1><u>Booking Details</u></h1>
+              <h1>
+                <u>Booking Details</u>
+              </h1>
               <hr />
               <b>
                 <p>
@@ -146,10 +150,12 @@ function Bookingscreen({ match }) {
               </b>
             </div>
             <div style={{ textAlign: "right" }}>
-              <h1><u>Amenities</u></h1>
+              <h1>
+                <u>Amenities</u>
+              </h1>
               <hr />
               <div className="col">
-                <ul >
+                <ul>
                   {amenities.map(({ name, price }, index) => {
                     return (
                       <li key={index}>
@@ -160,7 +166,6 @@ function Bookingscreen({ match }) {
                               width: "20px",
                               marginLeft: "100%",
                               position: "relative",
-                              
                             }}
                           >
                             <input
@@ -186,7 +191,9 @@ function Bookingscreen({ match }) {
               </div>
             </div>
             <div style={{ textAlign: "right" }}>
-              <h1><u>Amount</u></h1>
+              <h1>
+                <u>Amount</u>
+              </h1>
               <hr />
               <b>
                 <p>Total Days : {totalDays}</p>
