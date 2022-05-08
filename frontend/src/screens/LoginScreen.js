@@ -3,7 +3,6 @@ import axios from "axios";
 
 import Loader from "../components/Loader";
 import Error from "../components/Error";
-import Success from "../components/Success";
 
 function LoginScreen() {
   const [email, setEmail] = useState("");
@@ -19,20 +18,31 @@ function LoginScreen() {
       email,
       password,
     };
-    //console.log(user);
-    try {
-      const result = (
-        await axios.post("http://localhost:4000/api/users/login", user)
-      ).data;
-      console.log("In post login");
-      console.log(result);
-      localStorage.setItem("currentUser", JSON.stringify(result));
-      window.location.href = "/admin";
-    } catch (error) {
-      console.log(error);
-      setError("Invalid Credentials");
+    if (!email) {
+      setError("Email is a required field");
+    } else if (!password) {
+      setError("Please enter the password");
+    } else if (!(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password))) {
+      setError("Password need to be 6 to 16 character including at least one number , one letter and special character in it");
+    } else if (email.match(
+        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    )) {
+      setError("Please use a valid email address!");
+    } else {
+      try {
+        const result = (
+            await axios.post("http://localhost:4000/api/users/login", user)
+        ).data;
+        console.log("In post login");
+        console.log(result);
+        localStorage.setItem("currentUser", JSON.stringify(result));
+        window.location.href = "/admin";
+      } catch (error) {
+        console.log(error);
+        setError("Invalid Credentials");
+      }
+      setLoading(false);
     }
-    setLoading(false);
   }
   return (
     <div>
