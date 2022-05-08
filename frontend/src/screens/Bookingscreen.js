@@ -157,7 +157,6 @@ function Bookingscreen({ match }) {
                   JSON.parse(localStorage.getItem("currentUser"))._id
               )
               .then((userRes) => {
-                console.log("-----------------------------user res updated");
                 console.log(userRes);
                 const user = JSON.parse(localStorage.getItem("currentUser"));
                 user.rewards = 0;

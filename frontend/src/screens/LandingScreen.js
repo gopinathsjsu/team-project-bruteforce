@@ -12,7 +12,7 @@ function LandingScreen() {
     <div className="row landing">
       <div className="col-md-12 text-center">
         <h2 data-aos="zoom-in" style={{ color: "white", fontSize: "100px" }}>
-          MERN HOTEL BOOKING
+          HOTEL BOOKING
         </h2>
         <h1 data-aos="zoom-out" style={{ color: "white" }}>
           There is only one boss. The Guest.

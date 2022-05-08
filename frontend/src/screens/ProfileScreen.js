@@ -29,7 +29,7 @@ function ProfileScreen() {
                 <p>Name : {user.name}</p>
                 <p>Email : {user.email}</p>
                 <p>
-                  IsAdmin :
+                  IsAdmin : &nbsp;
                   {user.isAdmin ? (
                     <Tag color="green">YES</Tag>
                   ) : (
