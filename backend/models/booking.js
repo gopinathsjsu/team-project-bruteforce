@@ -8,6 +8,9 @@ const bookingSchema = mongoose.Schema(
     userid: { type: String, required: true },
     fromdate: { type: String, required: true },
     todate: { type: String, required: true },
+    extracostapplied: {type: String, required: false},
+    offerapplied: {type: String, required: false},
+    guestscount:  {type: Number, required: false, default: 0},
     totalamount: {
       type: Number,
       required: true,

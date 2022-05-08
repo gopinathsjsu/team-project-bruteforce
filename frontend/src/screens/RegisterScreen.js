@@ -16,20 +16,46 @@ function RegisterScreen() {
   const [success, setSuccess] = useState("");
 
   async function register() {
-    if (password === cpassword) {
-      const user = {
-        name,
-        email,
-        password,
-        cpassword,
-      };
-      //console.log(user);
-      setLoading(true);
-      setError("");
-      setSuccess("");
+    const user = {
+      name,
+      email,
+      password,
+      cpassword,
+    };
+    //console.log(user);
+    setLoading(true);
+    setError("");
+    setSuccess("");
+    if (!name) {
+      setError("Name is a required field");
+      setLoading(false)
+    } else if (!email) {
+      setError("Email is a required field");
+      setLoading(false)
+    } else if (!password || !cpassword) {
+      setError("Please enter both passwords");
+      setLoading(false)
+    } else if (password !== cpassword) {
+      setError("Passwords do not match!");
+      setLoading(false)
+    } else if (!(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password))) {
+      setError("Password need to be 6 to 16 character including at least one number , one letter and special character in it");
+      setLoading(false)
+    } else if (name.length < 4) {
+      setError("Name is too short");
+      setLoading(false)
+    } else if (/\d/.test(name)) {
+      setError("Name cannot contain numeric characters");
+      setLoading(false)
+    } else if (!email.match(
+        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    )) {
+      setError("Please use a valid email address!");
+      setLoading(false)
+    } else {
       try {
         const result = (
-          await axios.post("http://localhost:4000/api/users/register", user)
+            await axios.post("http://localhost:4000/api/users/register", user)
         ).data;
         console.log(result);
         setSuccess(result);
@@ -42,8 +68,6 @@ function RegisterScreen() {
         setError(error);
       }
       setLoading(false);
-    } else {
-      alert("Password not matched");
     }
   }
 
@@ -65,7 +89,11 @@ function RegisterScreen() {
               onChange={(e) => {
                 setName(e.target.value);
               }}
+
             />
+            <br></br>
+
+
             <input
               type="text"
               className="form-control"
@@ -74,29 +102,43 @@ function RegisterScreen() {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
+
             />
+            <br></br>
+
+
             <input
-              type="text"
+              type="password"
               className="form-control"
               placeholder="password"
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
+
             />
+            <br></br>
+
             <input
-              type="text"
+              type="password"
               className="form-control"
               placeholder="confirm password"
               value={cpassword}
               onChange={(e) => {
                 setCpassword(e.target.value);
               }}
+
             />
+            <br></br>
+
             {loading ? (
               <div>Registering... Please Wait...</div>
             ) : (
-              <button className="btn btn-primary mt-3" onClick={register}>
+              <button
+                style={{ border: "none" }}
+                className="btn btn-primary mt-3"
+                onClick={register}
+              >
                 Register
               </button>
             )}

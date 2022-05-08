@@ -48,10 +48,15 @@ function Homescreen() {
 
     fetchMyAPI();
   }, []);
-
+  function changeDates(dates) {
+    try {
+      setFromDate(moment(dates[0]).format("DD-MM-YYYY"));
+      setToDate(moment(dates[1]).format("DD-MM-YYYY"));
+    } catch (e) {
+      console.log(e);
+    }
+  }
   function filterByDate(dates) {
-    // console.log(moment(dates[0]).format("DD-MM-YYYY"));
-    // console.log(moment(dates[1]).format("DD-MM-YYYY"));
     try {
       setFromDate(moment(dates[0]).format("DD-MM-YYYY"));
       setToDate(moment(dates[1]).format("DD-MM-YYYY"));
@@ -94,8 +99,7 @@ function Homescreen() {
   function filterBySearch() {
     const tempRooms = duplicateRooms.filter(
       (x) =>
-        // x.name.toLowerCase().includes(searchKey.toLowerCase())
-        x.location === searchKey
+        x.location.toLowerCase().includes(searchKey.toLowerCase())
     );
     console.log(tempRooms);
     setRooms(tempRooms);
@@ -117,7 +121,7 @@ function Homescreen() {
     <div className="container">
       <div className="row mt-5 bs">
         <div className="col-md-3">
-          <RangePicker format="DD-MM-YYYY" onChange={filterByDate} />
+          <RangePicker format="DD-MM-YYYY" onCalendarChange={changeDates} onChange={filterByDate}  disabledDate={(current) => fromDate ? current < moment(fromDate, "DD-MM-YYYY") || current > moment(fromDate, "DD-MM-YYYY").add(7, 'day') : null}/>
         </div>
 
         <div className="col-md-3">
@@ -129,8 +133,9 @@ function Homescreen() {
             }}
           >
             <option value="all">All</option>
-            <option value="delux">Delux</option>
-            <option value="non-delux">Non-Delux</option>
+            <option value="double">Double rooms</option>
+            <option value="suites">Suites</option>
+            <option value="single-room">Single Room</option>
           </select>
         </div>
 
