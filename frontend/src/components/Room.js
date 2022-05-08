@@ -15,10 +15,10 @@ function Room({ room, fromDate, toDate }) {
         <img src={room.imageurls[0]} className="smallimg" alt="" />
       </div>
       <div className="col-md-7">
-        <h1 style={{ color: "rgb(252, 158, 21)", fontWeight: "bold" }}>
+        <h1 style={{ color: "#444054", fontWeight: "bold" }}>
           {room.name}
         </h1>
-        <b style={{ fontWeight: "bold" }}>
+        <b style={{ fontWeight: "550" }}>
           <p>Location : {room.location}</p>
           <p>Max Count : {room.maxcount}</p>
           <p>Phone Number : {room.phonenumber}</p>
@@ -30,7 +30,7 @@ function Room({ room, fromDate, toDate }) {
             <Link to={`/book/${room._id}/${fromDate}/${toDate}`}>
               <button
                 className="btn btn-primary m-2"
-                style={{ border: "none" }}
+                style={{ border: "none",  }}
               >
                 Book Now
               </button>
@@ -39,7 +39,7 @@ function Room({ room, fromDate, toDate }) {
 
           <button
             className="btn btn-primary"
-            style={{ border: "none" }}
+            style={{ border: "none", marginRight:"-82px"}}
             onClick={handleShow}
           >
             View Detail

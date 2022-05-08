@@ -52,7 +52,7 @@ function LoginScreen() {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
-            />
+            /> <br/>
             <input
               type="password"
               className="form-control"
