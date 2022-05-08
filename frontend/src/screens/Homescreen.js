@@ -48,7 +48,14 @@ function Homescreen() {
 
     fetchMyAPI();
   }, []);
-
+  function changeDates(dates) {
+    try {
+      setFromDate(moment(dates[0]).format("DD-MM-YYYY"));
+      setToDate(moment(dates[1]).format("DD-MM-YYYY"));
+    } catch (e) {
+      console.log(e);
+    }
+  }
   function filterByDate(dates) {
     try {
       setFromDate(moment(dates[0]).format("DD-MM-YYYY"));
@@ -114,7 +121,7 @@ function Homescreen() {
     <div className="container">
       <div className="row mt-5 bs">
         <div className="col-md-3">
-          <RangePicker format="DD-MM-YYYY" onChange={filterByDate} />
+          <RangePicker format="DD-MM-YYYY" onCalendarChange={changeDates} onChange={filterByDate}  disabledDate={(current) => fromDate ? current < moment(fromDate, "DD-MM-YYYY") || current > moment(fromDate, "DD-MM-YYYY").add(7, 'day') : null}/>
         </div>
 
         <div className="col-md-3">

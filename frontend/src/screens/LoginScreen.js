@@ -24,7 +24,7 @@ function LoginScreen() {
       setError("Please enter the password");
     } else if (!(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password))) {
       setError("Password need to be 6 to 16 character including at least one number , one letter and special character in it");
-    } else if (email.match(
+    } else if (!email.match(
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     )) {
       setError("Please use a valid email address!");
