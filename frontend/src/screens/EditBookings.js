@@ -39,7 +39,7 @@ function EditBookings({ match }) {
 
     setTotalDays(totaldays);
     setRemainingAmount(Math.abs(totalDays - totaldays) * 100);
-    
+
     // Axios.put("http://localhost:4000/api/bookings/editBooking/" + bookingId, {
     //   fromDate: fromDate,
     //   toDate: toDate,
@@ -52,13 +52,13 @@ function EditBookings({ match }) {
   return (
     <div>
       <form className="edit_form">
-        <h1 style={{ textAlign: "center", paddingTop: "20px" }}>
+        <h1 style={{ border: "none", textAlign: "center", paddingTop: "20px" }}>
           Edit Bookings
         </h1>
 
         <div className="section">
           <div className="from_date">From Date</div>
-          
+
           <input
             defaultValue={fromDate}
             type="date"
@@ -66,7 +66,6 @@ function EditBookings({ match }) {
               setFromDate(event.target.value);
             }}
           />
-
         </div>
         <div className="section">
           <div className="to_date">To Date</div>

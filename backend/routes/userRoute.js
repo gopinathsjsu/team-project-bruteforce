@@ -46,6 +46,16 @@ router.post("/getallusers", async (req, res) => {
   }
 });
 
+router.get("/getUser/:id", async (req, res) => {
+  User.find({ _id: req.params.id })
+    .then((result) => {
+      res.send({ success: true, result });
+    })
+    .catch((error) => {
+      res.send({ success: false });
+    });
+});
+
 router.put("/updateUserRewards/:id", async (req, res) => {
   console.log(req.params.id);
   console.log("-----------------in update rewards");

@@ -20,11 +20,15 @@ function Bookingscreen({ match }) {
   const [totalAmount, setTotalAmount] = useState(0);
   const [amenitiesAmount, setAmenitiesAmount] = useState(0);
   const [totalDays, setTotalDays] = useState(0);
+
   const [checkedState, setCheckedState] = useState(
     new Array(amenities.length).fill(false)
   );
 
   const [rewards, setRewards] = useState();
+
+  const [userData, setUserData] = useState();
+  const [userProfileRewards, setUserProfileRewards] = useState();
 
   const handleOnChange = (position) => {
     const updatedCheckedState = checkedState.map((item, index) =>
@@ -59,12 +63,38 @@ function Bookingscreen({ match }) {
     setAmenitiesList(updatedList);
   };
 
+  // useEffect(() => {
+
+  // });
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
-
     if (!user) {
       window.location.href = "/login";
     }
+
+    // axios
+    //   .get("http://localhost:4000/api/users/getUser/6275f7c36f3f433fcf8b5f8c")
+    //   .then((result) => {
+    //     console.log(result + "-------------------------------------- get user");
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+
+    axios
+      .get(
+        "http://localhost:4000/api/users/getUser/" +
+          JSON.parse(localStorage.getItem("currentUser"))._id
+      )
+      .then((result) => {
+        setUserData(result.data.result);
+        setUserProfileRewards(result.data.result[0].rewards);
+
+        console.log(result.data.result);
+        console.log(result.data.result[0].rewards);
+      });
+
     async function fetchMyAPI() {
       try {
         setError("");
@@ -90,7 +120,6 @@ function Bookingscreen({ match }) {
     const totaldays = moment.duration(todate.diff(fromdate)).asDays() + 1;
     setTotalDays(totaldays);
     const roomrent = totalDays * room.rentperday;
-
     setTotalAmount(roomrent);
   }, [room]);
 
@@ -98,13 +127,11 @@ function Bookingscreen({ match }) {
     console.log(useRewards);
 
     setUseRewards(!useRewards);
-    console.log(useRewards + "====================");
     const user = JSON.parse(localStorage.getItem("currentUser"));
     console.log(user.rewards);
     console.log(rewards);
 
     if (useRewards) {
-      console.log(rewards + "===========================");
       setTotalAmount(totalAmount - user.rewards);
       setRewards(0);
 
@@ -159,18 +186,14 @@ function Bookingscreen({ match }) {
               .then((userRes) => {
                 console.log("-----------------------------user res updated");
                 console.log(userRes);
-                const user = JSON.parse(localStorage.getItem("currentUser"));
-                user.rewards = 0;
-                console.log(
-                  "/////////////////////////////////////////" + user.rewards
-                );
-                console.log(JSON.stringify(user));
-                localStorage.setItem("currentUser", JSON.stringify(user));
+                // const user = JSON.parse(localStorage.getItem("currentUser"));
+                // user.rewards = 0;
+                // console.log(JSON.stringify(user));
+                // localStorage.setItem("currentUser", JSON.stringify(user));
               })
               .catch((error) => {
                 console.log(error);
               });
-            // window.location.href = "/home";
           } else {
             window.location.href = "/home";
           }
@@ -274,8 +297,7 @@ function Bookingscreen({ match }) {
                 <p>Total Days : {totalDays}</p>
                 <p>Rent per day : {room.rentperday}</p>
 
-                {JSON.parse(localStorage.getItem("currentUser")).rewards !==
-                0 ? (
+                {userProfileRewards !== 0 ? (
                   <>
                     <p style={{ marginRight: "4%" }}>Use Rewards</p>
 
@@ -324,7 +346,7 @@ function Bookingscreen({ match }) {
               ></StripeCheckout> */}
 
               <button onClick={handleBooking} className="btn btn-primary">
-                Pay Now
+                Book Now
               </button>
             </div>
           </div>
