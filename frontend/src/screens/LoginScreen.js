@@ -52,7 +52,10 @@ function LoginScreen() {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
-            /> <br/>
+
+            />
+            <br></br>
+
             <input
               type="password"
               className="form-control"
@@ -65,7 +68,11 @@ function LoginScreen() {
             {loading ? (
               <div>Login...Please Wait...</div>
             ) : (
-              <button className="btn btn-primary mt-3" onClick={Login}>
+              <button
+                style={{ border: "none" }}
+                className="btn btn-primary mt-3"
+                onClick={Login}
+              >
                 Login
               </button>
             )}

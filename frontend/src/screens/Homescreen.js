@@ -126,8 +126,9 @@ function Homescreen() {
             }}
           >
             <option value="all">All</option>
-            <option value="delux">Delux</option>
-            <option value="non-delux">Non-Delux</option>
+            <option value="double">Double rooms</option>
+            <option value="suites">Suites</option>
+            <option value="single-room">Single Room</option>
           </select>
         </div>
 
