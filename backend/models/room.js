@@ -15,6 +15,11 @@ const roomSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    percenthikeperdayonweekend: {
+      type: Number,
+      required: true,
+      default: 50,
+    },
     imageurls: [],
     currentbookings: [],
     type: { type: String, required: true },

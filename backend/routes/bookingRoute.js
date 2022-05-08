@@ -7,6 +7,7 @@ const { v4: uuidv4 } = require("uuid"); //https://www.npmjs.com/package/uuid
 const router = express.Router();
 
 const Booking = require("../models/booking");
+const Price = require("../models/price");
 const Room = require("../models/room");
 
 router.post("/getallbookings", async (req, res) => {
@@ -101,9 +102,37 @@ router.post("/getbookingbyuserid", async (req, res) => {
 });
 
 router.post("/bookroom", async (req, res) => {
-  const { room, userid, fromdate, todate, totalAmount, totaldays } = req.body;
-
+  let { room, userid, fromdate, todate, totalAmount, totaldays, extracostapplied, offerapplied } = req.body;
   try {
+    if (moment(fromdate).format('dddd') === 'Saturday' || (moment(fromdate).format('dddd') === 'Sunday')) {
+      if (room.percenthikeperdayonweekend) {
+        totalAmount += ((totalAmount*room.percenthikeperdayonweekend)/100);
+        extracostapplied += ' Weekend Peak Price'
+      }
+    } else {
+      let dynamicPrices = await Price.findAll();
+      dynamicPrices.some(pr => {
+        if (moment(fromdate, 'MM-DD-YYYY').isBetween(moment(pr.fromDate, 'DD-MM-YYYY'), moment(pr.toDate, 'DD-MM-YYYY'))) {
+          totalAmount += ((totalAmount*room.percenthikeperdayonweekend)/100);
+          extracostapplied += ' Holiday Peak Price'
+          return true;
+        }
+        return false;
+      });
+
+    }
+    // Give loyality discount, if already have booked the same room in past
+    const prevBooking = await Booking.findOne({
+      where: {
+        userid,
+        roomid: room._id,
+      }
+    });
+    if (prevBooking) {
+      totalAmount -= ((totalAmount)/20);
+      offerapplied += ' Customer Loyality discount (5%)';
+    }
+
     const newBooking = new Booking({
       room: room.name,
       roomid: room._id,
@@ -112,6 +141,8 @@ router.post("/bookroom", async (req, res) => {
       todate: moment(todate).format("DD-MM-YYYY"),
       totalamount: totalAmount,
       totaldays,
+      extracostapplied,
+      offerapplied,
       transactionid: uuidv4(),
     });
 
