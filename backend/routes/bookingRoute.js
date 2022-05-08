@@ -102,7 +102,7 @@ router.post("/getbookingbyuserid", async (req, res) => {
 });
 
 router.post("/bookroom", async (req, res) => {
-  let { room, userid, fromdate, todate, totalAmount, totaldays, extracostapplied, offerapplied } = req.body;
+  let { room, userid, fromdate, todate, totalAmount, totaldays, extracostapplied, offerapplied, guestscount } = req.body;
   try {
     if (moment(fromdate).format('dddd') === 'Saturday' || (moment(fromdate).format('dddd') === 'Sunday')) {
       if (room.percenthikeperdayonweekend) {
@@ -119,7 +119,13 @@ router.post("/bookroom", async (req, res) => {
         }
         return false;
       });
-
+    }
+    // Check for extra guests
+    if (guestscount) {
+      if (guestscount > room.freeguestcount) {
+        totalAmount += (guestcount - room.freeguestcount)*totaldays*room.rentperextraguestperday ;
+        extracostapplied += ` ${guestcount - room.freeguestcount} extra guests added`;
+      }
     }
     // Give loyality discount, if already have booked the same room in past
     const prevBooking = await Booking.findOne({
