@@ -53,6 +53,21 @@
   margin-top: 20px;
   margin-left: 25%;
 }
+.dropdown-toggle{
+  background-color: #444054;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 6px;
+
+  
+}
+.button{
+  background-color:#444054;
+}
+.TabPane{
+  margin-left: 50px;
+}
 
 ul {
   list-style-type: none;
