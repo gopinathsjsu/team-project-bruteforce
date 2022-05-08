@@ -112,7 +112,7 @@ router.post("/bookroom", async (req, res) => {
     } else {
       let dynamicPrices = await Price.findAll();
       dynamicPrices.some(pr => {
-        if (moment(fromdate, 'MM-DD-YYYY').isBetween(moment(pr.fromDate, 'DD-MM-YYYY'), moment(pr.toDate, 'DD-MM-YYYY'))) {
+        if (moment(fromdate, 'MM-DD-YYYY').isBetween(moment(pr.fromdate, 'DD-MM-YYYY'), moment(pr.todate, 'DD-MM-YYYY'))) {
           totalAmount += ((totalAmount*room.percenthikeperdayonweekend)/100);
           extracostapplied += ' Holiday Peak Price'
           return true;
