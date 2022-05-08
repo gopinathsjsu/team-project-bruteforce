@@ -14,7 +14,7 @@ function Navbar() {
         <ul className="navbar-nav mr-5">
           <div className="dropdown">
             <button
-              className="btn btn-secondary dropdown-toggle"
+              className="dropdown-toggle"
               type="button"
               id="dropdownMenuButton"
               data-toggle="dropdown"
@@ -57,7 +57,9 @@ function Navbar() {
     <div>
       <nav className="navbar navbar-expand-lg">
         <a className="navbar-brand" href="/home">
+
           MOTEL BOOKING
+
         </a>
         <button
           className="navbar-toggler"

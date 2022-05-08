@@ -50,8 +50,6 @@ function Homescreen() {
   }, []);
 
   function filterByDate(dates) {
-    // console.log(moment(dates[0]).format("DD-MM-YYYY"));
-    // console.log(moment(dates[1]).format("DD-MM-YYYY"));
     try {
       setFromDate(moment(dates[0]).format("DD-MM-YYYY"));
       setToDate(moment(dates[1]).format("DD-MM-YYYY"));
@@ -94,7 +92,6 @@ function Homescreen() {
   function filterBySearch() {
     const tempRooms = duplicateRooms.filter(
       (x) =>
-        // x.name.toLowerCase().includes(searchKey.toLowerCase())
         x.location === searchKey
     );
     console.log(tempRooms);

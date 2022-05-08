@@ -65,8 +65,10 @@ function RegisterScreen() {
               onChange={(e) => {
                 setName(e.target.value);
               }}
+
             />
             <br></br>
+
 
             <input
               type="text"
@@ -76,30 +78,35 @@ function RegisterScreen() {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
+
             />
             <br></br>
 
+
             <input
-              type="text"
+              type="password"
               className="form-control"
               placeholder="password"
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
+
             />
             <br></br>
 
             <input
-              type="text"
+              type="password"
               className="form-control"
               placeholder="confirm password"
               value={cpassword}
               onChange={(e) => {
                 setCpassword(e.target.value);
               }}
+
             />
             <br></br>
+
             {loading ? (
               <div>Registering... Please Wait...</div>
             ) : (

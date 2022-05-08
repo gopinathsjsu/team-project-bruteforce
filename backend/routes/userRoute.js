@@ -48,8 +48,6 @@ router.post("/getallusers", async (req, res) => {
 
 router.put("/updateUserRewards/:id", async (req, res) => {
   console.log(req.params.id);
-  console.log("-----------------in update rewards");
-  // console.log(req);
 
   try {
     const result = await User.findOneAndUpdate(
