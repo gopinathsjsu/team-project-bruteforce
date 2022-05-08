@@ -99,7 +99,7 @@ function Homescreen() {
   function filterBySearch() {
     const tempRooms = duplicateRooms.filter(
       (x) =>
-        x.location === searchKey
+        x.location.toLowerCase().includes(searchKey.toLowerCase())
     );
     console.log(tempRooms);
     setRooms(tempRooms);
