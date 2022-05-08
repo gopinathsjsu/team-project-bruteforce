@@ -15,7 +15,7 @@ function Room({ room, fromDate, toDate }) {
         <img src={room.imageurls[0]} className="smallimg" alt="" />
       </div>
       <div className="col-md-7">
-        <h1 style={{ color: "rgb(252, 158, 21)", fontWeight: "bold" }}>
+        <h1 style={{ color: "rgb(150 177 231)", fontWeight: "bold" }}>
           {room.name}
         </h1>
         <b style={{ fontWeight: "bold" }}>

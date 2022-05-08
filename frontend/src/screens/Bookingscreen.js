@@ -161,17 +161,21 @@ function Bookingscreen({ match }) {
                 console.log(userRes);
                 const user = JSON.parse(localStorage.getItem("currentUser"));
                 user.rewards = 0;
-
+                console.log(
+                  "/////////////////////////////////////////" + user.rewards
+                );
+                console.log(JSON.stringify(user));
                 localStorage.setItem("currentUser", JSON.stringify(user));
               })
               .catch((error) => {
                 console.log(error);
               });
-            window.location.href = "/home";
+            // window.location.href = "/home";
           } else {
             window.location.href = "/home";
           }
         }
+        window.location.href = "/bookings";
       });
     } catch (error) {
       setError(error);

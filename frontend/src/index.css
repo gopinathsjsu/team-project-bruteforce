@@ -15,7 +15,7 @@ code {
 }
 
 .navbar {
-  background-color: rgb(252, 158, 21) !important;
+  background-color: #9aa4b8 !important;
 }
 
 .nav-link {
@@ -87,7 +87,9 @@ p {
 }
 
 .landing {
-  background-color: black !important;
+  /* background-color: black !important; */
+  background-image: url("https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-size: 100% 100%;
   height: 100vh;
   padding-top: 130px;
 }
