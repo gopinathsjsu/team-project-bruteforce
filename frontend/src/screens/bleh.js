@@ -13,8 +13,6 @@ function EditBookings({ match }) {
   const [totalDays, setTotalDays] = useState();
   const [remainingAmount, setRemainingAmount] = useState();
   const [ntotalDays, setnTotalDays] = useState(0);
-  const [remain, setRemain] = useState(0);
-
 
   useEffect(() => {
     getBookingDetails();
@@ -28,29 +26,38 @@ function EditBookings({ match }) {
       setRoomId(result.data.roomid);
       setFromDate(result.data.fromdate.split("-").reverse().join("-"));
       setToDate(result.data.todate.split("-").reverse().join("-"));
-      // setFromDate(result.data.fromdate);
-      // setToDate(result.data.todate);
       setTotalAmount(result.data.totalamount);
       setTotalDays(result.data.totaldays);
-      setRemainingAmount(result.data.remainingAmount);
     });
   };
 
   const editBooking = (e) => {
+    console.log("Edit Booking Page");
     e.preventDefault();
-    //setTotalDays(totaldaysa);
+    const fromDateNew = moment(fromDate, "DD-MM-YYYY");
+    const toDateNew = moment(toDate, "DD-MM-YYYY");
+
+    const totaldaysa = moment.duration(toDateNew.diff(fromDateNew)).asDays + 1;
+    console.log("totaldaysa", totaldaysa);
+    setnTotalDays(totaldaysa);
+    console.log(ntotalDays, "ntotalDays");
+    console.log(totalDays, "totalDays");
+
+    console.log("math", Math.abs(ntotalDays - totalDays) * 100);
+    setRemainingAmount(Math.abs(ntotalDays - totalDays) * 100);
+    setTotalDays(totaldaysa);
+    console.log("remainingAmount", remainingAmount);
+    console.log(totaldaysa + " total changed days");
+    console.log("Edit bookings " + bookingId);
     Axios.put("http://localhost:4000/api/bookings/editBooking/" + bookingId, {
-      fromDate: fromDate.split("-").reverse().join("-"),
-      toDate: toDate.split("-").reverse().join("-"),
+      fromDate: fromDate,
+      toDate: toDate,
       totalDays: totalDays,
-      totalAmount: totalAmount,
       remainingAmount: remainingAmount,
     }).then((result) => {
-      getBookingDetails();
       console.log(result);
-      //setRemainingAmount(result.remainingAmount);
-      setRemain(1);
     });
+    window.location.href = "/profile";
   };
 
   return (
@@ -62,38 +69,31 @@ function EditBookings({ match }) {
 
         <div className="section">
           <div className="from_date">From Date</div>
-          
+
           <input
             defaultValue={fromDate}
             type="date"
-            
             onChange={(event) => {
               setFromDate(event.target.value);
             }}
           />
-
         </div>
         <div className="section">
           <div className="to_date">To Date</div>
           <input
             type="date"
             defaultValue={toDate}
-            
             onChange={(event) => {
               setToDate(event.target.value);
             }}
           />
         </div>
-        <br></br>
-        {/* <div className="section">
+        <div className="section">
           <div className="label">Total Amount</div>
           <input defaultValue={totalAmount} readOnly type="text" />
         </div>
         <div className="section">
           <p>(Note: Pay remaining amount during checkin)</p>
-        </div> */}
-        <div>
-          {remain && <div>Updated total Amount is {totalAmount}</div>}
         </div>
 
         <div className="section">
