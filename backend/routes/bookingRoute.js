@@ -42,11 +42,15 @@ router.put("/editBooking/:bookingId", async (req, res) => {
   const fromdate = req.body.fromDate;
   const todate = req.body.toDate;
   const totaldays = req.body.totalDays;
-  const remainingAmount = req.body.remainingAmount;
-
-  console.log(fromdate);
-  console.log(todate);
-  console.log(totaldays);
+  var totalAmount = req.body.totalAmount;
+  const perday = req.body.remainingAmount;
+  // const remainingAmount = req.body.remainingAmount;
+  const fromDateNew = moment(fromdate.split("-").reverse().join("/"), "YYYY/MM/DD");
+  const toDateNew = moment(todate.split("-").reverse().join("/"), "YYYY/MM/DD");
+  const newtotaldays = Math.floor(( toDateNew - fromDateNew ) / 86400000)+1;
+  const remainingAmount = Math.abs(newtotaldays - totaldays) * perday ;
+   const ntotalAmount = totalAmount + remainingAmount
+  console.log("fromdate " + fromdate + "todate " +todate + "totaldays"+totaldays + "ntotaldays"+newtotaldays +"remainingAmount " +remainingAmount + "totalAmount" +ntotalAmount);
 
   try {
     console.log("In try");
@@ -55,8 +59,9 @@ router.put("/editBooking/:bookingId", async (req, res) => {
       {
         fromdate: fromdate,
         todate: todate,
-        totaldays: totaldays,
+        totaldays: newtotaldays,
         remainingAmount: remainingAmount,
+        totalamount: ntotalAmount
       }
     );
     console.log(bookings);
@@ -102,7 +107,9 @@ router.post("/getbookingbyuserid", async (req, res) => {
 });
 
 router.post("/bookroom", async (req, res) => {
-  let { room, userid, fromdate, todate, totalAmount, totaldays, extracostapplied, offerapplied, guestscount } = req.body;
+
+  let { room, userid, fromdate, todate, totalAmount, totaldays, extracostapplied, offerapplied, guestscount, remainingAmount} = req.body;
+
   try {
     if (moment(fromdate).format('dddd') === 'Saturday' || (moment(fromdate).format('dddd') === 'Sunday')) {
       if (room.percenthikeperdayonweekend) {
@@ -147,8 +154,12 @@ router.post("/bookroom", async (req, res) => {
       todate: moment(todate).format("DD-MM-YYYY"),
       totalamount: totalAmount,
       totaldays,
+
+      remainingAmount,
+
       extracostapplied,
       offerapplied,
+
       transactionid: uuidv4(),
     });
 

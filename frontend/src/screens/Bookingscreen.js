@@ -123,6 +123,7 @@ function Bookingscreen({ match }) {
       todate,
       totalAmount: totalAmount + amenitiesAmount,
       totaldays: totalDays,
+      remainingAmount: room.rentperday
     };
 
     try {
