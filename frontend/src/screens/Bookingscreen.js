@@ -16,7 +16,6 @@ function Bookingscreen({ match }) {
   const [room, setRoom] = useState({});
   const [amenitiesList, setAmenitiesList] = useState([]);
   const [useRewards, setUseRewards] = useState(true);
-
   const [totalAmount, setTotalAmount] = useState(0);
   const [amenitiesAmount, setAmenitiesAmount] = useState(0);
   const [totalDays, setTotalDays] = useState(0);

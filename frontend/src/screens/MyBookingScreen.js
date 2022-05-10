@@ -105,6 +105,7 @@ function MyBookingScreen() {
                     {booking.status === "booked" && (
                       <div className="text-right">
                         <button
+                          style={{ border: "none" }}
                           className="btn btn-danger"
                           onClick={() => {
                             editBooking(booking._id, booking.roomid);
@@ -114,7 +115,7 @@ function MyBookingScreen() {
                         </button>
 
                         <button
-                          style={{ marginLeft: "10px" }}
+                          style={{ border: "none", marginLeft: "10px" }}
                           className="btn btn-danger"
                           onClick={() => {
                             cancelBooking(booking._id, booking.roomid);

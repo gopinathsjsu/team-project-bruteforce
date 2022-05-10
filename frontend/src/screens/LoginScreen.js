@@ -22,16 +22,22 @@ function LoginScreen() {
       setError("Email is a required field");
     } else if (!password) {
       setError("Please enter the password");
-    } else if (!(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password))) {
-      setError("Password need to be 6 to 16 character including at least one number , one letter and special character in it");
-    } else if (!email.match(
+    } else if (
+      !/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password)
+    ) {
+      setError(
+        "Password need to be 6 to 16 character including at least one number , one letter and special character in it"
+      );
+    } else if (
+      !email.match(
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    )) {
+      )
+    ) {
       setError("Please use a valid email address!");
     } else {
       try {
         const result = (
-            await axios.post("http://localhost:4000/api/users/login", user)
+          await axios.post("http://localhost:4000/api/users/login", user)
         ).data;
         console.log("In post login");
         console.log(result);
@@ -62,7 +68,6 @@ function LoginScreen() {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
-
             />
             <br></br>
 
@@ -79,7 +84,7 @@ function LoginScreen() {
               <div>Login...Please Wait...</div>
             ) : (
               <button
-                style={{ border: "none" }}
+                style={{ border: "none", marginLeft: "41%" }}
                 className="btn btn-primary mt-3"
                 onClick={Login}
               >
