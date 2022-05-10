@@ -48,6 +48,7 @@ function Bookingscreen({ match }) {
   const roomid = match.params.roomid;
   const fromdate = moment(match.params.fromdate, "DD-MM-YYYY");
   const todate = moment(match.params.todate, "DD-MM-YYYY");
+  const guestCount = match.params.guestCount;
 
   const handleCheck = (event) => {
     var updatedList = [...amenitiesList];
@@ -121,9 +122,12 @@ function Bookingscreen({ match }) {
       userid: JSON.parse(localStorage.getItem("currentUser"))._id,
       fromdate,
       todate,
+      guestCount,
       totalAmount: totalAmount + amenitiesAmount,
       totaldays: totalDays,
       remainingAmount: room.rentperday,
+      extracostapplied: "extra cost",
+      offerapplied: "offer",
     };
 
     try {
@@ -222,6 +226,7 @@ function Bookingscreen({ match }) {
                 <p>From Date : {match.params.fromdate}</p>
                 <p>To Date : {match.params.todate}</p>
                 <p>Max Count : {room.maxcount}</p>
+                <p>Guest Count: {match.params.guestCount}</p>
               </b>
             </div>
             <div style={{ textAlign: "right" }}>
