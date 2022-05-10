@@ -55,6 +55,7 @@ function Bookingscreen({ match }) {
   const fromdate = moment(match.params.fromdate, "DD-MM-YYYY");
   const todate = moment(match.params.todate, "DD-MM-YYYY");
   const guestCount = match.params.guestCount;
+  const roomCount = match.params.roomCount;
 
   const handleCheck = (event) => {
     var updatedList = [...amenitiesList];
@@ -142,10 +143,17 @@ function Bookingscreen({ match }) {
       .then((result) => {
         console.log(result);
 
+        var newRoomCost = 0;
         if (guestCount > 2) {
-          var newRoomCost = result.data.totalAmount + guestCount * 15;
+          newRoomCost = result.data.totalAmount + (guestCount - 2) * 15;
+          if (roomCount > 1) {
+            newRoomCost = newRoomCost * roomCount;
+          }
         } else {
-          var newRoomCost = result.data.totalAmount;
+          newRoomCost = result.data.totalAmount;
+          if (roomCount > 1) {
+            newRoomCost = newRoomCost * roomCount;
+          }
         }
 
         setnewtotal(newRoomCost);

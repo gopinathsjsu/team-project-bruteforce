@@ -64,9 +64,6 @@ router.post("/addroom", async (req, res) => {
 });
 
 router.put("/updateRoom/:id", async (req, res) => {
-  console.log(
-    "==================== in update backedn ========================="
-  );
   console.log(req.body);
   const id = req.params.id;
   console.log(id);

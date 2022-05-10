@@ -20,8 +20,8 @@ function Room({ room, fromDate, toDate, guestCount, roomCount }) {
         </h1>
         <b style={{ fontWeight: "550" }}>
           <p>Location : {room.location}</p>
-          <p>Max Count : {room.maxcount}</p>
           <p>Phone Number : {room.phonenumber}</p>
+          <p>Rooms Remaining : {room.maxcount}</p>
           <p>Type : {room.type}</p>
         </b>
 
@@ -52,9 +52,7 @@ function Room({ room, fromDate, toDate, guestCount, roomCount }) {
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header>
           <Modal.Title>
-            <h1 style={{ color: "rgb(252, 158, 21)", fontWeight: "bold" }}>
-              {room.name}
-            </h1>
+            <h1 style={{ color: "black", fontWeight: "bold" }}>{room.name}</h1>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -73,6 +71,9 @@ function Room({ room, fromDate, toDate, guestCount, roomCount }) {
           </Carousel>
           <label style={{ fontWeight: "bold" }}>Description:&nbsp;</label>
           <label> {room.description}</label>
+          <br></br>
+          <label style={{ fontWeight: "bold" }}>Rooms Remaining : &nbsp;</label>
+          <label>{room.maxcount}</label>
           <br></br>
           <label style={{ fontWeight: "bold" }}>Rent:&nbsp;</label>
           <label> {room.rentperday}$ per Day</label>
