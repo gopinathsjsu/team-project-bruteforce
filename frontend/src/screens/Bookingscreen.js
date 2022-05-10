@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import moment from "moment";
+import moment, { max } from "moment";
 import StripeCheckout from "react-stripe-checkout";
 import Swal from "sweetalert2";
 import Loader from "../components/Loader";
@@ -29,6 +29,7 @@ function Bookingscreen({ match }) {
 
   const [rewards, setRewards] = useState();
 
+  const [isRoomBooked, setIsRoomBooked] = useState(false);
   const handleOnChange = (position) => {
     const updatedCheckedState = checkedState.map((item, index) =>
       index === position ? !item : item
@@ -47,12 +48,14 @@ function Bookingscreen({ match }) {
     );
     const totalPriceForAmenities = totalPrice * totalDays;
     setAmenitiesAmount(totalPriceForAmenities);
+    setDisplay(false);
   };
 
   const roomid = match.params.roomid;
   const fromdate = moment(match.params.fromdate, "DD-MM-YYYY");
   const todate = moment(match.params.todate, "DD-MM-YYYY");
   const guestCount = match.params.guestCount;
+  const roomCount = match.params.roomCount;
 
   const handleCheck = (event) => {
     var updatedList = [...amenitiesList];
@@ -101,6 +104,7 @@ function Bookingscreen({ match }) {
 
   const handleUseReedem = () => {
     console.log(useRewards);
+    setDisplay(false);
 
     setUseRewards(!useRewards);
     console.log(useRewards + "====================");
@@ -119,6 +123,7 @@ function Bookingscreen({ match }) {
       setTotalAmount(totalAmount + user.rewards);
     }
   };
+
   const handlePrice = async () => {
     const bookingDetails = {
       room,
@@ -137,7 +142,21 @@ function Bookingscreen({ match }) {
       .post("http://localhost:4000/api/bookings/getprice", bookingDetails)
       .then((result) => {
         console.log(result);
-        setnewtotal(result.data.totalAmount);
+
+        var newRoomCost = 0;
+        if (guestCount > 2) {
+          newRoomCost = result.data.totalAmount + (guestCount - 2) * 15;
+          if (roomCount > 1) {
+            newRoomCost = newRoomCost * roomCount;
+          }
+        } else {
+          newRoomCost = result.data.totalAmount;
+          if (roomCount > 1) {
+            newRoomCost = newRoomCost * roomCount;
+          }
+        }
+
+        setnewtotal(newRoomCost);
         setnewOffer(result.data.offerapplied);
         setExtra(result.data.extracostapplied);
         setDisplay(true);
@@ -174,18 +193,7 @@ function Bookingscreen({ match }) {
         "success"
       ).then((result) => {
         if (result.isConfirmed) {
-          console.log(result + "--------------------------");
-          // window.location.href = "/home";
-          // const user = JSON.parse(localStorage.getItem("currentUser"));
-
-          console.log(
-            JSON.parse(localStorage.getItem("currentUser"))._id +
-              "=====================user id "
-          );
-          console.log(
-            JSON.parse(localStorage.getItem("currentUser")).rewards +
-              "=====================user id "
-          );
+          setIsRoomBooked(true);
           if (rewards === 0) {
             const result = axios
               .put(
@@ -193,12 +201,10 @@ function Bookingscreen({ match }) {
                   JSON.parse(localStorage.getItem("currentUser"))._id
               )
               .then((userRes) => {
+                setIsRoomBooked(true);
                 console.log(userRes);
                 const user = JSON.parse(localStorage.getItem("currentUser"));
                 user.rewards = 0;
-                console.log(
-                  "/////////////////////////////////////////" + user.rewards
-                );
                 console.log(JSON.stringify(user));
                 localStorage.setItem("currentUser", JSON.stringify(user));
               })
@@ -207,10 +213,10 @@ function Bookingscreen({ match }) {
               });
             // window.location.href = "/home";
           } else {
-            // window.location.href = "/home";
+            window.location.href = "/home";
           }
         }
-        // window.location.href = "/bookings";
+        window.location.href = "/bookings";
       });
     } catch (error) {
       setError(error);
@@ -229,6 +235,26 @@ function Bookingscreen({ match }) {
     //   });
     // });
   };
+
+  if (isRoomBooked) {
+    // code of decreasing room count
+    console.log("In axios room count ========================");
+    console.log(match.params.roomCount);
+    console.log(room.maxcount);
+    const totalRooms = room.maxcount - match.params.roomCount;
+    console.log(totalRooms);
+    console.log(room._id);
+    axios
+      .put("http://localhost:4000/api/rooms/updateRoom/" + room._id, {
+        totalRooms,
+      })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   return (
     <div className="col">
@@ -276,7 +302,7 @@ function Bookingscreen({ match }) {
                             style={{
                               width: "20px",
                               marginLeft: "100%",
-                              position: "relative",
+                              marginBottom: "-35px",
                             }}
                           >
                             <input
@@ -288,12 +314,13 @@ function Bookingscreen({ match }) {
                               onChange={() => handleOnChange(index)}
                             />
                           </div>
-                          <label htmlFor={`custom-checkbox-${index}`}>
-                            {name}
-                          </label>
-                          <div className="amenities-items">
-                            {getFormattedPrice(price)}
-                          </div>
+                          <p
+                            style={{ marginRight: "15px" }}
+                            htmlFor={`custom-checkbox-${index}`}
+                          >
+                            {name} ({getFormattedPrice(price)})
+                          </p>
+                          <p className="amenities-items"></p>
                         </div>
                       </li>
                     );

@@ -27,7 +27,8 @@ function Homescreen() {
   const [duplicateRooms, setDuplicateRooms] = useState([]);
   const [searchKey, setSearchKey] = useState("");
   const [type, setType] = useState("all");
-  const [guestCount, setGuestCount] = useState();
+  const [guestCount, setGuestCount] = useState(1);
+  const [roomCount, setRoomCount] = useState(1);
 
   useEffect(() => {
     async function fetchMyAPI() {
@@ -121,6 +122,7 @@ function Homescreen() {
     <div className="container">
       <div className="row mt-5 bs">
         <div className="col-md-3">
+          <p>FROM - TO</p>
           <RangePicker
             format="DD-MM-YYYY"
             onCalendarChange={changeDates}
@@ -135,6 +137,8 @@ function Homescreen() {
         </div>
 
         <div className="col-md-2">
+          <p>Room Type</p>
+
           <select
             className="form-control"
             value={type}
@@ -150,6 +154,8 @@ function Homescreen() {
         </div>
 
         <div className="col-md-2">
+          <p>Guest Count</p>
+
           <select
             className="form-control"
             value={guestCount}
@@ -167,7 +173,28 @@ function Homescreen() {
           </select>
         </div>
 
-        <div className="col-md-5">
+        <div className="col-md-2">
+          <p>Room Count</p>
+
+          <select
+            className="form-control"
+            value={roomCount}
+            placeholder="guest count"
+            onChange={(e) => {
+              setRoomCount(e.target.value);
+            }}
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
+
+        <div className="col-md-3">
+          <p>Location</p>
           <input
             type="text"
             className="form-control"
@@ -195,6 +222,7 @@ function Homescreen() {
                   fromDate={fromDate}
                   toDate={toDate}
                   guestCount={guestCount}
+                  roomCount={roomCount}
                 />
               </div>
             );

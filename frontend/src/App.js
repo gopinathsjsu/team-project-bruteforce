@@ -20,7 +20,7 @@ function App() {
         <Route path="/" exact component={LandingScreen} />
         <Route path="/home" exact component={Homescreen} />
         <Route
-          path="/book/:roomid/:fromdate/:todate/:guestCount"
+          path="/book/:roomid/:fromdate/:todate/:guestCount/:roomCount"
           exact
           component={Bookingscreen}
         />

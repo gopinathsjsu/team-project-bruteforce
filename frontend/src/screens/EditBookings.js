@@ -13,8 +13,7 @@ function EditBookings({ match }) {
   const [totalDays, setTotalDays] = useState();
   const [remainingAmount, setRemainingAmount] = useState();
   const [ntotalDays, setnTotalDays] = useState(0);
-  const [remain, setRemain] = useState(0);
-
+  const [remain, setRemain] = useState(false);
 
   useEffect(() => {
     getBookingDetails();
@@ -49,7 +48,7 @@ function EditBookings({ match }) {
       getBookingDetails();
       console.log(result);
       //setRemainingAmount(result.remainingAmount);
-      setRemain(1);
+      setRemain(true);
     });
   };
 
@@ -62,23 +61,26 @@ function EditBookings({ match }) {
 
         <div className="section">
           <div className="from_date">From Date</div>
-          
+
           <input
             defaultValue={fromDate}
             type="date"
-            
+            disabledDate={(current) =>
+              fromDate
+                ? current < moment(fromDate, "DD-MM-YYYY") ||
+                  current > moment(fromDate, "DD-MM-YYYY").add(7, "day")
+                : null
+            }
             onChange={(event) => {
               setFromDate(event.target.value);
             }}
           />
-
         </div>
         <div className="section">
           <div className="to_date">To Date</div>
           <input
             type="date"
             defaultValue={toDate}
-            
             onChange={(event) => {
               setToDate(event.target.value);
             }}
@@ -92,13 +94,11 @@ function EditBookings({ match }) {
         <div className="section">
           <p>(Note: Pay remaining amount during checkin)</p>
         </div> */}
-        <div>
-          {remain && <div>Updated total Amount is {totalAmount}</div>}
-        </div>
+        <div>{remain && <div>Updated total Amount is {totalAmount}</div>}</div>
 
         <div className="section">
           <button
-            style={{ marginLeft: "25%" }}
+            style={{ marginLeft: "25%", border: "none" }}
             className="btn btn-danger"
             onClick={editBooking}
           >

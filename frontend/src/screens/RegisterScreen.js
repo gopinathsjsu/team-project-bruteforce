@@ -81,7 +81,6 @@ function RegisterScreen() {
     <div>
       {loading && <Loader></Loader>}
       {error.length > 0 && <Error msg={error}></Error>}
-
       <div className="row justify-content-center mt-5">
         <div className="col-md-5 mt-5">
           {success.length > 0 && <Success msg={success}></Success>}
