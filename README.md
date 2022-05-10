@@ -1,24 +1,27 @@
-# team-project-bruteforce
-
-## Hotel management App
+# Hotel Management App
 
 [Link to Sprint Report](https://docs.google.com/spreadsheets/d/1N_YAxDElzVTV7xWyxAjk_7LDUGHTmtO2qs2-PweUnzY/edit#gid=1312521409)
 
-## Team members
+# Team Name
+#### bruteforce
+
+## Team Members
 #### Sandeep Reddy Kandi - 015324621
 #### Satyadivya Maddipudi - 016011775
 #### Asha Yalla - 016006250
 #### Sai Manasa Yadlapalli - 015999659
 
-## Tools and Technologies
-### MERN Stack
+## Scrum Meeting Days
+#### Every Tuesday and Friday
+
+
+## Technologies
 #### MongoDb: Database
 #### ExpressJS and NodeJS: Backend
 #### ReactJS: Frontend
 
-## Scrum Meeting Days
-#### Every tuesday and friday
-
+## Tools
+#### Visual Studio Code:
 
 ## XP Values
 
@@ -27,3 +30,13 @@
 #### Simplicity
 #### Courage
 #### Feedback
+
+# Features Implemented
+
+## User
+
+
+
+## Hotel Employee
+
+
