@@ -51,22 +51,28 @@ router.put("/editBooking/:bookingId", async (req, res) => {
   );
   const toDateNew = moment(todate.split("-").reverse().join("/"), "YYYY/MM/DD");
   const newtotaldays = Math.floor((toDateNew - fromDateNew) / 86400000) + 1;
-  const remainingAmount = Math.abs(newtotaldays - totaldays) * perday;
-  const ntotalAmount = totalAmount + remainingAmount;
-  console.log(
-    "fromdate " +
-      fromdate +
-      "todate " +
-      todate +
-      "totaldays" +
-      totaldays +
-      "ntotaldays" +
-      newtotaldays +
-      "remainingAmount " +
-      remainingAmount +
-      "totalAmount" +
-      ntotalAmount
-  );
+  const remaining = (newtotaldays - totaldays) * perday;
+  var ntotalAmount = totalAmount + remaining;
+  // if (newtotaldays - totaldays > 0) {
+  //   var ntotalAmount = totalAmount + remaining;
+  // } else {
+  //   var ntotalAmount = totalAmount;
+  // }
+
+  // console.log(
+  //   "fromdate " +
+  //     fromdate +
+  //     "todate " +
+  //     todate +
+  //     "totaldays" +
+  //     totaldays +
+  //     "ntotaldays" +
+  //     newtotaldays +
+  //     "remainingAmount " +
+  //     remainingAmount +
+  //     "totalAmount" +
+  //     ntotalAmount
+  // );
 
   try {
     console.log("In try");
@@ -76,7 +82,7 @@ router.put("/editBooking/:bookingId", async (req, res) => {
         fromdate: fromdate,
         todate: todate,
         totaldays: newtotaldays,
-        remainingAmount: remainingAmount,
+        //remainingAmount: remainingAmount,
         totalamount: ntotalAmount,
       }
     );
@@ -315,10 +321,7 @@ router.post("/getprice", async (req, res) => {
       offerapplied += " Customer Loyality discount (5%)";
     }
 
-    res.send({extracostapplied,offerapplied,totalAmount});
-
-
-  
+    res.send({ extracostapplied, offerapplied, totalAmount });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ message: error });

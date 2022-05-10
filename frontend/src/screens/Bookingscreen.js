@@ -339,7 +339,7 @@ function Bookingscreen({ match }) {
                   </>
                 )}
                 
-                <p>Total Amount : {Number(totalAmount + amenitiesAmount)}</p>
+                {/* <p>Total Amount : {Number(totalAmount + amenitiesAmount)}</p> */}
 
                 <button onClick={handlePrice} className="btn btn-primary">
                 Check Updated Price 
