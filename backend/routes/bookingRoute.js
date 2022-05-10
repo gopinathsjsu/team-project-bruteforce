@@ -45,12 +45,28 @@ router.put("/editBooking/:bookingId", async (req, res) => {
   var totalAmount = req.body.totalAmount;
   const perday = req.body.remainingAmount;
   // const remainingAmount = req.body.remainingAmount;
-  const fromDateNew = moment(fromdate.split("-").reverse().join("/"), "YYYY/MM/DD");
+  const fromDateNew = moment(
+    fromdate.split("-").reverse().join("/"),
+    "YYYY/MM/DD"
+  );
   const toDateNew = moment(todate.split("-").reverse().join("/"), "YYYY/MM/DD");
-  const newtotaldays = Math.floor(( toDateNew - fromDateNew ) / 86400000)+1;
-  const remainingAmount = Math.abs(newtotaldays - totaldays) * perday ;
-   const ntotalAmount = totalAmount + remainingAmount
-  console.log("fromdate " + fromdate + "todate " +todate + "totaldays"+totaldays + "ntotaldays"+newtotaldays +"remainingAmount " +remainingAmount + "totalAmount" +ntotalAmount);
+  const newtotaldays = Math.floor((toDateNew - fromDateNew) / 86400000) + 1;
+  const remainingAmount = Math.abs(newtotaldays - totaldays) * perday;
+  const ntotalAmount = totalAmount + remainingAmount;
+  console.log(
+    "fromdate " +
+      fromdate +
+      "todate " +
+      todate +
+      "totaldays" +
+      totaldays +
+      "ntotaldays" +
+      newtotaldays +
+      "remainingAmount " +
+      remainingAmount +
+      "totalAmount" +
+      ntotalAmount
+  );
 
   try {
     console.log("In try");
@@ -61,7 +77,7 @@ router.put("/editBooking/:bookingId", async (req, res) => {
         todate: todate,
         totaldays: newtotaldays,
         remainingAmount: remainingAmount,
-        totalamount: ntotalAmount
+        totalamount: ntotalAmount,
       }
     );
     console.log(bookings);
@@ -107,21 +123,40 @@ router.post("/getbookingbyuserid", async (req, res) => {
 });
 
 router.post("/bookroom", async (req, res) => {
-
-  let { room, userid, fromdate, todate, totalAmount, totaldays, extracostapplied, offerapplied, guestscount, remainingAmount} = req.body;
+  console.log(req.body);
+  let {
+    room,
+    userid,
+    fromdate,
+    todate,
+    totalAmount,
+    totaldays,
+    extracostapplied,
+    offerapplied,
+    guestscount,
+    remainingAmount,
+  } = req.body;
 
   try {
-    if (moment(fromdate).format('dddd') === 'Saturday' || (moment(fromdate).format('dddd') === 'Sunday')) {
+    if (
+      moment(fromdate).format("dddd") === "Saturday" ||
+      moment(fromdate).format("dddd") === "Sunday"
+    ) {
       if (room.percenthikeperdayonweekend) {
-        totalAmount += ((totalAmount*room.percenthikeperdayonweekend)/100);
-        extracostapplied += ' Weekend Peak Price'
+        totalAmount += (totalAmount * room.percenthikeperdayonweekend) / 100;
+        extracostapplied += " Weekend Peak Price";
       }
     } else {
       let dynamicPrices = await Price.findAll();
-      dynamicPrices.some(pr => {
-        if (moment(fromdate, 'MM-DD-YYYY').isBetween(moment(pr.fromdate, 'DD-MM-YYYY'), moment(pr.todate, 'DD-MM-YYYY'))) {
-          totalAmount += ((totalAmount*room.percenthikeperdayonweekend)/100);
-          extracostapplied += ' Holiday Peak Price'
+      dynamicPrices.some((pr) => {
+        if (
+          moment(fromdate, "MM-DD-YYYY").isBetween(
+            moment(pr.fromdate, "DD-MM-YYYY"),
+            moment(pr.todate, "DD-MM-YYYY")
+          )
+        ) {
+          totalAmount += (totalAmount * room.percenthikeperdayonweekend) / 100;
+          extracostapplied += " Holiday Peak Price";
           return true;
         }
         return false;
@@ -130,8 +165,13 @@ router.post("/bookroom", async (req, res) => {
     // Check for extra guests
     if (guestscount) {
       if (guestscount > room.freeguestcount) {
-        totalAmount += (guestcount - room.freeguestcount)*totaldays*room.rentperextraguestperday ;
-        extracostapplied += ` ${guestcount - room.freeguestcount} extra guests added`;
+        totalAmount +=
+          (guestcount - room.freeguestcount) *
+          totaldays *
+          room.rentperextraguestperday;
+        extracostapplied += ` ${
+          guestcount - room.freeguestcount
+        } extra guests added`;
       }
     }
     // Give loyality discount, if already have booked the same room in past
@@ -139,11 +179,11 @@ router.post("/bookroom", async (req, res) => {
       where: {
         userid,
         roomid: room._id,
-      }
+      },
     });
     if (prevBooking) {
-      totalAmount -= ((totalAmount)/20);
-      offerapplied += ' Customer Loyality discount (5%)';
+      totalAmount -= totalAmount / 20;
+      offerapplied += " Customer Loyality discount (5%)";
     }
 
     const newBooking = new Booking({

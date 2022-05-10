@@ -16,13 +16,13 @@ const roomSchema = mongoose.Schema(
       required: true,
     },
     rentperextraguestperday: {
-       type: Number,
-       required: true,
+      type: Number,
+      // required: true,
     },
-    freeguestcount: {type: Number, required: true, default: 0},
+    freeguestcount: { type: Number, required: true, default: 0 },
     percenthikeperdayonweekend: {
       type: Number,
-      required: true,
+      // required: true,
       default: 50,
     },
     imageurls: [],

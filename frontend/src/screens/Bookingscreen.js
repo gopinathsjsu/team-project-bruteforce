@@ -123,7 +123,7 @@ function Bookingscreen({ match }) {
       todate,
       totalAmount: totalAmount + amenitiesAmount,
       totaldays: totalDays,
-      remainingAmount: room.rentperday
+      remainingAmount: room.rentperday,
     };
 
     try {
@@ -172,10 +172,10 @@ function Bookingscreen({ match }) {
               });
             // window.location.href = "/home";
           } else {
-            window.location.href = "/home";
+            // window.location.href = "/home";
           }
         }
-        window.location.href = "/bookings";
+        // window.location.href = "/bookings";
       });
     } catch (error) {
       setError(error);
