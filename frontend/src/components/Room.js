@@ -26,7 +26,7 @@ function Room({ room, fromDate, toDate, guestCount, roomCount }) {
         </b>
 
         <div style={{ float: "right" }}>
-          {fromDate && toDate && (
+          {room.maxcount >= roomCount && fromDate && toDate && (
             <Link
               to={`/book/${room._id}/${fromDate}/${toDate}/${guestCount}/${roomCount}`}
             >
@@ -39,13 +39,31 @@ function Room({ room, fromDate, toDate, guestCount, roomCount }) {
             </Link>
           )}
 
-          <button
-            className="btn btn-primary"
-            style={{ border: "none", marginRight: "-82px" }}
-            onClick={handleShow}
-          >
-            View Detail
-          </button>
+          {room.maxcount >= 1 ? (
+            <button
+              className="btn btn-primary"
+              style={{
+                border: "none",
+                marginRight: "-82px",
+              }}
+              onClick={handleShow}
+            >
+              View Detail
+            </button>
+          ) : (
+            <button
+              className="btn btn-primary"
+              style={{
+                border: "none",
+                marginRight: "-82px",
+                cursor: "not-allowed",
+              }}
+              onClick={handleShow}
+              disabled
+            >
+              View Detail
+            </button>
+          )}
         </div>
       </div>
 
