@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Modal, Button, Carousel } from "react-bootstrap";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
-function Room({ room, fromDate, toDate }) {
+function Room({ room, fromDate, toDate, guestCount }) {
   const [show, setShow] = useState(false);
 
   console.log(room);
@@ -15,9 +15,7 @@ function Room({ room, fromDate, toDate }) {
         <img src={room.imageurls[0]} className="smallimg" alt="" />
       </div>
       <div className="col-md-7">
-
         <h1 style={{ color: "rgb(150 177 231)", fontWeight: "bold" }}>
-
           {room.name}
         </h1>
         <b style={{ fontWeight: "550" }}>
@@ -29,10 +27,10 @@ function Room({ room, fromDate, toDate }) {
 
         <div style={{ float: "right" }}>
           {fromDate && toDate && (
-            <Link to={`/book/${room._id}/${fromDate}/${toDate}`}>
+            <Link to={`/book/${room._id}/${fromDate}/${toDate}/${guestCount}`}>
               <button
                 className="btn btn-primary m-2"
-                style={{ border: "none",  }}
+                style={{ border: "none" }}
               >
                 Book Now
               </button>
@@ -41,7 +39,7 @@ function Room({ room, fromDate, toDate }) {
 
           <button
             className="btn btn-primary"
-            style={{ border: "none", marginRight:"-82px"}}
+            style={{ border: "none", marginRight: "-82px" }}
             onClick={handleShow}
           >
             View Detail

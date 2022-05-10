@@ -27,6 +27,7 @@ function Homescreen() {
   const [duplicateRooms, setDuplicateRooms] = useState([]);
   const [searchKey, setSearchKey] = useState("");
   const [type, setType] = useState("all");
+  const [guestCount, setGuestCount] = useState();
 
   useEffect(() => {
     async function fetchMyAPI() {
@@ -97,9 +98,8 @@ function Homescreen() {
   }
 
   function filterBySearch() {
-    const tempRooms = duplicateRooms.filter(
-      (x) =>
-        x.location.toLowerCase().includes(searchKey.toLowerCase())
+    const tempRooms = duplicateRooms.filter((x) =>
+      x.location.toLowerCase().includes(searchKey.toLowerCase())
     );
     console.log(tempRooms);
     setRooms(tempRooms);
@@ -109,7 +109,7 @@ function Homescreen() {
     console.log(type);
     if (type !== "all") {
       const tempRooms = duplicateRooms.filter(
-        (x) => x.type.toLowerCase() == type.toLowerCase()
+        (x) => x.type.toLowerCase() === type.toLowerCase()
       );
       setRooms(tempRooms);
     } else {
@@ -121,10 +121,20 @@ function Homescreen() {
     <div className="container">
       <div className="row mt-5 bs">
         <div className="col-md-3">
-          <RangePicker format="DD-MM-YYYY" onCalendarChange={changeDates} onChange={filterByDate}  disabledDate={(current) => fromDate ? current < moment(fromDate, "DD-MM-YYYY") || current > moment(fromDate, "DD-MM-YYYY").add(7, 'day') : null}/>
+          <RangePicker
+            format="DD-MM-YYYY"
+            onCalendarChange={changeDates}
+            onChange={filterByDate}
+            disabledDate={(current) =>
+              fromDate
+                ? current < moment(fromDate, "DD-MM-YYYY") ||
+                  current > moment(fromDate, "DD-MM-YYYY").add(7, "day")
+                : null
+            }
+          />
         </div>
 
-        <div className="col-md-3">
+        <div className="col-md-2">
           <select
             className="form-control"
             value={type}
@@ -136,6 +146,24 @@ function Homescreen() {
             <option value="double">Double rooms</option>
             <option value="suites">Suites</option>
             <option value="single-room">Single Room</option>
+          </select>
+        </div>
+
+        <div className="col-md-2">
+          <select
+            className="form-control"
+            value={guestCount}
+            placeholder="guest count"
+            onChange={(e) => {
+              setGuestCount(e.target.value);
+            }}
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
           </select>
         </div>
 
@@ -162,7 +190,12 @@ function Homescreen() {
           rooms.map((x) => {
             return (
               <div className="col-md-9 mt-3">
-                <Room room={x} fromDate={fromDate} toDate={toDate} />
+                <Room
+                  room={x}
+                  fromDate={fromDate}
+                  toDate={toDate}
+                  guestCount={guestCount}
+                />
               </div>
             );
           })
