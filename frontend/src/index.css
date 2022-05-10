@@ -15,9 +15,7 @@ code {
 }
 
 .navbar {
-
   background-color: #9aa4b8 !important;
-
 }
 
 .nav-link {
@@ -30,10 +28,16 @@ code {
   font-size: 30px;
   margin-left: 5px;
 }
+.navbar-brand:hover {
+  color: white;
+}
 .btn {
-  background-color:#444054;
+  background-color: #444054;
 }
 
+.nav-link:hover {
+  color: white;
+}
 .navbar-nav {
   margin-left: auto !important;
 }
