@@ -141,7 +141,14 @@ function Bookingscreen({ match }) {
       .post("http://localhost:4000/api/bookings/getprice", bookingDetails)
       .then((result) => {
         console.log(result);
-        setnewtotal(result.data.totalAmount);
+
+        if (guestCount > 2) {
+          var newRoomCost = result.data.totalAmount + guestCount * 15;
+        } else {
+          var newRoomCost = result.data.totalAmount;
+        }
+
+        setnewtotal(newRoomCost);
         setnewOffer(result.data.offerapplied);
         setExtra(result.data.extracostapplied);
         setDisplay(true);
@@ -270,9 +277,7 @@ function Bookingscreen({ match }) {
                             style={{
                               width: "20px",
                               marginLeft: "100%",
-                              marginBottom: "-30px",
-                              // position: "relative",
-                              // backgroundColor: "red",
+                              marginBottom: "-35px",
                             }}
                           >
                             <input

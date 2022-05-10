@@ -122,6 +122,7 @@ function Homescreen() {
     <div className="container">
       <div className="row mt-5 bs">
         <div className="col-md-3">
+          <p>FROM - TO</p>
           <RangePicker
             format="DD-MM-YYYY"
             onCalendarChange={changeDates}
@@ -136,6 +137,8 @@ function Homescreen() {
         </div>
 
         <div className="col-md-2">
+          <p>Room Type</p>
+
           <select
             className="form-control"
             value={type}
@@ -151,6 +154,8 @@ function Homescreen() {
         </div>
 
         <div className="col-md-2">
+          <p>Guest Count</p>
+
           <select
             className="form-control"
             value={guestCount}
@@ -169,6 +174,8 @@ function Homescreen() {
         </div>
 
         <div className="col-md-2">
+          <p>Room Count</p>
+
           <select
             className="form-control"
             value={roomCount}
@@ -186,7 +193,8 @@ function Homescreen() {
           </select>
         </div>
 
-        <div className="col-md-5">
+        <div className="col-md-3">
+          <p>Location</p>
           <input
             type="text"
             className="form-control"
