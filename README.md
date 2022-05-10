@@ -26,14 +26,19 @@
 ## XP Values
 
 #### Communication
-#### Respect
-#### Simplicity
-#### Courage
-#### Feedback
+#### . Respect
+#### . Simplicity
+#### . Courage
+#### . Feedback
 
 # Features Implemented
 
 ## User
+
+### User can be able to register
+### User can able be to login
+### Search for hotel rooms from chains of the hotel
+
 
 
 
