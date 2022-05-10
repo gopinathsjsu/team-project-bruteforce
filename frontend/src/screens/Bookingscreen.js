@@ -45,7 +45,8 @@ function Bookingscreen({ match }) {
       },
       0
     );
-    setAmenitiesAmount(totalPrice);
+    const totalPriceForAmenities = totalPrice * totalDays;
+    setAmenitiesAmount(totalPriceForAmenities);
   };
 
   const roomid = match.params.roomid;
@@ -132,21 +133,18 @@ function Bookingscreen({ match }) {
       offerapplied: "",
     };
 
-   
-      
-      axios.post(
-        "http://localhost:4000/api/bookings/getprice",
-        bookingDetails
-      ).then((result) => {
-        console.log(result)
+    axios
+      .post("http://localhost:4000/api/bookings/getprice", bookingDetails)
+      .then((result) => {
+        console.log(result);
         setnewtotal(result.data.totalAmount);
         setnewOffer(result.data.offerapplied);
         setExtra(result.data.extracostapplied);
         setDisplay(true);
-      }).catch((error) =>{
-        console.log(error);
       })
-    
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleBooking = async () => {
@@ -338,23 +336,23 @@ function Bookingscreen({ match }) {
                     </div>
                   </>
                 )}
-                
+
                 {/* <p>Total Amount : {Number(totalAmount + amenitiesAmount)}</p> */}
 
                 <button onClick={handlePrice} className="btn btn-primary">
-                Check Updated Price 
-              </button>
-              {display && (<div>
-                Updated Cost: {newtotal}
-                <br></br>
-                {offer}
-                <br></br>
-                {extra}
-                
-              </div>) }
-
-
-
+                  Check Updated Price
+                </button>
+                {display && (
+                  <div>
+                    Guest Cost:
+                    <br></br>
+                    Updated Cost: {newtotal}
+                    <br></br>
+                    {offer}
+                    <br></br>
+                    {extra}
+                  </div>
+                )}
               </b>
             </div>
             <div
@@ -368,7 +366,6 @@ function Bookingscreen({ match }) {
             >
               **Once room booked you can't edit amenities
             </div>
-            
 
             <div style={{ float: "right" }}>
               {/* <StripeCheckout
@@ -377,11 +374,12 @@ function Bookingscreen({ match }) {
                 token={onToken}
                 stripeKey="YOUR PUBLIC STRIP API KEY"
               ></StripeCheckout> */}
-              
 
-              <button onClick={handleBooking} className="btn btn-primary">
-                Pay Now
-              </button>
+              {display && (
+                <button onClick={handleBooking} className="btn btn-primary">
+                  Pay Now
+                </button>
+              )}
             </div>
           </div>
         </div>
