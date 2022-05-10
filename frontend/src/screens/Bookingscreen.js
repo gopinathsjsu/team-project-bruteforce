@@ -270,7 +270,9 @@ function Bookingscreen({ match }) {
                             style={{
                               width: "20px",
                               marginLeft: "100%",
-                              position: "relative",
+                              marginBottom: "-30px",
+                              // position: "relative",
+                              // backgroundColor: "red",
                             }}
                           >
                             <input
@@ -282,12 +284,13 @@ function Bookingscreen({ match }) {
                               onChange={() => handleOnChange(index)}
                             />
                           </div>
-                          <label htmlFor={`custom-checkbox-${index}`}>
-                            {name}
-                          </label>
-                          <div className="amenities-items">
-                            {getFormattedPrice(price)}
-                          </div>
+                          <p
+                            style={{ marginRight: "15px" }}
+                            htmlFor={`custom-checkbox-${index}`}
+                          >
+                            {name} ({getFormattedPrice(price)})
+                          </p>
+                          <p className="amenities-items"></p>
                         </div>
                       </li>
                     );
