@@ -3,7 +3,7 @@
 [Link to Sprint Report](https://docs.google.com/spreadsheets/d/1N_YAxDElzVTV7xWyxAjk_7LDUGHTmtO2qs2-PweUnzY/edit#gid=1312521409)
 
 # Team Name
-#### bruteforce
+### Brute Force
 
 ## Team Members
 #### Sandeep Reddy Kandi - 015324621
@@ -35,12 +35,14 @@
 
 ## User
 
-##### User can be able to register
+##### User can able to register
 ##### User can able be to login
 ##### Search for hotel rooms from chains of the hotel
-
-
-
+##### User can able to book hotel based on availability
+##### Filter hotes based on the type
+##### User can able to select the list of amenities
+##### User can able to book the room
+##### User can able to update the booking
 
 ## Hotel Employee
 
