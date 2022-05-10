@@ -29,6 +29,7 @@ function Bookingscreen({ match }) {
 
   const [rewards, setRewards] = useState();
 
+  const [isRoomBooked, setIsRoomBooked] = useState(false);
   const handleOnChange = (position) => {
     const updatedCheckedState = checkedState.map((item, index) =>
       index === position ? !item : item
@@ -47,6 +48,7 @@ function Bookingscreen({ match }) {
     );
     const totalPriceForAmenities = totalPrice * totalDays;
     setAmenitiesAmount(totalPriceForAmenities);
+    setDisplay(false);
   };
 
   const roomid = match.params.roomid;
@@ -101,6 +103,7 @@ function Bookingscreen({ match }) {
 
   const handleUseReedem = () => {
     console.log(useRewards);
+    setDisplay(false);
 
     setUseRewards(!useRewards);
     console.log(useRewards + "====================");
@@ -175,6 +178,7 @@ function Bookingscreen({ match }) {
         "success"
       ).then((result) => {
         if (result.isConfirmed) {
+          setIsRoomBooked(true);
           if (rewards === 0) {
             const result = axios
               .put(
@@ -182,6 +186,7 @@ function Bookingscreen({ match }) {
                   JSON.parse(localStorage.getItem("currentUser"))._id
               )
               .then((userRes) => {
+                setIsRoomBooked(true);
                 console.log(userRes);
                 const user = JSON.parse(localStorage.getItem("currentUser"));
                 user.rewards = 0;
@@ -216,6 +221,9 @@ function Bookingscreen({ match }) {
     // });
   };
 
+  if (isRoomBooked) {
+    // code of decreasing room count
+  }
   return (
     <div className="col">
       {loading ? (
