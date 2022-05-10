@@ -237,4 +237,92 @@ router.post("/bookroom", async (req, res) => {
   }
 });
 
+router.post("/getprice", async (req, res) => {
+  console.log(
+    "=================================== in add book room ================================"
+  );
+  // console.log(req.body);
+  console.log(req.body);
+
+  let {
+    room,
+    userid,
+    fromdate,
+    todate,
+    totalAmount,
+    totaldays,
+    extracostapplied,
+    offerapplied,
+    guestscount,
+    remainingAmount,
+  } = req.body;
+
+  try {
+    if (
+      moment(fromdate).format("dddd") === "Saturday" ||
+      moment(fromdate).format("dddd") === "Sunday"
+    ) {
+      console.log(
+        "===========================week end price-----------------------"
+      );
+      if (room.percenthikeperdayonweekend) {
+        totalAmount += (totalAmount * room.percenthikeperdayonweekend) / 100;
+        extracostapplied += " Weekend Peak Price";
+      }
+    } else {
+      let dynamicPrices = await Price.find({});
+      dynamicPrices.some((pr) => {
+        if (
+          moment(fromdate, "MM-DD-YYYY").isBetween(
+            moment(pr.fromdate, "DD-MM-YYYY"),
+            moment(pr.todate, "DD-MM-YYYY")
+          )
+        ) {
+          totalAmount += (totalAmount * room.percenthikeperdayonweekend) / 100;
+          extracostapplied += " Holiday Peak Price";
+          console.log(
+            "===========================dynamic price-----------------------"
+          );
+          return true;
+        }
+        return false;
+      });
+    }
+    // Check for extra guests
+    console.log(
+      "===========================checking guests count -----------------------"
+    );
+    if (guestscount) {
+      if (guestscount > room.freeguestcount) {
+        totalAmount +=
+          (guestscount - room.freeguestcount) *
+          totaldays *
+          room.rentperextraguestperday;
+        extracostapplied += ` ${
+          guestscount - room.freeguestcount
+        } extra guests added`;
+      }
+    }
+    // Give loyality discount, if already have booked the same room in past
+    const prevBooking = await Booking.findOne({
+      where: {
+        userid,
+        roomid: room._id,
+      },
+    });
+    if (prevBooking) {
+      totalAmount -= totalAmount / 20;
+      offerapplied += " Customer Loyality discount (5%)";
+    }
+
+    res.send({extracostapplied,offerapplied,totalAmount});
+
+
+  
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ message: error });
+  }
+});
+
 module.exports = router;
