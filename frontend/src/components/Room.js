@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Modal, Button, Carousel } from "react-bootstrap";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
-function Room({ room, fromDate, toDate, guestCount }) {
+function Room({ room, fromDate, toDate, guestCount, roomCount }) {
   const [show, setShow] = useState(false);
 
   console.log(room);
@@ -27,7 +27,9 @@ function Room({ room, fromDate, toDate, guestCount }) {
 
         <div style={{ float: "right" }}>
           {fromDate && toDate && (
-            <Link to={`/book/${room._id}/${fromDate}/${toDate}/${guestCount}`}>
+            <Link
+              to={`/book/${room._id}/${fromDate}/${toDate}/${guestCount}/${roomCount}`}
+            >
               <button
                 className="btn btn-primary m-2"
                 style={{ border: "none" }}

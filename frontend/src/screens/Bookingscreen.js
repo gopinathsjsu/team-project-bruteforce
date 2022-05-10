@@ -119,6 +119,7 @@ function Bookingscreen({ match }) {
       setTotalAmount(totalAmount + user.rewards);
     }
   };
+
   const handlePrice = async () => {
     const bookingDetails = {
       room,
@@ -174,18 +175,6 @@ function Bookingscreen({ match }) {
         "success"
       ).then((result) => {
         if (result.isConfirmed) {
-          console.log(result + "--------------------------");
-          // window.location.href = "/home";
-          // const user = JSON.parse(localStorage.getItem("currentUser"));
-
-          console.log(
-            JSON.parse(localStorage.getItem("currentUser"))._id +
-              "=====================user id "
-          );
-          console.log(
-            JSON.parse(localStorage.getItem("currentUser")).rewards +
-              "=====================user id "
-          );
           if (rewards === 0) {
             const result = axios
               .put(
@@ -196,9 +185,6 @@ function Bookingscreen({ match }) {
                 console.log(userRes);
                 const user = JSON.parse(localStorage.getItem("currentUser"));
                 user.rewards = 0;
-                console.log(
-                  "/////////////////////////////////////////" + user.rewards
-                );
                 console.log(JSON.stringify(user));
                 localStorage.setItem("currentUser", JSON.stringify(user));
               })

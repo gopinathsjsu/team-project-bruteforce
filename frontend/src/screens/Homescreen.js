@@ -27,7 +27,8 @@ function Homescreen() {
   const [duplicateRooms, setDuplicateRooms] = useState([]);
   const [searchKey, setSearchKey] = useState("");
   const [type, setType] = useState("all");
-  const [guestCount, setGuestCount] = useState();
+  const [guestCount, setGuestCount] = useState(1);
+  const [roomCount, setRoomCount] = useState(1);
 
   useEffect(() => {
     async function fetchMyAPI() {
@@ -167,6 +168,24 @@ function Homescreen() {
           </select>
         </div>
 
+        <div className="col-md-2">
+          <select
+            className="form-control"
+            value={roomCount}
+            placeholder="guest count"
+            onChange={(e) => {
+              setRoomCount(e.target.value);
+            }}
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
+
         <div className="col-md-5">
           <input
             type="text"
@@ -195,6 +214,7 @@ function Homescreen() {
                   fromDate={fromDate}
                   toDate={toDate}
                   guestCount={guestCount}
+                  roomCount={roomCount}
                 />
               </div>
             );
