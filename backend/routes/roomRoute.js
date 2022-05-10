@@ -63,4 +63,23 @@ router.post("/addroom", async (req, res) => {
   }
 });
 
+router.put("/updateRoom/:id", async (req, res) => {
+  console.log(
+    "==================== in update backedn ========================="
+  );
+  console.log(req.body);
+  const id = req.params.id;
+  console.log(id);
+  const maxcount = req.body.totalRooms;
+  console.log(maxcount);
+  try {
+    const rooms = await Room.findByIdAndUpdate({ _id: id }, { maxcount });
+    console.log(rooms);
+    res.send(rooms);
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ message: error });
+  }
+});
+
 module.exports = router;

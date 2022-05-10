@@ -65,6 +65,7 @@ h1 {
   border-radius: 5px !important;
   padding: 20px !important;
   color: #1c1c1c;
+  z-index: 2;
 }
 
 .bigimg {

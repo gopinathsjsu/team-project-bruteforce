@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import moment from "moment";
+import moment, { max } from "moment";
 import StripeCheckout from "react-stripe-checkout";
 import Swal from "sweetalert2";
 import Loader from "../components/Loader";
@@ -230,7 +230,24 @@ function Bookingscreen({ match }) {
 
   if (isRoomBooked) {
     // code of decreasing room count
+    console.log("In axios room count ========================");
+    console.log(match.params.roomCount);
+    console.log(room.maxcount);
+    const totalRooms = room.maxcount - match.params.roomCount;
+    console.log(totalRooms);
+    console.log(room._id);
+    axios
+      .put("http://localhost:4000/api/rooms/updateRoom/" + room._id, {
+        totalRooms,
+      })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
+
   return (
     <div className="col">
       {loading ? (
