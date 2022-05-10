@@ -123,7 +123,12 @@ router.post("/getbookingbyuserid", async (req, res) => {
 });
 
 router.post("/bookroom", async (req, res) => {
+  console.log(
+    "=================================== in add book room ================================"
+  );
+  // console.log(req.body);
   console.log(req.body);
+
   let {
     room,
     userid,
@@ -142,12 +147,15 @@ router.post("/bookroom", async (req, res) => {
       moment(fromdate).format("dddd") === "Saturday" ||
       moment(fromdate).format("dddd") === "Sunday"
     ) {
+      console.log(
+        "===========================week end price-----------------------"
+      );
       if (room.percenthikeperdayonweekend) {
         totalAmount += (totalAmount * room.percenthikeperdayonweekend) / 100;
         extracostapplied += " Weekend Peak Price";
       }
     } else {
-      let dynamicPrices = await Price.findAll();
+      let dynamicPrices = await Price.find({});
       dynamicPrices.some((pr) => {
         if (
           moment(fromdate, "MM-DD-YYYY").isBetween(
@@ -157,20 +165,26 @@ router.post("/bookroom", async (req, res) => {
         ) {
           totalAmount += (totalAmount * room.percenthikeperdayonweekend) / 100;
           extracostapplied += " Holiday Peak Price";
+          console.log(
+            "===========================dynamic price-----------------------"
+          );
           return true;
         }
         return false;
       });
     }
     // Check for extra guests
+    console.log(
+      "===========================checking guests count -----------------------"
+    );
     if (guestscount) {
       if (guestscount > room.freeguestcount) {
         totalAmount +=
-          (guestcount - room.freeguestcount) *
+          (guestscount - room.freeguestcount) *
           totaldays *
           room.rentperextraguestperday;
         extracostapplied += ` ${
-          guestcount - room.freeguestcount
+          guestscount - room.freeguestcount
         } extra guests added`;
       }
     }
@@ -218,6 +232,7 @@ router.post("/bookroom", async (req, res) => {
     await roomTmp.save();
     res.send("Payment Successful, Your Room is booked");
   } catch (error) {
+    console.log(error);
     return res.status(400).json({ message: error });
   }
 });
