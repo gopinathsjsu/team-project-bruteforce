@@ -13,12 +13,10 @@ function LandingScreen() {
     <div className="row landing">
       <div className="col-md-12 text-center">
         <h2 data-aos="zoom-in" style={{ color: "white", fontSize: "100px" }}>
-
           MOTEL BOOKING
-
         </h2>
         <h1 data-aos="zoom-out" style={{ color: "white" }}>
-          There is only one boss. The Guest.
+          Luxury is not a place, it's an experience.
         </h1>
         <Link to="/home">
           <button className="btn btn-primary landingBtn">Get Started</button>

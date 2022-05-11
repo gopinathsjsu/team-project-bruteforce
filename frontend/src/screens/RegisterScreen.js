@@ -86,10 +86,10 @@ function RegisterScreen() {
           // backgroundColor: "green",
           width: "65%",
           height: "715px",
-          backgroundSize: "cover",
+          backgroundSize: "100% 100%",
           filter: "blur(2px)",
           backgroundImage:
-            "url(https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)",
+            "url(https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)",
         }}
       ></div>
       <div className="row justify-content-center mt-5">

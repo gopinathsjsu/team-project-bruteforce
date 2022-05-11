@@ -25,7 +25,7 @@ function ProfileScreen() {
             <div className="col"></div>
             <div className="col align-items-center">
               <div className="bs">
-                <h3>My Profile</h3>
+                <h3 style={{ textAlign: "center" }}>My Profile</h3>
                 <p>Name : {user.name}</p>
                 <p>Email : {user.email}</p>
                 {/* <p>
