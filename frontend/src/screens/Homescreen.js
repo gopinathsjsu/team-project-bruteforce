@@ -59,7 +59,13 @@ function Homescreen() {
     }
   }
   function filterByDate(dates) {
+
     try {
+      if (!dates) {
+        setFromDate(null);
+        setToDate(null);
+        return;
+      }
       setFromDate(moment(dates[0]).format("DD-MM-YYYY"));
       setToDate(moment(dates[1]).format("DD-MM-YYYY"));
 
@@ -129,8 +135,7 @@ function Homescreen() {
             onChange={filterByDate}
             disabledDate={(current) =>
               fromDate
-                ? current < moment(fromDate, "DD-MM-YYYY") ||
-                  current > moment(fromDate, "DD-MM-YYYY").add(7, "day")
+                ? current > moment(fromDate, "DD-MM-YYYY").add(7, "day")
                 : null
             }
           />
