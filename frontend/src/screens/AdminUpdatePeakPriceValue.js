@@ -15,8 +15,7 @@ function AdminUpdatePeakPriceValue({ match }) {
   const [percent, setPercent] = useState();
 
   useEffect(() => {
-    if (!user || user.isAdmin == false) {
-      window.location.href = "/home";
+    if (!user || user.isAdmin === false) {
     }
     Axios.get("http://localhost:4000/api/price/getpricesbyid/" + priceId).then(
       (result) => {
@@ -33,14 +32,13 @@ function AdminUpdatePeakPriceValue({ match }) {
   const editDiscount = (e) => {
     e.preventDefault();
     //setTotalDays(totaldaysa);
-    Axios.put("http://localhost:4000/api/bookings/editDiscount/" + priceId, {
+    Axios.put("http://localhost:4000/api/price/editDiscount/" + priceId, {
       fromDate: fromDate,
       toDate: toDate,
       percent: percent,
     }).then((result) => {
       console.log(result);
-      //setRemainingAmount(result.remainingAmount);
-      // setRemain(true);
+      window.location.href = "/admin";
     });
   };
 
@@ -60,12 +58,7 @@ function AdminUpdatePeakPriceValue({ match }) {
         </h1>
         <div className="section">
           <div className="from_date">Name</div>
-          <input
-            type="text"
-            readOnly
-            defaultValue={name}
-            // value={fromDate ? moment(fromDate, "DD-MM-YYYY") : null}
-          />
+          <input type="text" readOnly defaultValue={name} />
         </div>
 
         <div className="section">
@@ -99,7 +92,9 @@ function AdminUpdatePeakPriceValue({ match }) {
             min={1}
             max={50}
             // value={fromDate ? moment(fromDate, "DD-MM-YYYY") : null}
-            // onChange={handleFromDateChange}
+            onChange={(e) => {
+              setPercent(e.target.value);
+            }}
           />
         </div>
 

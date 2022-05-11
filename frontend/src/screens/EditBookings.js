@@ -28,9 +28,6 @@ function EditBookings({ match }) {
       setRoomId(result.data.roomid);
       setFromDate(result.data.fromdate);
       setToDate(result.data.todate);
-
-      // setFromDate(result.data.fromdate);
-      // setToDate(result.data.todate);
       setTotalAmount(result.data.totalamount);
       setTotalDays(result.data.totaldays);
       setRemainingAmount(result.data.remainingAmount);

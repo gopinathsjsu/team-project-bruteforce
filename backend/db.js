@@ -5,7 +5,11 @@ const mongoose = require("mongoose");
 var mongoURL =
   "mongodb+srv://admin:admin@cluster0.iq0pr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-mongoose.connect(mongoURL, { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect(mongoURL, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useFindAndModify: false,
+});
 
 var connection = mongoose.connection;
 

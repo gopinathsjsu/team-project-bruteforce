@@ -363,7 +363,6 @@ function Bookingscreen({ match }) {
                 </button>
                 {display && (
                   <div>
-                    Guest Cost:
                     <br></br>
                     Updated Cost: {newtotal}
                     <br></br>

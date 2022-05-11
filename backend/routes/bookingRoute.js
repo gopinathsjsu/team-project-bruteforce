@@ -1,5 +1,6 @@
 const { toDate } = require("date-fns");
 const express = require("express");
+const { from } = require("formidable/src/parsers/Dummy");
 const moment = require("moment");
 // const stripe = require("stripe")("YOUR PRIVATE STRIP API KEY"); //
 const { v4: uuidv4 } = require("uuid"); //https://www.npmjs.com/package/uuid
@@ -245,10 +246,11 @@ router.post("/bookroom", async (req, res) => {
 
 router.post("/getprice", async (req, res) => {
   console.log(
-    "=================================== in add book room ================================"
+    "=================================== in add get price ================================"
   );
   // console.log(req.body);
-  console.log(req.body);
+  console.log(moment(req.body.fromdate));
+  console.log(req.body.todate);
 
   let {
     room,
@@ -264,6 +266,15 @@ router.post("/getprice", async (req, res) => {
   } = req.body;
 
   try {
+    console.log(moment(fromdate));
+    console.log(
+      moment(fromdate).isBetween(
+        moment("10-05-2022", "DD-MM-YYYY"),
+        moment("13-05-2022", "DD-MM-YYYY")
+      )
+    );
+    console.log(moment("11-05-2022", "DD-MM-YYYY"));
+
     if (
       moment(fromdate).format("dddd") === "Saturday" ||
       moment(fromdate).format("dddd") === "Sunday"
@@ -271,29 +282,40 @@ router.post("/getprice", async (req, res) => {
       console.log(
         "===========================week end price-----------------------"
       );
-      if (room.percenthikeperdayonweekend) {
-        totalAmount += (totalAmount * room.percenthikeperdayonweekend) / 100;
-        extracostapplied += " Weekend Peak Price";
-      }
+      totalAmount += (totalAmount * room.percenthikeperdayonweekend) / 100;
+      extracostapplied += " Weekend Peak Price";
     } else {
+      console.log(
+        "=========================== dynamic price-----------------------"
+      );
+
       let dynamicPrices = await Price.find({});
-      dynamicPrices.some((pr) => {
+
+      let count = 0;
+      for (var i = 0; i < dynamicPrices.length; i++) {
         if (
-          moment(fromdate, "MM-DD-YYYY").isBetween(
-            moment(pr.fromdate, "DD-MM-YYYY"),
-            moment(pr.todate, "DD-MM-YYYY")
+          moment(fromdate).isBetween(
+            moment(dynamicPrices[i].fromdate, "DD-MM-YYYY"),
+            moment(dynamicPrices[i].todate, "DD-MM-YYYY")
           )
         ) {
-          totalAmount += (totalAmount * room.percenthikeperdayonweekend) / 100;
-          extracostapplied += " Holiday Peak Price";
-          console.log(
-            "===========================dynamic price-----------------------"
-          );
-          return true;
+          console.log("APPLY DP");
+          count = count + 1;
+          break;
         }
-        return false;
-      });
+      }
+
+      if (count >= 1) {
+        totalAmount += (totalAmount * room.percenthikeperdayonweekend) / 100;
+        extracostapplied += " Holiday Peak Price";
+        console.log(
+          "===========================  dynamic price -----------------------"
+        );
+      } else {
+        totalAmount = totalAmount;
+      }
     }
+
     // Check for extra guests
     console.log(
       "===========================checking guests count -----------------------"

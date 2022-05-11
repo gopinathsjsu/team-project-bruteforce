@@ -29,6 +29,36 @@ router.get("/getpricesbyid/:id", async (req, res) => {
   }
 });
 
+router.put("/editDiscount/:priceId", async (req, res) => {
+  console.log("update specific bookings");
+  const priceId = req.params.priceId;
+  const fromdate = req.body.fromDate;
+  const todate = req.body.toDate;
+  const percent = req.body.percent;
+  console.log(req.body);
+  console.log("update specific booking s ================================");
+  console.log(req.body.percent);
+
+  try {
+    console.log("In try");
+    const prices = await Price.findOneAndUpdate(
+      { _id: priceId },
+      {
+        fromdate,
+        todate,
+        percent,
+      }
+    );
+    console.log(prices);
+    res.send(prices);
+  } catch (error) {
+    console.log("In catch");
+
+    console.log(error);
+    return res.status(400).json({ message: error });
+  }
+});
+
 router.post("/addprice", async (req, res) => {
   console.log("---------------- add peak price --------------------");
   let { name, fromdate, todate, percent } = req.body;
