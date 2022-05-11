@@ -130,7 +130,17 @@ function AdminAddPeakPrice() {
                   <div className="from_date">To Date</div>
                 </td>
                 <td className="price_inputd">
-                  <DatePicker onChange={handleToDateChange} required />
+                  <DatePicker
+                    onChange={handleToDateChange}
+                    required
+                    disabledDate={(current) =>
+                      fromDate
+                        ? current < moment(fromDate, "DD-MM-YYYY") ||
+                          current >
+                            moment(fromDate, "DD-MM-YYYY").add(15, "day")
+                        : null
+                    }
+                  />
                 </td>
               </tr>
               <br></br>
