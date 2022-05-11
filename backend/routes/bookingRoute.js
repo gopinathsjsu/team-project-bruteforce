@@ -279,14 +279,11 @@ router.post("/getprice", async (req, res) => {
       moment(fromdate).format("dddd") === "Saturday" ||
       moment(fromdate).format("dddd") === "Sunday"
     ) {
-      console.log(
-        "===========================week end price-----------------------"
-      );
       totalAmount += (totalAmount * room.percenthikeperdayonweekend) / 100;
-      extracostapplied += " Weekend Peak Price";
+      extracostapplied += " Weekend Peak Price Applied";
     } else {
       console.log(
-        "=========================== dynamic price-----------------------"
+        "=========================== dynamic price started -----------------------"
       );
 
       let dynamicPrices = await Price.find({});
@@ -305,15 +302,36 @@ router.post("/getprice", async (req, res) => {
         }
       }
 
+      console.log(count);
+
       if (count >= 1) {
         totalAmount += (totalAmount * room.percenthikeperdayonweekend) / 100;
-        extracostapplied += " Holiday Peak Price";
+        extracostapplied += " Holiday Peak Price Applied";
         console.log(
-          "===========================  dynamic price -----------------------"
+          "===========================  dynamic price applied -----------------------"
         );
       } else {
         totalAmount = totalAmount;
       }
+
+      // console.log(dynamicPrices);
+      // console.log(dynamicPrices);
+      // dynamicPrices.some((pr) => {
+      //   if (
+      //     moment(fromdate, "DD-MM-YYYY").isBetween(
+      //       moment(pr.fromdate, "DD-MM-YYYY"),
+      //       moment(pr.todate, "DD-MM-YYYY")
+      //     )
+      //   ) {
+      //     totalAmount += (totalAmount * room.percenthikeperdayonweekend) / 100;
+      //     extracostapplied += " Holiday Peak Price";
+      //     console.log(
+      //       "===========================  dynamic price -----------------------"
+      //     );
+      //     return true;
+      //   }
+      //   return false;
+      // });
     }
 
     // Check for extra guests
@@ -331,16 +349,21 @@ router.post("/getprice", async (req, res) => {
         } extra guests added`;
       }
     }
-    // Give loyality discount, if already have booked the same room in past
-    const prevBooking = await Booking.findOne({
-      where: {
-        userid,
-        roomid: room._id,
-      },
+
+    // Give loyality discount, if already have booked the some room in past
+
+    //code for customer loyalty
+    const prevBooking = await Booking.find({
+      $and: [{ userid: userid }, { roomid: room._id }],
     });
-    if (prevBooking) {
+
+    console.log(prevBooking.length + "--------- prev booking ---------");
+
+    if (prevBooking.length > 0) {
       totalAmount -= totalAmount / 20;
       offerapplied += " Customer Loyality discount (5%)";
+    } else {
+      totalAmount = totalAmount;
     }
 
     res.send({ extracostapplied, offerapplied, totalAmount });
