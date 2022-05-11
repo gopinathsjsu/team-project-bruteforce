@@ -59,7 +59,6 @@ function Homescreen() {
     }
   }
   function filterByDate(dates) {
-
     try {
       if (!dates) {
         setFromDate(null);

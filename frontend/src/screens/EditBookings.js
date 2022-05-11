@@ -22,12 +22,13 @@ function EditBookings({ match }) {
 
   const getBookingDetails = () => {
     Axios.get(
-        "http://localhost:4000/api/bookings/getSpecificBooking/" + bookingId
+      "http://localhost:4000/api/bookings/getSpecificBooking/" + bookingId
     ).then((result) => {
       setBookingDetails(result.data);
       setRoomId(result.data.roomid);
-      setFromDate(result.data.fromdate.split("-").reverse().join("-"));
-      setToDate(result.data.todate.split("-").reverse().join("-"));
+      setFromDate(result.data.fromdate);
+      setToDate(result.data.todate);
+
       // setFromDate(result.data.fromdate);
       // setToDate(result.data.todate);
       setTotalAmount(result.data.totalamount);
@@ -40,8 +41,8 @@ function EditBookings({ match }) {
     e.preventDefault();
     //setTotalDays(totaldaysa);
     Axios.put("http://localhost:4000/api/bookings/editBooking/" + bookingId, {
-      fromDate: fromDate.split("-").reverse().join("-"),
-      toDate: toDate.split("-").reverse().join("-"),
+      fromDate: fromDate,
+      toDate: toDate,
       totalDays: totalDays,
       totalAmount: totalAmount,
       remainingAmount: remainingAmount,
@@ -55,11 +56,11 @@ function EditBookings({ match }) {
   const handleFromDateChange = (date) => {
     setFromDate(date ? moment(date).format("DD-MM-YYYY") : null);
     setToDate(null);
-  }
+  };
 
   const handleToDateChange = (date) => {
     setToDate(date ? moment(date).format("DD-MM-YYYY") : null);
-  }
+  };
 
   return (
     <div>
@@ -71,23 +72,24 @@ function EditBookings({ match }) {
         <div className="section">
           <div className="from_date">From Date</div>
           <DatePicker
-              defaultValue={fromDate ? moment(fromDate, "DD-MM-YYYY") : null}
-              value={fromDate ? moment(fromDate, "DD-MM-YYYY") : null}
-              onChange={handleFromDateChange}
+            defaultValue={fromDate ? moment(fromDate, "DD-MM-YYYY") : null}
+            value={fromDate ? moment(fromDate, "DD-MM-YYYY") : null}
+            onChange={handleFromDateChange}
           />
+          {/* {fromDate} */}
         </div>
         <div className="section">
           <div className="to_date">To Date</div>
           <DatePicker
-              defaultValue={toDate ? moment(toDate, "DD-MM-YYYY") : null}
-              value={toDate ? moment(toDate, "DD-MM-YYYY") : null}
-              onChange={handleToDateChange}
-              disabledDate={(current) =>
-                  fromDate
-                      ? current < moment(fromDate, "DD-MM-YYYY") ||
-                      current > moment(fromDate, "DD-MM-YYYY").add(7, "day")
-                      : null
-              }
+            defaultValue={toDate ? moment(toDate, "DD-MM-YYYY") : null}
+            value={toDate ? moment(toDate, "DD-MM-YYYY") : null}
+            onChange={handleToDateChange}
+            disabledDate={(current) =>
+              fromDate
+                ? current < moment(fromDate, "DD-MM-YYYY") ||
+                  current > moment(fromDate, "DD-MM-YYYY").add(7, "day")
+                : null
+            }
           />
         </div>
         <br></br>
