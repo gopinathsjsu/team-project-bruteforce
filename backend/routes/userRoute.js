@@ -47,12 +47,17 @@ router.post("/getallusers", async (req, res) => {
 });
 
 router.put("/updateUserRewards/:id", async (req, res) => {
+  console.log(
+    " ------------------------ in update user rewards ------------------------"
+  );
   console.log(req.params.id);
+  console.log(req.body.rewardsPoints);
+  const rewards = req.body.rewardsPoints;
 
   try {
-    const result = await User.findOneAndUpdate(
+    const result = await User.findByIdAndUpdate(
       { _id: req.params.id },
-      { rewards: 0 }
+      { rewards: rewards }
     );
     console.log(result);
     res.send({ success: true });

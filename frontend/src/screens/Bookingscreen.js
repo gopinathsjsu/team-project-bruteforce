@@ -28,6 +28,7 @@ function Bookingscreen({ match }) {
   const [display, setDisplay] = useState(false);
 
   const [rewards, setRewards] = useState();
+  const [updateUserRewards, setUpdateUserRewarrds] = useState(false);
 
   const [isRoomBooked, setIsRoomBooked] = useState(false);
   const handleOnChange = (position) => {
@@ -96,7 +97,6 @@ function Bookingscreen({ match }) {
     const totaldays = moment.duration(todate.diff(fromdate)).asDays() + 1;
     setTotalDays(totaldays);
     const roomrent = totalDays * room.rentperday;
-
     setTotalAmount(roomrent);
   }, [room]);
 
@@ -152,6 +152,40 @@ function Bookingscreen({ match }) {
         setnewOffer(result.data.offerapplied);
         setExtra(result.data.extracostapplied);
         setDisplay(true);
+        // setUpdateUserRewarrds(true);
+        if (result.data.offerapplied !== "") {
+          console.log(
+            "====================================== RP" +
+              Number(JSON.parse(localStorage.getItem("currentUser")).rewards) +
+              5
+          );
+          console.log(JSON.parse(localStorage.getItem("currentUser")).rewards);
+          const result = axios
+            .put(
+              "http://localhost:4000/api/users/updateUserRewards/" +
+                JSON.parse(localStorage.getItem("currentUser"))._id,
+              {
+                rewardsPoints:
+                  Number(
+                    JSON.parse(localStorage.getItem("currentUser")).rewards
+                  ) + 5,
+              }
+            )
+            .then((userRes) => {
+              setIsRoomBooked(true);
+              console.log(userRes);
+              const user = JSON.parse(localStorage.getItem("currentUser"));
+              user.rewards =
+                Number(
+                  JSON.parse(localStorage.getItem("currentUser")).rewards
+                ) + 5;
+              console.log(JSON.stringify(user));
+              localStorage.setItem("currentUser", JSON.stringify(user));
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -190,7 +224,8 @@ function Bookingscreen({ match }) {
             const result = axios
               .put(
                 "http://localhost:4000/api/users/updateUserRewards/" +
-                  JSON.parse(localStorage.getItem("currentUser"))._id
+                  JSON.parse(localStorage.getItem("currentUser"))._id,
+                { rewardsPoints: 0 }
               )
               .then((userRes) => {
                 setIsRoomBooked(true);
@@ -227,6 +262,10 @@ function Bookingscreen({ match }) {
     //   });
     // });
   };
+
+  // if (updateUserRewards === true) {
+  // } else {
+  // }
 
   if (isRoomBooked) {
     // code of decreasing room count

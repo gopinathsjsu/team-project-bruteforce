@@ -48,6 +48,7 @@ function EditBookings({ match }) {
       console.log(result);
       //setRemainingAmount(result.remainingAmount);
       setRemain(true);
+      window.location.href = "/profile";
     });
   };
 
@@ -97,7 +98,9 @@ function EditBookings({ match }) {
         <div className="section">
           <p>(Note: Pay remaining amount during checkin)</p>
         </div> */}
-        <div>{remain && <div>Updated total Amount is {totalAmount}</div>}</div>
+        <div style={{ textAlign: "center" }}>
+          {remain && <div>Updated total Amount is {totalAmount}</div>}
+        </div>
 
         <div className="section">
           <button
