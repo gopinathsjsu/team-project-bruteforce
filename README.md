@@ -66,6 +66,6 @@
 
 ## Hotel Employee
 
-##### can able to login
+##### can be able to login
 
-##### can able to add rooms
+##### can be able to add rooms
