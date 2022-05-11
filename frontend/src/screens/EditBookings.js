@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import Axios from "axios";
+import { DatePicker, Space } from "antd";
 import { format } from "date-fns";
 
 function EditBookings({ match }) {
@@ -21,7 +22,7 @@ function EditBookings({ match }) {
 
   const getBookingDetails = () => {
     Axios.get(
-      "http://localhost:4000/api/bookings/getSpecificBooking/" + bookingId
+        "http://localhost:4000/api/bookings/getSpecificBooking/" + bookingId
     ).then((result) => {
       setBookingDetails(result.data);
       setRoomId(result.data.roomid);
@@ -51,6 +52,14 @@ function EditBookings({ match }) {
       setRemain(true);
     });
   };
+  const handleFromDateChange = (date) => {
+    setFromDate(date ? moment(date).format("DD-MM-YYYY") : null);
+    setToDate(null);
+  }
+
+  const handleToDateChange = (date) => {
+    setToDate(date ? moment(date).format("DD-MM-YYYY") : null);
+  }
 
   return (
     <div>
@@ -61,29 +70,24 @@ function EditBookings({ match }) {
 
         <div className="section">
           <div className="from_date">From Date</div>
-
-          <input
-            defaultValue={fromDate}
-            type="date"
-            disabledDate={(current) =>
-              fromDate
-                ? current < moment(fromDate, "DD-MM-YYYY") ||
-                  current > moment(fromDate, "DD-MM-YYYY").add(7, "day")
-                : null
-            }
-            onChange={(event) => {
-              setFromDate(event.target.value);
-            }}
+          <DatePicker
+              defaultValue={fromDate ? moment(fromDate, "DD-MM-YYYY") : null}
+              value={fromDate ? moment(fromDate, "DD-MM-YYYY") : null}
+              onChange={handleFromDateChange}
           />
         </div>
         <div className="section">
           <div className="to_date">To Date</div>
-          <input
-            type="date"
-            defaultValue={toDate}
-            onChange={(event) => {
-              setToDate(event.target.value);
-            }}
+          <DatePicker
+              defaultValue={toDate ? moment(toDate, "DD-MM-YYYY") : null}
+              value={toDate ? moment(toDate, "DD-MM-YYYY") : null}
+              onChange={handleToDateChange}
+              disabledDate={(current) =>
+                  fromDate
+                      ? current < moment(fromDate, "DD-MM-YYYY") ||
+                      current > moment(fromDate, "DD-MM-YYYY").add(7, "day")
+                      : null
+              }
           />
         </div>
         <br></br>
@@ -98,7 +102,7 @@ function EditBookings({ match }) {
 
         <div className="section">
           <button
-            style={{ marginLeft: "25%", border: "none" }}
+            style={{ width: "100%", border: "none" }}
             className="btn btn-danger"
             onClick={editBooking}
           >
