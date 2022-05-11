@@ -12,7 +12,7 @@
     What task did I work on/complete? 
       Revised the UI Wireframes and started the Front End Development for the application, Update Weekly scrum report
     What am I planning to do to next? 
-      Start building user interface for Login and Register Page
+      Start building user interface for Landing screen, Login and Register Page
     What tasks are blocked waiting on another team member?
       None
 
@@ -21,7 +21,7 @@
     What task did I work on/complete? 
       Completed the UI for the Landing, Login and Register page, Update Weekly scrum report
     What am I planning to do to next? 
-      Integrate Login and Register page with backend and update the Profile button functionality
+      Integrate Login and Register page with backend
     What tasks are blocked waiting on another team member? 
       None
        
@@ -48,34 +48,26 @@
     What task did I work on/complete? 
       Completed add room with backend integration and updated weekly srum report
     What am I planning to do to next? 
-      Implementing view hotel description in frontend for users and listing all the bookings in admin module
+      Implementing view hotel description in frontend for users and listing all the bookings in admin module and testing
     What tasks are blocked waiting on another team member? 
       Implementing booking history in backend
       
       
-## Sprint6
+## Sprint7
     
     What task did I work on/complete? 
-      Completed view hotel description and listing all the bookings in admin module
+      Completed view hotel description and listing all the bookings in admin module, Fixing few endpoints in backend
     What am I planning to do to next? 
       Testig the application flow and fixing bugs
     What tasks are blocked waiting on another team member? 
       None
       
-## Sprint6
+## Sprint8
     
     What task did I work on/complete? 
-      Fixed room rates based on number of guests and rooms fixed and also updated css for user module
+      Fixed room rates based on number of guests and rooms fixed and also  End to End testing of application, Peer review, Deployment on cloud, Documentation
     What am I planning to do to next? 
       Testig the application flow and fixing bugs
     What tasks are blocked waiting on another team member? 
       None
       
-## Sprint 7
-    What task did I work on/complete? 
-      End to End testing, Peer review, Deployment on cloud, Documentation
-    What am I planning to do to next?
-    What tasks are blocked waiting on another team member? None
-      
- 
-     
