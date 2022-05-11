@@ -81,14 +81,26 @@ function RegisterScreen() {
     <div>
       {loading && <Loader></Loader>}
       {error.length > 0 && <Error msg={error}></Error>}
+      <div
+        style={{
+          // backgroundColor: "green",
+          width: "65%",
+          height: "715px",
+          backgroundSize: "cover",
+          filter: "blur(2px)",
+          backgroundImage:
+            "url(https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)",
+        }}
+      ></div>
       <div className="row justify-content-center mt-5">
         <div className="col-md-5 mt-5">
           {success.length > 0 && <Success msg={success}></Success>}
           <div
             className="bs"
             style={{
-              backgroundColor: "#9aa4b8",
-              marginLeft: "50%",
+              marginTop: "-100%",
+              marginLeft: "70%",
+              backgroundColor: "white",
             }}
           >
             <h2>Register</h2>

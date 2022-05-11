@@ -294,7 +294,10 @@ function Bookingscreen({ match }) {
       ) : error.length > 0 ? (
         <Error msg={error}></Error>
       ) : (
-        <div className="row justify-content-center mt-5 bs">
+        <div
+          style={{ marginLeft: "1px" }}
+          className="row justify-content-center mt-5 bs"
+        >
           <div className="col">
             <h1 style={{ color: "rgb(144 92 15)", fontWeight: "bold" }}>
               {room.name}

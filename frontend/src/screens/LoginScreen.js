@@ -53,16 +53,25 @@ function LoginScreen() {
   return (
     <div>
       {loading && <Loader></Loader>}
-      {/* <div style={{ backgroundColor: "green", width: "20%", height: "200px" }}>
-        Hello
-      </div> */}
+      <div
+        style={{
+          // backgroundColor: "green",
+          width: "65%",
+          height: "715px",
+          backgroundSize: "cover",
+          filter: "blur(2px)",
+          backgroundImage:
+            "url(https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)",
+        }}
+      ></div>
       <div className="row justify-content-center mt-5">
         <div className="col-md-5 mt-5">
           {error.length > 0 && <Error msg={error}></Error>}
           <div
             style={{
-              marginLeft: "50%",
-              backgroundColor: "#9aa4b8",
+              marginTop: "-100%",
+              marginLeft: "70%",
+              backgroundColor: "white",
             }}
             className="bs"
           >
