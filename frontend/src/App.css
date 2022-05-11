@@ -103,5 +103,10 @@ ul {
 }
 
 tbody tr:nth-child(even) {
+  height: 60px;
   background: #e8e7e1;
+}
+
+tbody tr:nth-child(odd) {
+  height: 60px;
 }

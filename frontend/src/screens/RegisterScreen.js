@@ -84,7 +84,13 @@ function RegisterScreen() {
       <div className="row justify-content-center mt-5">
         <div className="col-md-5 mt-5">
           {success.length > 0 && <Success msg={success}></Success>}
-          <div className="bs">
+          <div
+            className="bs"
+            style={{
+              backgroundColor: "#9aa4b8",
+              marginLeft: "50%",
+            }}
+          >
             <h2>Register</h2>
             <input
               type="text"

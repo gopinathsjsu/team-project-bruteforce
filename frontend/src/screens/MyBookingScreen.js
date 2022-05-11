@@ -75,7 +75,7 @@ function MyBookingScreen() {
       ) : error.length > 0 ? (
         <Error msg={error}></Error>
       ) : (
-        <div className="row">
+        <div style={{ marginLeft: "30%" }} className="row">
           <div className="col-md-6  ml-5">
             {bookings &&
               bookings.map((booking) => {

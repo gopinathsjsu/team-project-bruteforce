@@ -53,11 +53,19 @@ function LoginScreen() {
   return (
     <div>
       {loading && <Loader></Loader>}
-
+      {/* <div style={{ backgroundColor: "green", width: "20%", height: "200px" }}>
+        Hello
+      </div> */}
       <div className="row justify-content-center mt-5">
         <div className="col-md-5 mt-5">
           {error.length > 0 && <Error msg={error}></Error>}
-          <div className="bs">
+          <div
+            style={{
+              marginLeft: "50%",
+              backgroundColor: "#9aa4b8",
+            }}
+            className="bs"
+          >
             <h2>Login</h2>
 
             <input

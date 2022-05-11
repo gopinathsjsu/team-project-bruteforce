@@ -101,7 +101,7 @@ function Room({ room, fromDate, toDate, guestCount, roomCount }) {
           <label style={{ fontWeight: "bold" }}>Rent:&nbsp;</label>
           <label> {room.rentperday}$ per Day</label>
           <br></br>
-          <label style={{ fontWeight: "bold" }}>
+          {/* <label style={{ fontWeight: "bold" }}>
             No. of free guests allowed : &nbsp;
           </label>
           <label>{room.freeguestcount}</label>
@@ -110,7 +110,7 @@ function Room({ room, fromDate, toDate, guestCount, roomCount }) {
             Rent per extra guest per day : &nbsp;
           </label>
           <label>{room.rentperextraguestperday}</label>
-          <br></br>
+          <br></br> */}
           <label style={{ fontWeight: "bold" }}>Location:&nbsp;</label>
           <label> {room.location}</label>
           <br></br>
