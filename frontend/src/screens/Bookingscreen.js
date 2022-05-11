@@ -102,25 +102,31 @@ function Bookingscreen({ match }) {
     setTotalAmount(roomrent);
   }, [room]);
 
-  const handleUseReedem = () => {
+const handleUseReedem = () => {
     console.log(useRewards);
     setDisplay(false);
 
     setUseRewards(!useRewards);
-    console.log(useRewards + "====================");
+
     const user = JSON.parse(localStorage.getItem("currentUser"));
-    console.log(user.rewards);
-    console.log(rewards);
 
-    if (useRewards) {
-      console.log(rewards + "===========================");
-      setTotalAmount(totalAmount - user.rewards);
+    console.log(
+      useRewards + " ==================== printing use rewards" + newtotal
+    );
+    if (useRewards === true) {
+      console.log(user.rewards + "============ in true===============");
+      const updatedCostAfterRewards = totalAmount - user.rewards;
+      console.log(
+        updatedCostAfterRewards + " ============ updated cost =============="
+      );
+      setTotalAmount(updatedCostAfterRewards);
       setRewards(0);
-
       // JSON.parse(localStorage.getItem("currentUser"))._id;
     } else {
+      console.log(user.rewards + "============ in false===============");
       setRewards(user.rewards);
-      setTotalAmount(totalAmount + user.rewards);
+      const updatedCostAfterRewards = totalAmount + user.rewards;
+      setTotalAmount(updatedCostAfterRewards);
     }
   };
 
