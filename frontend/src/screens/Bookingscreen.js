@@ -173,7 +173,7 @@ function Bookingscreen({ match }) {
       fromdate,
       todate,
       guestCount,
-      totalAmount: totalAmount + amenitiesAmount,
+      totalAmount: newtotal,
       totaldays: totalDays,
       remainingAmount: room.rentperday,
       extracostapplied: "extra cost",
