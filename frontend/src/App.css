@@ -12,7 +12,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-.middle{
+.middle {
   align-items: center;
 }
 
@@ -56,38 +56,48 @@
   margin-top: 20px;
   margin-left: 25%;
 }
-.dropdown-toggle{
+.dropdown-toggle {
   background-color: #444054;
   color: white;
   border: none;
   border-radius: 5px;
   padding: 6px;
-
-  
 }
-.button{
-  background-color:#444054;
+.button {
+  background-color: #444054;
 }
-.TabPane{
+.TabPane {
   margin-left: 50px;
 }
 
 ul {
   list-style-type: none;
   margin: 0;
-  padding: 0;  
+  padding: 0;
 }
 
-.amenities{
+.amenities {
   font-family: "Montserrat", sans-serif !important;
   font-size: 15px;
   font-weight: 500;
   text-align: right;
   font-weight: 700;
 }
-.amenities-items{
+.amenities-items {
   font-family: "Montserrat", sans-serif !important;
   font-size: 15px;
   font-weight: 700;
   text-align: right;
+}
+
+.add_price_form {
+  margin-left: 10%;
+  font-size: 15px;
+  /* background-color: red; */
+}
+
+.price_input {
+  margin-bottom: 10px;
+  font-size: 15px;
+  width: 90%;
 }

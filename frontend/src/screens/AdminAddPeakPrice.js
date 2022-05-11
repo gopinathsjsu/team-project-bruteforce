@@ -31,10 +31,11 @@ function AdminAddPeakPrice() {
 
   const [form] = Form.useForm();
 
-  const [name, setName] = useState();
-  const [fromDate, setFromDate] = useState();
-  const [toDate, setToDate] = useState();
-  const [percent, setPercent] = useState();
+  const [name, setName] = useState("");
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
+  const [percent, setPercent] = useState("");
+  const [errorValue, setErrorValue] = useState("");
 
   const onSubmit = async (values) => {
     values.preventDefault();
@@ -43,27 +44,35 @@ function AdminAddPeakPrice() {
     console.log(toDate);
     console.log(percent);
 
-    const peakValue = {
-      name: name,
-      fromdate: fromDate,
-      todate: toDate,
-      percent: percent,
-    };
+    if (name === "" || fromDate === "" || toDate === "" || percent === "") {
+      console.log("Enter name of the holiday");
+      setErrorValue("Please enter all the fields");
+    } else {
+      const peakValue = {
+        name: name,
+        fromdate: fromDate,
+        todate: toDate,
+        percent: percent,
+      };
 
-    setError("");
-    setLoading(true);
-    try {
-      const data = (
-        await axios.post("http://localhost:4000/api/price/addprice", peakValue)
-      ).data;
-      Swal.fire("Congratulations", "Your Room Added Successfully", "success");
-      form.resetFields();
-    } catch (error) {
-      console.log(error);
-      setError(error);
-      Swal.fire("Opps", "Error:" + error, "error");
+      setError("");
+      setLoading(true);
+      try {
+        const data = (
+          await axios.post(
+            "http://localhost:4000/api/price/addprice",
+            peakValue
+          )
+        ).data;
+        Swal.fire("Congratulations", "Your Room Added Successfully", "success");
+        form.resetFields();
+      } catch (error) {
+        console.log(error);
+        setError(error);
+        Swal.fire("Opps", "Error:" + error, "error");
+      }
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const onReset = () => {
@@ -88,37 +97,49 @@ function AdminAddPeakPrice() {
         <Error msg={error}></Error>
       ) : (
         <div className="col-md-12">
+          {errorValue.length > 0 && (
+            <div style={{ marginLeft: "25%", color: "red", fontSize: "20px" }}>
+              {errorValue}
+            </div>
+          )}
           <form className="add_price_form">
-            <table>
+            <table className="add_price_table">
               <tr>
                 <td> name </td>
-                <td>
+                <td className="price_input">
                   <input
                     type="text"
                     onChange={(e) => setName(e.target.value)}
+                    required={true}
                   ></input>
                 </td>
               </tr>
+              <br></br>
+
               <tr>
                 <td>
                   <div className="from_date">From Date</div>
                 </td>
-                <td>
-                  <DatePicker onChange={handleFromDateChange} />
+                <td className="price_inputd">
+                  <DatePicker onChange={handleFromDateChange} required />
                 </td>
               </tr>
+              <br></br>
               <tr>
                 <td>
                   <div className="from_date">To Date</div>
                 </td>
-                <td>
-                  <DatePicker onChange={handleToDateChange} />
+                <td className="price_inputd">
+                  <DatePicker onChange={handleToDateChange} required />
                 </td>
               </tr>
+              <br></br>
+
               <tr>
                 <td> percent </td>
-                <td>
+                <td className="price_input">
                   <input
+                    required={true}
                     type="number"
                     min={1}
                     max="50"
@@ -126,10 +147,25 @@ function AdminAddPeakPrice() {
                   ></input>
                 </td>
               </tr>
+              <br></br>
             </table>
-            <button onClick={onSubmit}>
+            <button
+              style={{ marginLeft: "25%", border: "1px solid transparent" }}
+              onClick={onSubmit}
+            >
               {/* <Button type="danger" htmlType="button" onClick={onReset}> */}
               Add
+              {/* </Button> */}
+            </button>
+            <button
+              style={{
+                backgroundColor: "#ff4d4f",
+                border: "1px solid #ff4d4f",
+              }}
+              onClick={onSubmit}
+            >
+              {/* <Button type="danger" htmlType="button" onClick={onReset}> */}
+              Update
               {/* </Button> */}
             </button>
           </form>
