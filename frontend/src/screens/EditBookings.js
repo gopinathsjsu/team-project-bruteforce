@@ -53,6 +53,7 @@ function EditBookings({ match }) {
       setRemain(true);
     });
   };
+
   const handleFromDateChange = (date) => {
     setFromDate(date ? moment(date).format("DD-MM-YYYY") : null);
     setToDate(null);

@@ -1,18 +1,48 @@
 import React, { useState, useEffect } from "react";
 import { DatePicker, Space } from "antd";
 import moment from "moment";
+import Axios from "axios";
 
-function AdminUpdatePeakPriceValue() {
+function AdminUpdatePeakPriceValue({ match }) {
+  const priceId = match.params.id;
+
   const user = JSON.parse(localStorage.getItem("currentUser"));
   console.log(user);
   const [fromDate, setFromDate] = useState();
   const [toDate, setToDate] = useState();
 
+  const [name, setName] = useState("");
+  const [percent, setPercent] = useState();
+
   useEffect(() => {
     if (!user || user.isAdmin == false) {
       window.location.href = "/home";
     }
+    Axios.get("http://localhost:4000/api/price/getpricesbyid/" + priceId).then(
+      (result) => {
+        console.log(" ==================== in get by id =================");
+        console.log(result.data[0].percent);
+        setName(result.data[0].name);
+        setFromDate(result.data[0].fromdate);
+        setToDate(result.data[0].todate);
+        setPercent(result.data[0].percent);
+      }
+    );
   }, []);
+
+  const editDiscount = (e) => {
+    e.preventDefault();
+    //setTotalDays(totaldaysa);
+    Axios.put("http://localhost:4000/api/bookings/editDiscount/" + priceId, {
+      fromDate: fromDate,
+      toDate: toDate,
+      percent: percent,
+    }).then((result) => {
+      console.log(result);
+      //setRemainingAmount(result.remainingAmount);
+      // setRemain(true);
+    });
+  };
 
   const handleFromDateChange = (date) => {
     setFromDate(date ? moment(date).format("DD-MM-YYYY") : null);
@@ -33,7 +63,7 @@ function AdminUpdatePeakPriceValue() {
           <input
             type="text"
             readOnly
-            // defaultValue={fromDate ? moment(fromDate, "DD-MM-YYYY") : null}
+            defaultValue={name}
             // value={fromDate ? moment(fromDate, "DD-MM-YYYY") : null}
           />
         </div>
@@ -41,16 +71,16 @@ function AdminUpdatePeakPriceValue() {
         <div className="section">
           <div className="from_date">From Date</div>
           <DatePicker
-            // defaultValue={fromDate ? moment(fromDate, "DD-MM-YYYY") : null}
-            // value={fromDate ? moment(fromDate, "DD-MM-YYYY") : null}
+            defaultValue={fromDate ? moment(fromDate, "DD-MM-YYYY") : null}
+            value={fromDate ? moment(fromDate, "DD-MM-YYYY") : null}
             onChange={handleFromDateChange}
           />
         </div>
         <div className="section">
           <div className="to_date">To Date</div>
           <DatePicker
-            // defaultValue={toDate ? moment(toDate, "DD-MM-YYYY") : null}
-            // value={toDate ? moment(toDate, "DD-MM-YYYY") : null}
+            defaultValue={toDate ? moment(toDate, "DD-MM-YYYY") : null}
+            value={toDate ? moment(toDate, "DD-MM-YYYY") : null}
             onChange={handleToDateChange}
             // disabledDate={(current) =>
             //   fromDate
@@ -65,8 +95,9 @@ function AdminUpdatePeakPriceValue() {
           <div className="from_date">Discount (%)</div>
           <input
             type="number"
-            defaultValue="0"
-            // defaultValue={fromDate ? moment(fromDate, "DD-MM-YYYY") : null}
+            defaultValue={percent}
+            min={1}
+            max={50}
             // value={fromDate ? moment(fromDate, "DD-MM-YYYY") : null}
             // onChange={handleFromDateChange}
           />
@@ -76,7 +107,7 @@ function AdminUpdatePeakPriceValue() {
           <button
             style={{ width: "100%", border: "none" }}
             className="btn btn-danger"
-            // onClick={editBooking}
+            onClick={editDiscount}
           >
             Confirm Edit
           </button>
