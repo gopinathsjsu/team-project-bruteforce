@@ -4,7 +4,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:3000"],
+    origin: ["http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:3000", "http://3.145.72.79:3000", "http://18.117.78.120:3000"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
