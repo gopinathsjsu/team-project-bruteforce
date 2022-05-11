@@ -11,6 +11,8 @@ import ProfileScreen from "./screens/ProfileScreen";
 import AdminScreen from "./screens/AdminScreen";
 import LandingScreen from "./screens/LandingScreen";
 import EditBookings from "./screens/EditBookings";
+// import AdimUpdatePeakPrice from "./screens/AdimUpdatePeakPrice";
+import AdminUpdatePeakPriceValue from "./screens/AdminUpdatePeakPriceValue";
 
 function App() {
   return (
@@ -34,6 +36,11 @@ function App() {
           exact
           component={EditBookings}
         />
+        <Route
+          path="/updatePeakPrice/:id"
+          exact
+          component={AdminUpdatePeakPriceValue}
+        ></Route>
       </BrowserRouter>
     </div>
   );

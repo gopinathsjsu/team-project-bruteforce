@@ -7,7 +7,6 @@ const { TabPane } = Tabs;
 
 function ProfileScreen() {
   const user = JSON.parse(localStorage.getItem("currentUser"));
-
   useEffect(() => {
     if (!user) {
       window.location.href = "/login";

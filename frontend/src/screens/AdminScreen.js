@@ -6,6 +6,7 @@ import AdminRoomScreen from "./AdminRoomScreen";
 import AdminUserScreen from "./AdminUserScreen";
 import AdminAddRoomScreen from "./AdminAddRoomScreen";
 import AdminAddPeakPrice from "./AdminAddPeakPrice";
+import AdimUpdatePeakPrice from "./AdimUpdatePeakPrice";
 const { TabPane } = Tabs;
 function callback(key) {
   console.log(key);
@@ -38,6 +39,9 @@ function AdminScreen() {
         </TabPane>
         <TabPane tab="Add Peak Prices" key="5">
           <AdminAddPeakPrice></AdminAddPeakPrice>
+        </TabPane>
+        <TabPane tab="Update Peak Prices" key="6">
+          <AdimUpdatePeakPrice></AdimUpdatePeakPrice>
         </TabPane>
       </Tabs>
     </div>
