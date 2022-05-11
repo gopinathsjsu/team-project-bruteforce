@@ -21,6 +21,20 @@ function AdimUpdatePeakPrice() {
     window.location.href = `/updatePeakPrice/${id}`;
   };
 
+  const deletePrices = (id) => {
+    console.log(id);
+    // console.log(price);
+    axios
+      .delete("http://localhost:4000/api/price/deleteprice/" + id)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    window.location.href = `/admin`;
+  };
+
   async function fetchMyData() {
     setError("");
     setLoading(true);
@@ -43,28 +57,41 @@ function AdimUpdatePeakPrice() {
   var renderPrices = null;
   renderPrices = prices.map((peakPrice) => {
     return (
-      <tr>
-        <td>{peakPrice._id}</td>
-        <td>{peakPrice.name}</td>
-        <td>{peakPrice.fromdate}</td>
-        <td>{peakPrice.todate}</td>
-        <td>{peakPrice.percent}%</td>
-        <td>
-          {
-            <button
-              style={{ border: "none" }}
-              className="btn btn-danger"
-              onClick={() => {
-                editPrices(peakPrice._id);
-              }}
-            >
-              Edit Percentage
-            </button>
-          }
-        </td>
-        {/* <td>{setIdValue(peakPrice._id)}</td> */}
-        {/* <td>{idValue}</td> */}
-      </tr>
+      <>
+        <tr>
+          <td>{peakPrice._id}</td>
+          <td>{peakPrice.name}</td>
+          <td>{peakPrice.fromdate}</td>
+          <td>{peakPrice.todate}</td>
+          <td>{peakPrice.percent}%</td>
+          <td>
+            {
+              <button
+                style={{ border: "none", width: "20%" }}
+                className="btn btn-danger"
+                onClick={() => {
+                  editPrices(peakPrice._id);
+                }}
+              >
+                Edit
+              </button>
+            }
+            {
+              <button
+                style={{ border: "none", marginLeft: "5%" }}
+                className="btn btn-danger"
+                onClick={() => {
+                  deletePrices(peakPrice._id);
+                }}
+              >
+                Delete
+              </button>
+            }
+          </td>
+          {/* <td>{setIdValue(peakPrice._id)}</td> */}
+          {/* <td>{idValue}</td> */}
+        </tr>
+      </>
     );
   });
 

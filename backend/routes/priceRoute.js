@@ -29,6 +29,20 @@ router.get("/getpricesbyid/:id", async (req, res) => {
   }
 });
 
+router.delete("/deleteprice/:id", async (req, res) => {
+  console.log(
+    "----------------------- delete price by id ------------------------"
+  );
+  const id = req.params.id;
+  try {
+    const prices = await Price.findByIdAndDelete({ _id: id });
+    console.log(prices);
+    res.send(prices);
+  } catch (error) {
+    return res.status(400).json({ message: error });
+  }
+});
+
 router.put("/editDiscount/:priceId", async (req, res) => {
   console.log("update specific bookings");
   const priceId = req.params.priceId;

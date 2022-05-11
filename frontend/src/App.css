@@ -101,3 +101,7 @@ ul {
   font-size: 15px;
   width: 90%;
 }
+
+tbody tr:nth-child(even) {
+  background: #e8e7e1;
+}
