@@ -295,7 +295,7 @@ function Bookingscreen({ match }) {
         <Error msg={error}></Error>
       ) : (
         <div
-          style={{ marginLeft: "1px" }}
+          style={{ marginLeft: "1.5px" }}
           className="row justify-content-center mt-5 bs"
         >
           <div className="col">
