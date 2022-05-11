@@ -5,6 +5,7 @@ import AdminBookingScreen from "./AdminBookingScreen";
 import AdminRoomScreen from "./AdminRoomScreen";
 import AdminUserScreen from "./AdminUserScreen";
 import AdminAddRoomScreen from "./AdminAddRoomScreen";
+import AdminAddPeakPrice from "./AdminAddPeakPrice";
 const { TabPane } = Tabs;
 function callback(key) {
   console.log(key);
@@ -34,6 +35,9 @@ function AdminScreen() {
         </TabPane>
         <TabPane tab="Users" key="4">
           <AdminUserScreen></AdminUserScreen>
+        </TabPane>
+        <TabPane tab="Add Peak Prices" key="5">
+          <AdminAddPeakPrice></AdminAddPeakPrice>
         </TabPane>
       </Tabs>
     </div>

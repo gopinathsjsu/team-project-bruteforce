@@ -76,7 +76,6 @@ function EditBookings({ match }) {
             value={fromDate ? moment(fromDate, "DD-MM-YYYY") : null}
             onChange={handleFromDateChange}
           />
-          {/* {fromDate} */}
         </div>
         <div className="section">
           <div className="to_date">To Date</div>
