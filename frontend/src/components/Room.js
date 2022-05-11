@@ -23,6 +23,8 @@ function Room({ room, fromDate, toDate, guestCount, roomCount }) {
           <p>Phone Number : {room.phonenumber}</p>
           <p>Rooms Remaining : {room.maxcount}</p>
           <p>Type : {room.type}</p>
+          <p>Free guest count : {room.freeguestcount}</p>
+          <p>Rent per extra guest : {room.rentperextraguestperday}</p>
         </b>
 
         <div style={{ float: "right" }}>
@@ -93,8 +95,17 @@ function Room({ room, fromDate, toDate, guestCount, roomCount }) {
           <label style={{ fontWeight: "bold" }}>Rooms Remaining : &nbsp;</label>
           <label>{room.maxcount}</label>
           <br></br>
+          <label style={{ fontWeight: "bold" }}>Type : &nbsp;</label>
+          <label>{room.type}</label>
+          <br></br>
           <label style={{ fontWeight: "bold" }}>Rent:&nbsp;</label>
           <label> {room.rentperday}$ per Day</label>
+          <br></br>
+          <label style={{ fontWeight: "bold" }}>No. of free guests allowed : &nbsp;</label>
+          <label>{room.freeguestcount}</label>
+          <br></br>
+          <label style={{ fontWeight: "bold" }}>Rent per extra guest per day : &nbsp;</label>
+          <label>{room.rentperextraguestperday}</label>
           <br></br>
           <label style={{ fontWeight: "bold" }}>Location:&nbsp;</label>
           <label> {room.location}</label>
