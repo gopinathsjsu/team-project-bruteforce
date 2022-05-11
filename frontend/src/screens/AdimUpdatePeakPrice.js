@@ -26,7 +26,7 @@ function AdimUpdatePeakPrice() {
     // console.log(price);
     axios
       .delete("http://localhost:4000/api/price/deleteprice/" + id)
-      .then((result) => {
+      .then((result) => {202loadbalancer-1845045619.us-east-2.elb.amazonaws.com
         console.log(result);
       })
       .catch((error) => {

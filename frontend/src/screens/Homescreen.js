@@ -36,7 +36,7 @@ function Homescreen() {
         setError("");
         setLoading(true);
         const data = (
-          await axios.get("http://localhost:4000/api/rooms/getallrooms")
+          await axios.get("http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:4000/api/rooms/getallrooms")
         ).data;
         //console.log(data);
         setRooms(data);

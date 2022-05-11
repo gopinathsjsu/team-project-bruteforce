@@ -61,7 +61,7 @@ function RegisterScreen() {
     } else {
       try {
         const result = (
-          await axios.post("http://localhost:4000/api/users/register", user)
+          await axios.post("http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:4000/api/users/register", user)
         ).data;
         console.log(result);
         setSuccess(result);

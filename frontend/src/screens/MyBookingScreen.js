@@ -19,7 +19,7 @@ function MyBookingScreen() {
     try {
       const data = (
         await axios.post(
-          "http://localhost:4000/api/bookings/getbookingbyuserid",
+          "http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:4000/api/bookings/getbookingbyuserid",
           {
             userid: user._id,
           }
@@ -42,7 +42,7 @@ function MyBookingScreen() {
     setLoading(true);
     try {
       const data = (
-        await axios.post("http://localhost:4000/api/bookings/cancelbooking", {
+        await axios.post("http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:4000/api/bookings/cancelbooking", {
           bookingid,
           roomid,
         })

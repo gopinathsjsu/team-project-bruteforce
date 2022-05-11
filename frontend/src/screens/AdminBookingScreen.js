@@ -36,7 +36,7 @@ function AdminBookingScreen() {
     setLoading(true);
     try {
       const data = (
-        await axios.post("http://localhost:4000/api/bookings/getallbookings")
+        await axios.post("http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:4000/api/bookings/getallbookings")
       ).data;
       setBookings(data);
     } catch (error) {
