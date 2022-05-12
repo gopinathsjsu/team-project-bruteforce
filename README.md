@@ -8,64 +8,47 @@
 
 ## Team Members
 
-#### Sandeep Reddy Kandi - 015324621
+#### Sandeep Reddy Kandi - (015324621)
 
-#### Satyadivya Maddipudi - 016011775
+#### Satyadivya Maddipudi - (016011775)
 
-#### Asha Yalla - 016006250
+#### Asha Yalla - (016006250)
 
-#### Sai Manasa Yadlapalli - 015999659
+#### Sai Manasa Yadlapalli - (015999659)
 
-## Scrum Meeting Days
+## Scrum Meeting Days - Tuesday, Friday
 
-#### Every Tuesday and Friday
+## Technologies Used
 
-## Technologies
-
-#### MongoDb: Database
-
-#### ExpressJS and NodeJS: Backend
-
-#### ReactJS: Frontend
+MongoDB Atlas for Database <br/>
+ExpressJS and NodeJS: Backend <br/>
+ReactJS: Frontend <br/>
+Deployment AWS EC2 with load balancing 
 
 ## Tools
-
-#### Visual Studio Code:
-
-## XP Values
-
-##### Communication
-
-##### Respect
-
-##### Simplicity
-
-##### Courage
-
-##### Feedback
+ Visual Studio Code <br/>
+ Git 
+ 
+ ### XP Values <br/>
+ Communication <br/>
+ Respect <br/>
+ Simplicity <br/>
+ Courage <br/>
+ Feedback <br/>
 
 # Features Implemented
 
 ## User
 
-##### User can able to register
-
-##### User can able be to login
-
-##### Search for hotel rooms from chains of the hotel
-
-##### User can able to book hotel based on availability
-
-##### Filter hotes based on the type
-
-##### User can able to select the list of amenities
-
-##### User can able to book the room
-
-##### User can able to update the booking
+- Is able to Register & login 
+- Searches for hotel rooms from chains of the hotel
+- Books hotel based on availability
+- Filters hotel rooms based on the type
+- Can select the list of amenities provided
+- Books the room
+- Updates the booking, Cancel the booking
 
 ## Hotel Employee
-
-##### can be able to login
-
-##### can be able to add rooms
+- Logins
+- Tracks Room Availability, Bookings,  Users
+- Can add rooms, add and update peak price
