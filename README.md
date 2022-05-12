@@ -94,5 +94,26 @@ All of the technologies used in MERN are open-source. This feature enables a dev
 It technically free for student developers deploying smaller applications. 
 
 
+# Feature Set
+## Employee:
+- can add available Room 
+- can add Peak price season
+- can view bookings
+- can view users
+
+## Customer:
+- can login into the application
+- can register themselves into the application
+- can check available rooms for selected period of time
+- can search for hotels in a particular location
+- can add guest count
+- can add amenities 
+- can confirm booking
+- can edit booking
+- can cancel booking
+- can select a checkin and checkout date
+
+
+
 
 
