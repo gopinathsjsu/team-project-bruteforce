@@ -172,6 +172,16 @@ Edit Bookings Page
 
 <img width="1426" alt="image" src="https://user-images.githubusercontent.com/30898620/168185480-a811b405-4c84-48dd-857e-8ab85737eaf9.png">
 
+## Deployment Screenshots
+
+<img width="1368" alt="image" src="https://user-images.githubusercontent.com/12370049/168185627-24cdb817-aea3-42d5-9897-b51b19ee1f79.png">
+
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/12370049/168185655-59274632-5bae-42e1-8619-fc02f1ccc22e.png">
+
+
+
+<img width="1426" alt="image" src="https://user-images.githubusercontent.com/30898620/168185480-a811b405-4c84-48dd-857e-8ab85737eaf9.png">
+
 
 
 
