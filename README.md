@@ -8,18 +8,14 @@
 
 ## Team Members
 
-#### Sandeep Reddy Kandi - (015324621)
-
-#### Satyadivya Maddipudi - (016011775)
-
-#### Asha Yalla - (016006250)
-
-#### Sai Manasa Yadlapalli - (015999659)
+Sandeep Reddy Kandi - (015324621) <br/>
+Satyadivya Maddipudi - (016011775) <br/>
+Asha Yalla - (016006250) <br/>
+Sai Manasa Yadlapalli - (015999659) <br/>
 
 ## Scrum Meeting Days - Tuesday, Friday
 
 ## Technologies Used
-
 MongoDB Atlas for Database <br/>
 ExpressJS and NodeJS: Backend <br/>
 ReactJS: Frontend <br/>
@@ -30,26 +26,26 @@ Deployment AWS EC2 with load balancing
  Git 
  
  ### XP Values <br/>
- Communication <br/>
- Respect <br/>
- Simplicity <br/>
- Courage <br/>
- Feedback <br/>
-
+ - Communication <br/>
+ - Respect <br/>
+ - Simplicity <br/>
+ - Courage <br/>
+ - Feedback <br/>
+Together, we followed the above XP values during entire course of Project.
+ 
 # Features Implemented
 
-## User
-
-- Is able to Register & login 
+## User/Customer
+- Registers & logs in 
 - Searches for hotel rooms from chains of the hotel
 - Books hotel based on availability
-- Filters hotel rooms based on the type
-- Can select the list of amenities provided
-- Books the room
-- Updates the booking, Cancel the booking
+- Filters hotel rooms based on the type, Location, Number of Guests
+- Chooses Amenities provided
+- Books room
+- Updates Booking, Cancel Booking
 
-## Hotel Employee
-- Logins
+## Hotel Employee/Hotel Admin
+- Logs In
 - Tracks Room Availability, Bookings,  Users
 - Can add rooms, add and update peak price
 
