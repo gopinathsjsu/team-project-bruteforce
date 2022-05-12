@@ -34,6 +34,9 @@ function AdminScreen() {
         <TabPane tab="Add Room" key="3">
           <AdminAddRoomScreen></AdminAddRoomScreen>
         </TabPane>
+        <TabPane tab="Add Room" key="3">
+          <AdminAddRoomScreen></AdminAddRoomScreen>
+        </TabPane>
         <TabPane tab="Users" key="4">
           <AdminUserScreen></AdminUserScreen>
         </TabPane>
