@@ -1,13 +1,7 @@
-# Hotel Management App
-
+# Hotel Management Application by Team Brute Force
 [Link to Sprint Report](https://docs.google.com/spreadsheets/d/1N_YAxDElzVTV7xWyxAjk_7LDUGHTmtO2qs2-PweUnzY/edit#gid=1312521409)
 
-# Team Name
-
-### Brute Force
-
 ## Team Members
-
 Sandeep Reddy Kandi - (015324621) <br/>
 Satyadivya Maddipudi - (016011775) <br/>
 Asha Yalla - (016006250) <br/>
@@ -15,15 +9,14 @@ Sai Manasa Yadlapalli - (015999659) <br/>
 
 ## Scrum Meeting Days - Tuesday, Friday
 
-## Technologies Used
+## Technologies used
 MongoDB Atlas for Database <br/>
 ExpressJS and NodeJS: Backend <br/>
 ReactJS: Frontend <br/>
 Deployment AWS EC2 with load balancing 
 
 ## Tools
- Visual Studio Code <br/>
- Git 
+ Visual Studio Code, Git 
  
  ### XP Values <br/>
  - Communication <br/>
@@ -45,9 +38,8 @@ Together, we followed the above XP values during entire course of Project.
 - Updates Booking, Cancel Booking
 
 ## Hotel Employee/Hotel Admin
-- Logs In
-- Tracks Room Availability, Bookings,  Users
-- Can add rooms, add and update peak price
+- Logs In and tracks Room Availability, Bookings, Users
+- Can add rooms, add and update peak prices
 
 
 ## Use Case Diagram
@@ -59,27 +51,26 @@ Together, we followed the above XP values during entire course of Project.
 ## Component Diagram
 ![image](https://user-images.githubusercontent.com/87613567/168157219-ee0d1839-b3d1-4766-b0c5-abe965f90b38.png)
 
-
 ## Deployment Diagram
 ![image](https://user-images.githubusercontent.com/87613567/168156493-cc4264da-f72d-496e-a31a-e98f7f78f968.png)
 
 
-
 # Design Decisions:
 
-## Database : Why NoSQL?
+### Database 
+Why NoSQL?
 
 - we picked NoSQL because of its own access languages to interpret data being saved, rather than using a relational model.
 - It has developer-centric database, makes designing of databases and  access to application programming interfaces easier. 
 - Developers need not be bothered by inner workings of databases before using them.
 - NoSQL databases, gives the flexibility to work on what is required rather than forcing the schema on the database.
 
-## Database : Why MongoDB ?
-
+Why MongoDB ?
 
 - Mongo db supports multiple hierarchy of data. 
 - Allows flexibility in Datamodel because of the secondary indexes. 
 - Mongo DB is schemaless and hence we not define the schema in the start. 
+
 
 ## Rest Over GraphQL
 - Managing errors is easier using Rest as Graphql sends 200 OK code irrespective of the errors processed.
@@ -95,7 +86,7 @@ Because MERN Stack employs only one language throughout, Javascript, it will be 
 - Free and Open Source
 All of the technologies used in MERN are open-source. This feature enables a developer to obtain answers to issues that may arise during development from the accessible open sources.
 
-## Hosting to Amazon EC2  with Load Balancer 
+## Hosting on Amazon EC2 with Load Balancer 
 - Easy web scale computing : application can automatically scale itself up and down depending on its needs based on the web API's written
 - RELIABLE: Amazon EC2 offers a highly reliable environment where replacement instances can be rapidly and predictably commissioned. 
 - INEXPENSIVE Amazon EC2 passes on to you the financial benefits of Amazon’s scale. You pay a very low rate for the compute capacity you actually consume.
