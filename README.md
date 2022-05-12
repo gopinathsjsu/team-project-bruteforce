@@ -54,6 +54,10 @@ Deployment AWS EC2 with load balancing
 - Can add rooms, add and update peak price
 
 
-## Architecture Diagram
+## Use Case Diagram
 ![image](https://user-images.githubusercontent.com/87613567/167996483-33063050-fc60-4317-877a-6bbe8adaad02.png)
+
+## Architecture Diagram
+![image](https://user-images.githubusercontent.com/87613567/167996715-22244d2f-2fa2-47e9-abea-2192fd7280c2.png)
+
 
