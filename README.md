@@ -122,6 +122,12 @@ It technically free for student developers deploying smaller applications.
 - can select a checkin and checkout date
 
 
+## Steps to run code on localhost
+1) git clone https://github.com/gopinathsjsu/team-project-bruteforce.git
+2) Install dependencies for both frontend and backend ```npm install```
+3) Run backend - ```npm run start``` <br/>
+   Run frontend - ```npm run start```
+
 
 
 
