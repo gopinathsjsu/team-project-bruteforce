@@ -73,5 +73,21 @@ Together, we followed the above XP values during entire course of Project.
 - Allows flexibility in Datamodel because of the secondary indexes. 
 - Mongo DB is schemaless and hence we not define the schema in the start. 
 
+## Rest Over GraphQL
+- Managing errors is easier using Rest as Graphql sends 200 OK code irrespective of the errors processed.
+- GraphQL limits MongoDB's Flexible schema with its fixed schema. 
+
+## Why MERN Stack
+- Performance and UI rendering
+When it comes to UI layer abstraction, React JS is the finest. Because React is merely a library, you may construct the application and organize the code anyway you wish. As a result, it outperforms Angular in terms of UI rendering and speed.
+
+- Budget-Friendly
+Because MERN Stack employs only one language throughout, Javascript, it will be advantageous for a corporation to recruit only Javascript experts rather than specialists for each technology. This decision will save both time and money.
+
+- Free and Open Source
+All of the technologies used in MERN are open-source. This feature enables a developer to obtain answers to issues that may arise during development from the accessible open sources.
+
+
+
 
 
