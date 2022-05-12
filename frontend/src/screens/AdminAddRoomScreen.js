@@ -35,7 +35,7 @@ function AdminAddRoomScreen() {
     setLoading(true);
     try {
       const data = (
-        await axios.post("http://localhost:4000/api/rooms/addroom", values)
+        await axios.post("http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:4000/api/rooms/addroom", values)
       ).data;
       Swal.fire("Congratulations", "Your Room Added Successfully", "success");
       form.resetFields();

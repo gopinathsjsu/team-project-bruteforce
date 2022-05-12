@@ -17,7 +17,7 @@ function AdminUpdatePeakPriceValue({ match }) {
   useEffect(() => {
     if (!user || user.isAdmin === false) {
     }
-    Axios.get("http://localhost:4000/api/price/getpricesbyid/" + priceId).then(
+    Axios.get("http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:4000/api/price/getpricesbyid/" + priceId).then(
       (result) => {
         console.log(" ==================== in get by id =================");
         console.log(result.data[0].percent);
@@ -32,7 +32,7 @@ function AdminUpdatePeakPriceValue({ match }) {
   const editDiscount = (e) => {
     e.preventDefault();
     //setTotalDays(totaldaysa);
-    Axios.put("http://localhost:4000/api/price/editDiscount/" + priceId, {
+    Axios.put("http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:4000/api/price/editDiscount/" + priceId, {
       fromDate: fromDate,
       toDate: toDate,
       percent: percent,

@@ -77,7 +77,7 @@ function Bookingscreen({ match }) {
         setError("");
         setLoading(true);
         const data = (
-          await axios.post("http://localhost:4000/api/rooms/getroombyid", {
+          await axios.post("http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:4000/api/rooms/getroombyid", {
             roomid: match.params.roomid,
           })
         ).data;
@@ -131,7 +131,7 @@ function Bookingscreen({ match }) {
     };
 
     axios
-      .post("http://localhost:4000/api/bookings/getprice", bookingDetails)
+      .post("http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:4000/api/bookings/getprice", bookingDetails)
       .then((result) => {
         console.log(result);
 
@@ -162,7 +162,7 @@ function Bookingscreen({ match }) {
           console.log(JSON.parse(localStorage.getItem("currentUser")).rewards);
           const result = axios
             .put(
-              "http://localhost:4000/api/users/updateUserRewards/" +
+              "http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:4000/api/users/updateUserRewards/" +
                 JSON.parse(localStorage.getItem("currentUser"))._id,
               {
                 rewardsPoints:
@@ -209,7 +209,7 @@ function Bookingscreen({ match }) {
     try {
       setLoading(true);
       const result = await axios.post(
-        "http://localhost:4000/api/bookings/bookroom",
+        "http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:4000/api/bookings/bookroom",
         bookingDetails
       );
       setLoading(false);
@@ -223,7 +223,7 @@ function Bookingscreen({ match }) {
           if (rewards === 0) {
             const result = axios
               .put(
-                "http://localhost:4000/api/users/updateUserRewards/" +
+                "http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:4000/api/users/updateUserRewards/" +
                   JSON.parse(localStorage.getItem("currentUser"))._id,
                 { rewardsPoints: 0 }
               )
@@ -262,7 +262,7 @@ function Bookingscreen({ match }) {
     console.log(totalRooms);
     console.log(room._id);
     axios
-      .put("http://localhost:4000/api/rooms/updateRoom/" + room._id, {
+      .put("http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:4000/api/rooms/updateRoom/" + room._id, {
         totalRooms,
       })
       .then((result) => {

@@ -22,7 +22,7 @@ function EditBookings({ match }) {
 
   const getBookingDetails = () => {
     Axios.get(
-      "http://localhost:4000/api/bookings/getSpecificBooking/" + bookingId
+      "http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:4000/api/bookings/getSpecificBooking/" + bookingId
     ).then((result) => {
       setBookingDetails(result.data);
       setRoomId(result.data.roomid);
@@ -37,7 +37,7 @@ function EditBookings({ match }) {
   const editBooking = (e) => {
     e.preventDefault();
     //setTotalDays(totaldaysa);
-    Axios.put("http://localhost:4000/api/bookings/editBooking/" + bookingId, {
+    Axios.put("http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:4000/api/bookings/editBooking/" + bookingId, {
       fromDate: fromDate,
       toDate: toDate,
       totalDays: totalDays,

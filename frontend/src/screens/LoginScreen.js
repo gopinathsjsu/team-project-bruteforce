@@ -37,7 +37,7 @@ function LoginScreen() {
     } else {
       try {
         const result = (
-          await axios.post("http://localhost:4000/api/users/login", user)
+          await axios.post("http://202loadbalancer-1845045619.us-east-2.elb.amazonaws.com:4000/api/users/login", user)
         ).data;
         console.log("In post login");
         console.log(result);
