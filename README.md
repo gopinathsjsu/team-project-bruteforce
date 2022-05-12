@@ -87,6 +87,11 @@ Because MERN Stack employs only one language throughout, Javascript, it will be 
 - Free and Open Source
 All of the technologies used in MERN are open-source. This feature enables a developer to obtain answers to issues that may arise during development from the accessible open sources.
 
+## Hosting to Amazon EC2  with Load Balancer 
+- Easy web scale computing : application can automatically scale itself up and down depending on its needs based on the web API's written
+- RELIABLE: Amazon EC2 offers a highly reliable environment where replacement instances can be rapidly and predictably commissioned. 
+- INEXPENSIVE Amazon EC2 passes on to you the financial benefits of Amazon’s scale. You pay a very low rate for the compute capacity you actually consume.
+It technically free for student developers deploying smaller applications. 
 
 
 
