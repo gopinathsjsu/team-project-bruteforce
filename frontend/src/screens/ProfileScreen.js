@@ -25,9 +25,9 @@ function ProfileScreen() {
             <div className="col"></div>
             <div className="col align-items-center">
               <div className="bs">
-                <h3 style={{ textAlign: "center" }}>My Profile</h3>
-                <p>Name : {user.name}</p>
-                <p>Email : {user.email}</p>
+                <h4 style={{ textAlign: "center" }}>MY PROFILE</h4>
+                <p style={{ textAlign: "center" }}>Name : {user.name}</p>
+                <p style={{ textAlign: "center"} }>Email : {user.email}</p>
                 {/* <p>
                   IsAdmin : &nbsp;
                   {user.isAdmin ? (
@@ -36,7 +36,7 @@ function ProfileScreen() {
                     <Tag color="red">NO</Tag>
                   )}
                 </p> */}
-                <p>Rewards: {user.rewards}$</p>
+                <p style={{ textAlign: "center" }} >Rewards: {user.rewards}$</p>
               </div>
             </div>
             <div className="col"></div>
