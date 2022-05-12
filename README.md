@@ -56,6 +56,10 @@ Together, we followed the above XP values during entire course of Project.
 ## Architecture Diagram
 ![image](https://user-images.githubusercontent.com/87613567/167996715-22244d2f-2fa2-47e9-abea-2192fd7280c2.png)
 
+## Component Diagram
+![image](https://user-images.githubusercontent.com/87613567/168157219-ee0d1839-b3d1-4766-b0c5-abe965f90b38.png)
+
+
 ## Deployment Diagram
 ![image](https://user-images.githubusercontent.com/87613567/168156493-cc4264da-f72d-496e-a31a-e98f7f78f968.png)
 
