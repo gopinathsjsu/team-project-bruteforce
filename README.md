@@ -106,10 +106,51 @@ It technically free for student developers deploying smaller applications.
    Run frontend - ```npm run start```
 
 
-## Screens
+# Screens
 
 Login Screen
+
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/12370049/168184086-6d8a28ed-bf04-46ca-b4ed-1d19831520a2.png">
+
+Register Screen
+
+<img width="1429" alt="image" src="https://user-images.githubusercontent.com/12370049/168184195-bb6e4f9b-0d72-475f-9991-44d94ac00aec.png">
+
+## Hotel Employee Screens
+
+All boookings page
+
+<img width="1431" alt="image" src="https://user-images.githubusercontent.com/12370049/168184759-c341c955-56a8-474c-a47c-726e98dc374d.png">
+
+All Rooms Page
+
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/12370049/168184878-222f5bc8-3174-4888-a41a-49580cf4f195.png">
+
+
+Add Room Page
+
+<img width="1437" alt="image" src="https://user-images.githubusercontent.com/12370049/168184953-d1c18c72-c2f8-4539-a57d-dc7a3edc4780.png">
+
+
+Users Page
+
+<img width="1437" alt="image" src="https://user-images.githubusercontent.com/12370049/168184977-af8a29e0-645a-45a5-9df3-e8ff8be4ff94.png">
+
+
+Add Peak Price
+
+<img width="1438" alt="image" src="https://user-images.githubusercontent.com/12370049/168184995-942c6773-4760-4ec9-b01c-bec033950bcf.png">
+
+
+Update Peak Price
+
+<img width="1436" alt="image" src="https://user-images.githubusercontent.com/12370049/168185013-7e30e0bf-7e8c-4525-8745-f607d73c43ba.png">
+
+
+
+
+
+
 
 
 
