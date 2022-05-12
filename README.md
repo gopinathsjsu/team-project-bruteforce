@@ -57,3 +57,21 @@ Together, we followed the above XP values during entire course of Project.
 ![image](https://user-images.githubusercontent.com/87613567/167996715-22244d2f-2fa2-47e9-abea-2192fd7280c2.png)
 
 
+# Design Decisions:
+
+## Database : Why NoSQL?
+
+- we picked NoSQL because of its own access languages to interpret data being saved, rather than using a relational model.
+- It has developer-centric database, makes designing of databases and  access to application programming interfaces easier. 
+- Developers need not be bothered by inner workings of databases before using them.
+- NoSQL databases, gives the flexibility to work on what is required rather than forcing the schema on the database.
+
+## Database : Why MongoDB ?
+
+
+- Mongo db supports multiple hierarchy of data. 
+- Allows flexibility in Datamodel because of the secondary indexes. 
+- Mongo DB is schemaless and hence we not define the schema in the start. 
+
+
+
