@@ -79,8 +79,11 @@ function RegisterScreen() {
 
   return (
     <div>
-      {loading && <Loader></Loader>}
+      {/* {loading && <Loader></Loader>} */}
       {error.length > 0 && <Error msg={error}></Error>}
+      <div style={{ width: "50%", marginLeft: "25%" }}>
+        {success.length > 0 && <Success msg={success}></Success>}
+      </div>
       <div
         style={{
           // backgroundColor: "green",
@@ -94,7 +97,7 @@ function RegisterScreen() {
       ></div>
       <div className="row justify-content-center mt-5">
         <div className="col-md-5 mt-5">
-          {success.length > 0 && <Success msg={success}></Success>}
+          {/* {success.length > 0 && <Success msg={success}></Success>} */}
           <div
             className="bs"
             style={{
