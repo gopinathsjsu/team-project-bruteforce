@@ -146,14 +146,31 @@ Update Peak Price
 
 <img width="1436" alt="image" src="https://user-images.githubusercontent.com/12370049/168185013-7e30e0bf-7e8c-4525-8745-f607d73c43ba.png">
 
+## User Module Screens
 
+Booking Page
 
+<img width="1421" alt="image" src="https://user-images.githubusercontent.com/30898620/168185126-89ec941c-9578-4ce6-b08b-ba2320fe5aa0.png">
 
+Hotel Overview Page
 
+<img width="1431" alt="image" src="https://user-images.githubusercontent.com/30898620/168185277-44196434-f561-4cde-924e-b770fa75732b.png">
 
+Checkout Page
 
+<img width="1432" alt="image" src="https://user-images.githubusercontent.com/30898620/168185198-b3f845db-104f-4f18-be28-eb74c9bfa84e.png">
 
+User Profile Page
 
+<img width="1428" alt="image" src="https://user-images.githubusercontent.com/30898620/168185359-595ee78e-5ce9-46a1-a6bf-1c7f6f083b7b.png">
+
+Booking History Page
+
+<img width="1410" alt="image" src="https://user-images.githubusercontent.com/30898620/168185424-82faca2f-6787-456f-a9ed-459178a84337.png">
+
+Edit Bookings Page
+
+<img width="1426" alt="image" src="https://user-images.githubusercontent.com/30898620/168185480-a811b405-4c84-48dd-857e-8ab85737eaf9.png">
 
 
 
