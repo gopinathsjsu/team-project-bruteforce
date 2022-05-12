@@ -48,7 +48,7 @@
     What task did I work on/complete? 
       Worked on editbooking page
     What am I planning to do to next? 
-      Testig the application flow and fixing bugs. 
+      Testing the application flow and fixing bugs. 
     What tasks are blocked waiting on another team member? 
       Implementing booking history in backend
       
