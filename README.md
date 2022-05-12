@@ -55,5 +55,5 @@ Deployment AWS EC2 with load balancing
 
 
 ## Architecture Diagram
-![image](https://user-images.githubusercontent.com/87613567/167996004-42302461-de21-4162-b116-e9c14aaad4ef.png)
+![image](https://user-images.githubusercontent.com/87613567/167996483-33063050-fc60-4317-877a-6bbe8adaad02.png)
 
