@@ -1,10 +1,12 @@
 # Hotel Management Application by Team Brute Force
 [Link to Sprint Report](https://docs.google.com/spreadsheets/d/1N_YAxDElzVTV7xWyxAjk_7LDUGHTmtO2qs2-PweUnzY/edit#gid=1312521409)
 
+[Link to Sprint Journal](https://docs.google.com/spreadsheets/d/1aMi2fXvU-WYp2BQTQM51rN9wIKzLv9uOepR2EarMBTo/edit#gid=1832506498)
+
 ## Team Members
+Asha Yalla - (016006250) <br/>
 Sandeep Reddy Kandi - (015324621) <br/>
 Satyadivya Maddipudi - (016011775) <br/>
-Asha Yalla - (016006250) <br/>
 Sai Manasa Yadlapalli - (015999659) <br/>
 
 ## Scrum Meeting Days - Tuesday, Friday
@@ -25,22 +27,6 @@ Deployment AWS EC2 with load balancing
  - Courage <br/>
  - Feedback <br/>
 Together, we followed the above XP values during entire course of Project.
- 
-# Features Implemented
-
-## User/Customer
-- Registers & logs in 
-- Searches for hotel rooms from chains of the hotel
-- Books hotel based on availability
-- Filters hotel rooms based on the type, Location, Number of Guests
-- Chooses Amenities provided
-- Books room
-- Updates Booking, Cancel Booking
-
-## Hotel Employee/Hotel Admin
-- Logs In and tracks Room Availability, Bookings, Users
-- Can add rooms, add and update peak prices
-
 
 ## Use Case Diagram
 ![image](https://user-images.githubusercontent.com/87613567/167996483-33063050-fc60-4317-877a-6bbe8adaad02.png)
