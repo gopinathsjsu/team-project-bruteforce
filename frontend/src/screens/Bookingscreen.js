@@ -420,11 +420,11 @@ function Bookingscreen({ match }) {
                 color: "red",
                 fontSize: "14px",
                 marginBottom: "10px",
-                marginLeft: "51%",
+                marginLeft: "36%",
                 // backgroundColor: "yellow",
               }}
             >
-              **Once room booked you can't edit amenities
+              **Cannot choose Amenities, once price is updated!**
             </div>
 
             <div style={{ float: "right" }}>
