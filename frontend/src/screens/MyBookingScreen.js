@@ -81,7 +81,7 @@ function MyBookingScreen() {
               bookings.map((booking) => {
                 return (
                   <div className="bs">
-                    <h1>{booking.room}</h1>
+                    <h1 style={{ textAlign: "center" }}>{booking.room}</h1>
                     <p>
                       <b>BookingId:</b> {booking._id}
                     </p>
@@ -111,7 +111,7 @@ function MyBookingScreen() {
                             editBooking(booking._id, booking.roomid);
                           }}
                         >
-                          Edit Booking
+                          Edit 
                         </button>
 
                         <button
@@ -121,7 +121,7 @@ function MyBookingScreen() {
                             cancelBooking(booking._id, booking.roomid);
                           }}
                         >
-                          Cancel Booking
+                          Cancel 
                         </button>
                       </div>
                     )}
