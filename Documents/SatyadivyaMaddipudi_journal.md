@@ -39,7 +39,7 @@
     What task did I work on/complete? 
       Completed search functionality with backend integration and testing all the features implemented and updated weekly srum report
     What am I planning to do to next? 
-      Implementing add room functionality for the hotel employee
+      Implementing add room functionality for the hotel employee and implementing rewards (both )
     What tasks are blocked waiting on another team member? 
       None
 
@@ -56,7 +56,7 @@
 ## Sprint7
     
     What task did I work on/complete? 
-      Completed view hotel description and listing all the bookings in admin module, Fixing few endpoints in backend
+      Completed view hotel description and add/update/delete peak prices in hotel employee module, Fixing few endpoints in backend
     What am I planning to do to next? 
       Testig the application flow and fixing bugs
     What tasks are blocked waiting on another team member? 
@@ -65,7 +65,7 @@
 ## Sprint8
     
     What task did I work on/complete? 
-      Fixed room rates based on number of guests and rooms fixed and also  End to End testing of application, Peer review, Deployment on cloud, Documentation
+      Fixed room rates based on number of guests and rooms fixed and also  End to End testing of application, Peer review, Documentation
     What am I planning to do to next? 
       Testig the application flow and fixing bugs
     What tasks are blocked waiting on another team member? 
