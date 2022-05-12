@@ -52,3 +52,8 @@ Deployment AWS EC2 with load balancing
 - Logins
 - Tracks Room Availability, Bookings,  Users
 - Can add rooms, add and update peak price
+
+
+## Architecture Diagram
+![image](https://user-images.githubusercontent.com/87613567/167996004-42302461-de21-4162-b116-e9c14aaad4ef.png)
+
