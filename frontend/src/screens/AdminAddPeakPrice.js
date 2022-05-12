@@ -167,17 +167,7 @@ function AdminAddPeakPrice() {
               Add
               {/* </Button> */}
             </button>
-            <button
-              style={{
-                backgroundColor: "#ff4d4f",
-                border: "1px solid #ff4d4f",
-              }}
-              onClick={onSubmit}
-            >
-              {/* <Button type="danger" htmlType="button" onClick={onReset}> */}
-              Update
-              {/* </Button> */}
-            </button>
+
           </form>
           {/* <Form
             {...layout}
