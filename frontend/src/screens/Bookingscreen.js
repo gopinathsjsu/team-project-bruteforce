@@ -249,27 +249,13 @@ function Bookingscreen({ match }) {
       setError(error);
       Swal.fire("Opps", "Error:" + error, "error");
     }
-    setLoading(false);
-    //TESTING CARD
-    //https://stripe.com/docs/testing
-    //https://www.npmjs.com/package/react-stripe-checkout
-    // fetch("/save-stripe-token", {
-    //   method: "POST",
-    //   body: JSON.stringify(token),
-    // }).then((response) => {
-    //   response.json().then((data) => {
-    //     alert(`We are in business, ${data.email}`);
-    //   });
-    // });
+    setLoading(false);   
   };
 
-  // if (updateUserRewards === true) {
-  // } else {
-  // }
+ 
 
   if (isRoomBooked) {
     // code of decreasing room count
-    console.log("In axios room count ========================");
     console.log(match.params.roomCount);
     console.log(room.maxcount);
     const totalRooms = room.maxcount - match.params.roomCount;
