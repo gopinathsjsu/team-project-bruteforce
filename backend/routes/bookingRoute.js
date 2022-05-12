@@ -130,10 +130,6 @@ router.post("/getbookingbyuserid", async (req, res) => {
 });
 
 router.post("/bookroom", async (req, res) => {
-  console.log(
-    "=================================== in add book room ================================"
-  );
-  // console.log(req.body);
   console.log(req.body);
 
   let {
@@ -245,10 +241,7 @@ router.post("/bookroom", async (req, res) => {
 });
 
 router.post("/getprice", async (req, res) => {
-  console.log(
-    "=================================== in add get price ================================"
-  );
-  // console.log(req.body);
+ 
   console.log(moment(req.body.fromdate));
   console.log(req.body.todate);
 
@@ -314,30 +307,10 @@ router.post("/getprice", async (req, res) => {
         totalAmount = totalAmount;
       }
 
-      // console.log(dynamicPrices);
-      // console.log(dynamicPrices);
-      // dynamicPrices.some((pr) => {
-      //   if (
-      //     moment(fromdate, "DD-MM-YYYY").isBetween(
-      //       moment(pr.fromdate, "DD-MM-YYYY"),
-      //       moment(pr.todate, "DD-MM-YYYY")
-      //     )
-      //   ) {
-      //     totalAmount += (totalAmount * room.percenthikeperdayonweekend) / 100;
-      //     extracostapplied += " Holiday Peak Price";
-      //     console.log(
-      //       "===========================  dynamic price -----------------------"
-      //     );
-      //     return true;
-      //   }
-      //   return false;
-      // });
+  
     }
 
-    // Check for extra guests
-    console.log(
-      "===========================checking guests count -----------------------"
-    );
+   
     if (guestscount) {
       if (guestscount > room.freeguestcount) {
         totalAmount +=
