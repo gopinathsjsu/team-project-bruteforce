@@ -5,7 +5,8 @@
 [Link to Sprint Journal](https://docs.google.com/spreadsheets/d/1aMi2fXvU-WYp2BQTQM51rN9wIKzLv9uOepR2EarMBTo/edit#gid=1832506498)
 
 [Deployed Application link](http://3.137.199.112:3000/)
-(Note: Open all links using SJSU mail)
+
+(Note: Open all sheets links using SJSU mail)
 
 ## Team Members
 Asha Yalla - (016006250) <br/>
