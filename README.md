@@ -3,6 +3,8 @@
 
 [Link to Sprint Journal](https://docs.google.com/spreadsheets/d/1aMi2fXvU-WYp2BQTQM51rN9wIKzLv9uOepR2EarMBTo/edit#gid=1832506498)
 
+[Deployed Application link] (http://3.137.199.112:3000/)
+
 ## Team Members
 Asha Yalla - (016006250) <br/>
 Sandeep Reddy Kandi - (015324621) <br/>
@@ -178,10 +180,4 @@ Edit Bookings Page
 
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/12370049/168185655-59274632-5bae-42e1-8619-fc02f1ccc22e.png">
 
-
-
-<img width="1426" alt="image" src="https://user-images.githubusercontent.com/30898620/168185480-a811b405-4c84-48dd-857e-8ab85737eaf9.png">
-
-
-
-
+<img width="1439" alt="image" src="https://user-images.githubusercontent.com/12370049/168185903-3881afc2-165c-4e42-bd95-4e402c9a3eab.png">
