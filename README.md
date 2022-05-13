@@ -1,9 +1,11 @@
 # Hotel Management Application by Team Brute Force
-[Link to Sprint Report](https://docs.google.com/spreadsheets/d/1N_YAxDElzVTV7xWyxAjk_7LDUGHTmtO2qs2-PweUnzY/edit#gid=1312521409)
+
+[Link to Sprint Report](https://docs.google.com/spreadsheets/d/1N_YAxDElzVTV7xWyxAjk_7LDUGHTmtO2qs2-PweUnzY/edit#gid=1312521409) 
 
 [Link to Sprint Journal](https://docs.google.com/spreadsheets/d/1aMi2fXvU-WYp2BQTQM51rN9wIKzLv9uOepR2EarMBTo/edit#gid=1832506498)
 
 [Deployed Application link](http://3.137.199.112:3000/)
+(Note: Open all links using SJSU mail)
 
 ## Team Members
 Asha Yalla - (016006250) <br/>
